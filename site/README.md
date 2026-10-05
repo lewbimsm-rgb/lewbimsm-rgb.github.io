@@ -36,6 +36,14 @@ Links get `rel="sponsored"` automatically (what Google wants). The site-wide Ama
 
 `site\config.json`: site name, tagline, email, categories and their blurbs, the menu, the AdSense publisher ID (already in), Google Analytics ID (empty until connected), contact-form endpoint (empty = shows the email address), the featured post and hero image.
 
+## The admin screen (Pages CMS)
+
+Open **https://app.pagescms.org**, sign in with GitHub (the lewbimsm-rgb account), and pick the repository **lewbimsm-rgb/lewbimsm-rgb.github.io**. You get: a Posts list with Draft/Published, an Add button, a form editor (title, section, summary, picture, body), image upload, and Save. Saving commits to GitHub, GitHub rebuilds, and the change is live in 1–2 minutes. The same screen also edits the About/Contact/legal pages and the site settings (Amazon tag, Analytics ID). Config: `.pages.yml` at the project root.
+
+## How publishing works now (since 2026-10-06)
+
+The project folder is the public repo's working copy, but its git metadata lives at `C:\Users\dunli\Projects\.git-smartselectlabs` so the private hub still backs up everything (the public repo excludes `tools/`, `_secrets/`, `backups/`, `research/` and the planning docs via that git dir's `info/exclude`). Every push to `main` triggers `.github/workflows/build.yml`, which runs `site/build.py` and deploys to GitHub Pages. `python site/publish.py` = pull admin-screen edits, local sanity build, commit, push. There is no longer a nested repo in `site/docs/`.
+
 ## Hosting and the domain
 
 - The generated site (`site\docs\`) is its own tiny git repo pushed to **github.com/lewbimsm-rgb/lewbimsm-rgb.github.io**, served free by GitHub Pages at **https://lewbimsm-rgb.github.io/**.
