@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}{{ post.seo_title }} | {{ site.site_name }}{% endblock %}
+{% block description %}{{ post.description }}{% endblock %}
+{% block ogtype %}article{% endblock %}
+{% block ogimage %}{{ post.image }}{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":{{ post.title|tojson }},"description":{{ post.description|tojson }},"image":"{{ site.url }}{{ post.image }}","datePublished":"{{ post.date.isoformat() }}","dateModified":"{{ post.updated or post.date.isoformat() }}","author":{"@type":"Organization","name":{{ post.author|tojson }}},"publisher":{"@type":"Organization","name":"{{ site.site_name }}","logo":{"@type":"ImageObject","url":"{{ site.url }}{{ site.logo }}"}},"mainEntityOfPage":"{{ site.url }}{{ post.url }}","wordCount":{{ post.words }}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":{{ post.category|tojson }},"item":"{{ site.url }}{{ post.category_url }}"},{"@type":"ListItem","position":3,"name":{{ post.title|tojson }},"item":"{{ site.url }}{{ post.url }}"}]}</script>
+{% endblock %}
+{% block content %}
+<article class="post">
+  <header class="post-header wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="{{ post.category_url }}">{{ post.category }}</a></nav>
+    <h1>{{ post.title }}</h1>
+    <p class="post-lede">{{ post.description }}</p>
+    <p class="post-meta">By {{ post.author }} &middot; {{ post.date_display }} &middot; {{ post.minutes }} min read</p>
+  </header>
+  {% if post.image %}
+  <figure class="post-hero wrap">
+    <img src="{{ post.image }}" alt="{{ post.image_alt }}" width="{{ post.image_w }}" height="{{ post.image_h }}" fetchpriority="high">
+  </figure>
+  {% endif %}
+  <div class="post-layout wrap">
+    <div class="post-body">
+      {% if post.affiliate %}<p class="disclosure">SmartSelect Labs is reader-supported. If you buy through a link on this page we may earn a small commission, at no extra cost to you. <a href="/affiliate-disclosure/">How we make money</a>.</p>{% endif %}
+      {{ post.body|safe }}
+      <div class="author-box">
+        <img src="/assets/icon-180.png" alt="" width="56" height="56">
+        <div><strong>{{ post.author }}</strong><p>{{ site.author_blurb }}</p></div>
+      </div>
+    </div>
+    <aside class="post-aside">
+      {% if post.toc %}
+      <div class="toc">
+        <h2>On this page</h2>
+        <ol>{% for t in post.toc %}<li><a href="#{{ t.id }}">{{ t.name }}</a></li>{% endfor %}</ol>
+      </div>
+      {% endif %}
+    </aside>
+  </div>
+</article>
+{% if related %}
+<section class="related wrap">
+  <div class="section-head"><span class="kicker">Keep reading</span><h2>More from {{ post.category }}</h2></div>
+  <div class="card-grid">
+    {% for p in related %}
+    <a class="card" href="{{ p.url }}">
+      <div class="card-media"><img src="{{ p.image }}" alt="{{ p.image_alt }}" width="{{ p.image_w }}" height="{{ p.image_h }}" loading="lazy"></div>
+      <div class="card-body"><span class="chip">{{ p.category }}</span><h3>{{ p.title }}</h3><span class="meta">{{ p.minutes }} min read</span></div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}

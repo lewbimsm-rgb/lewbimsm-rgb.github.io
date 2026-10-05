@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"{{ site.site_name }}","url":"{{ site.url }}/","description":"{{ site.description }}","publisher":{"@type":"Organization","name":"{{ site.site_name }}","logo":{"@type":"ImageObject","url":"{{ site.url }}{{ site.logo }}"}}}</script>
+{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow reveal">Pickleball gear reviews &amp; beginner guides</p>
+      <h1 class="reveal">Pickleball,<br><em>made simple.</em></h1>
+      <p class="lede reveal">Plain-English guides and honest gear picks for new players, and for anyone who wants to keep playing for years. No jargon, no hype.</p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="/pickleball-for-beginners-guide/">Start here: the beginner&rsquo;s guide</a>
+        <a class="btn btn-ghost" href="/category/gear-reviews/">Gear reviews</a>
+      </div>
+    </div>
+    <figure class="hero-art reveal">
+      <img src="{{ site.hero_image }}" alt="{{ site.hero_image_alt }}" width="1050" height="700" fetchpriority="high">
+      <figcaption>{{ site.hero_caption }}</figcaption>
+    </figure>
+  </div>
+  <div class="court-lines" aria-hidden="true"></div>
+</section>
+
+{% if featured %}
+<section class="featured wrap">
+  <div class="section-head"><span class="kicker">Start here</span><h2>New to the game? Read this first.</h2></div>
+  <a class="feature-card" href="{{ featured.url }}">
+    <div class="feature-media"><img src="{{ featured.image }}" alt="{{ featured.image_alt }}" width="{{ featured.image_w }}" height="{{ featured.image_h }}" loading="lazy"></div>
+    <div class="feature-body">
+      <span class="chip">{{ featured.category }}</span>
+      <h3>{{ featured.title }}</h3>
+      <p>{{ featured.description }}</p>
+      <span class="meta">{{ featured.minutes }} min read &middot; {{ featured.date_display }}</span>
+    </div>
+  </a>
+</section>
+{% endif %}
+
+<section class="latest wrap">
+  <div class="section-head"><span class="kicker">Latest</span><h2>Fresh from the court</h2></div>
+  <div class="card-grid">
+    {% for p in latest %}
+    <a class="card" href="{{ p.url }}">
+      <div class="card-media"><img src="{{ p.image }}" alt="{{ p.image_alt }}" width="{{ p.image_w }}" height="{{ p.image_h }}" loading="lazy"></div>
+      <div class="card-body">
+        <span class="chip">{{ p.category }}</span>
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.description }}</p>
+        <span class="meta">{{ p.minutes }} min read</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="topics">
+  <div class="wrap">
+    <div class="section-head light"><span class="kicker">What you&rsquo;ll find here</span><h2>Three things, done properly.</h2></div>
+    <div class="topic-grid">
+      {% for c in cats %}
+      <a class="topic" href="{{ c.url }}">
+        <span class="topic-num">0{{ loop.index }}</span>
+        <h3>{{ c.name }}</h3>
+        <p>{{ c.blurb }}</p>
+        <span class="topic-link">Browse {{ c.posts|length }} {% if c.posts|length == 1 %}article{% else %}articles{% endif %} &rarr;</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="about-strip wrap">
+  <div class="about-inner">
+    <span class="kicker">Why SmartSelect Labs</span>
+    <h2>Written for the rest of us.</h2>
+    <p>{{ site.author_blurb }}</p>
+    <p><a href="/about/">More about us</a> &nbsp;&middot;&nbsp; <a href="/affiliate-disclosure/">How we make money</a></p>
+  </div>
+</section>
+{% endblock %}

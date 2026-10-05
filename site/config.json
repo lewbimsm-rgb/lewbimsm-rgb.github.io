@@ -1,0 +1,57 @@
+{
+  "site_name": "SmartSelect Labs",
+  "tagline": "Pickleball, made simple.",
+  "description": "Plain-English pickleball guides and honest gear picks for new players, and for anyone who wants to keep playing for years. No jargon, no hype.",
+  "url": "https://smartselectlabs.com",
+  "email": "hello@smartselectlabs.com",
+  "author": "SmartSelect Labs",
+  "author_blurb": "SmartSelect Labs is a small, family-run blog written for people who play at the park, the rec center or the community court. We explain the game in plain English and recommend gear by saying who it is for and why.",
+  "logo": "/images/logo-wordmark.png",
+  "share_image": "/images/social-share.jpg",
+  "adsense_client": "ca-pub-3242839684084183",
+  "ga4_id": "",
+  "contact_form_endpoint": "",
+  "amazon_tag": "smartselec0a7-20",
+  "head_extra": "",
+  "head_extra_note": "AvantLink application 1661649 ownership VERIFIED 2026-10-06 (tag removed as instructed). head_extra is a free slot for any future verification tag (Google Search Console, Pinterest, etc.).",
+  "featured_slug": "pickleball-for-beginners-guide",
+  "hero_image": "/images/photos/Pickle-photo-1.jpeg",
+  "hero_image_alt": "Yellow pickleballs and paddles laid out on the grass before a game",
+  "hero_caption": "Everything starts with a paddle and a few balls.",
+  "categories": {
+    "Beginner Guides": {
+      "slug": "beginner-guides",
+      "blurb": "Start here: how the game works, what to buy first, and how to get better fast."
+    },
+    "Gear Reviews": {
+      "slug": "gear-reviews",
+      "blurb": "Paddles, shoes, balls and bags compared on what matters: comfort, control, durability and price."
+    },
+    "Health & Recovery": {
+      "slug": "health-recovery",
+      "blurb": "Staying on the court: warm-ups, protecting knees and elbows, and recovering between sessions."
+    }
+  },
+  "nav": [
+    {
+      "label": "Beginner Guides",
+      "href": "/category/beginner-guides/"
+    },
+    {
+      "label": "Gear Reviews",
+      "href": "/category/gear-reviews/"
+    },
+    {
+      "label": "Health & Recovery",
+      "href": "/category/health-recovery/"
+    },
+    {
+      "label": "About",
+      "href": "/about/"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact/"
+    }
+  ]
+}

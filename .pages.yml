@@ -1,0 +1,144 @@
+# Pages CMS configuration for smartselectlabs.com  (https://pagescms.org)
+# ---------------------------------------------------------------------------------------------------------
+# What this gives Mom: a simple web page (app.pagescms.org) with a "Posts" list, an "Add" button, a form
+# (title, category, summary, picture, body) and a Save button. Saving writes the Markdown file straight
+# into this GitHub repository; the GitHub Action in .github/workflows/build.yml rebuilds and publishes the
+# site about a minute later. No WordPress, no plugins, nothing to update.
+#
+# The field names below match exactly what site/build.py reads from each post's front matter.
+# Keep this file at the ROOT of the repository that holds content/ and site/.
+# ---------------------------------------------------------------------------------------------------------
+
+media:
+  input: content/images          # where uploaded pictures are stored in the repo
+  output: /images                # how they are referenced on the live site (build.py copies content/images -> /images)
+
+content:
+  - name: posts
+    label: Posts
+    type: collection
+    path: content/posts
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      primary: title
+      sort: date
+      order: desc
+      search: true
+      fields: [title, category, date, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+        description: "The headline readers and Google see. Say what it is and who it is for, e.g. 'Best Pickleball Shoes for Seniors (Tested on Outdoor Courts)'."
+      - name: date
+        label: Date
+        type: date
+        description: "Today's date. Newest posts show first."
+      - name: category
+        label: Section
+        type: select
+        required: true
+        options:
+          values: ["Beginner Guides", "Gear Reviews", "Health & Recovery"]
+      - name: description
+        label: Short summary
+        type: text
+        description: "One or two sentences (about 150 characters). Shows under the title, on the home page cards, and in Google results."
+      - name: image
+        label: Main picture
+        type: image
+        description: "The big picture at the top of the post. Your own photo is best. Landscape (wider than tall) works best."
+      - name: image_alt
+        label: What is in the picture?
+        type: string
+        description: "A plain sentence describing the picture, for people who cannot see it and for Google. E.g. 'Two women at the kitchen line during morning open play'."
+      - name: affiliate
+        label: This post has shopping links
+        type: boolean
+        default: false
+        description: "Turn on if the post links to products. It adds the required 'we may earn a commission' line at the top."
+      - name: draft
+        label: Keep as a draft (not public yet)
+        type: boolean
+        default: true
+        description: "Leave ON while you are writing. Turn OFF to publish. You can turn it back on any time."
+      - name: slug
+        label: Web address (optional)
+        type: string
+        description: "Leave blank. Lewis sets this: lowercase words with dashes, e.g. best-pickleball-shoes-for-seniors."
+      - name: author
+        label: Author
+        type: string
+        description: "Leave blank to use the site default."
+      - name: body
+        label: Post
+        type: rich-text
+        options:
+          format: markdown
+          media:
+            path: content/images/posts
+            extensions: [jpg, jpeg, png, webp]
+            rename: safe
+
+  - name: pages
+    label: Pages (About, Contact, Policies)
+    type: collection
+    path: content/pages
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      primary: title
+      search: true
+      fields: [title]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Short summary
+        type: text
+      - name: slug
+        label: Web address
+        type: string
+      - name: template
+        label: Template (leave as page.html)
+        type: string
+        default: page.html
+      - name: body
+        label: Page text
+        type: rich-text
+        options:
+          format: markdown
+          media:
+            path: content/images
+
+  - name: settings
+    label: Site settings (Lewis only)
+    type: file
+    path: site/config.json
+    format: json
+    fields:
+      - name: site_name
+        type: string
+      - name: tagline
+        type: string
+      - name: description
+        type: text
+      - name: email
+        type: string
+      - name: author
+        type: string
+      - name: author_blurb
+        type: text
+      - name: amazon_tag
+        label: Amazon Associates tag (e.g. smartselec0a7-20)
+        type: string
+      - name: ga4_id
+        label: Google Analytics measurement ID (G-XXXXXXX)
+        type: string
+      - name: adsense_client
+        label: AdSense publisher (ca-pub-...)
+        type: string

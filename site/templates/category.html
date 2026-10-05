@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ cat.name }} | {{ site.site_name }}{% endblock %}
+{% block description %}{{ cat.blurb }}{% endblock %}
+{% block content %}
+<section class="page-head wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> {{ cat.name }}</nav>
+  <h1>{{ cat.name }}</h1>
+  <p class="lede">{{ cat.blurb }}</p>
+</section>
+<section class="wrap">
+  {% if cat.posts %}
+  <div class="card-grid">
+    {% for p in cat.posts %}
+    <a class="card" href="{{ p.url }}">
+      <div class="card-media"><img src="{{ p.image }}" alt="{{ p.image_alt }}" width="{{ p.image_w }}" height="{{ p.image_h }}" loading="lazy"></div>
+      <div class="card-body"><span class="chip">{{ p.category }}</span><h3>{{ p.title }}</h3><p>{{ p.description }}</p><span class="meta">{{ p.minutes }} min read &middot; {{ p.date_display }}</span></div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty">
+    <p>Nothing here yet. The first {{ cat.name|lower }} articles are on the way. In the meantime, start with the <a href="/pickleball-for-beginners-guide/">complete beginner&rsquo;s guide</a>.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

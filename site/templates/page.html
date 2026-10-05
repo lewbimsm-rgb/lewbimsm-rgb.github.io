@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} | {{ site.site_name }}{% endblock %}
+{% block description %}{{ page.description or site.description }}{% endblock %}
+{% block content %}
+<section class="page-head wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> {{ page.title }}</nav>
+  <h1>{{ page.title }}</h1>
+  {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+</section>
+<section class="wrap page-body">
+  {{ page.body|safe }}
+  {% if page.slug == "contact" %}
+  <div class="contact-block">
+    {% if site.contact_form_endpoint %}
+    <form class="contact-form" action="{{ site.contact_form_endpoint }}" method="POST">
+      <label>Name <input type="text" name="name" required></label>
+      <label>Email <input type="email" name="email" required></label>
+      <label>Message <textarea name="message" rows="6" required></textarea></label>
+      <button class="btn btn-primary" type="submit">Send message</button>
+    </form>
+    {% else %}
+    <p class="contact-email">Email us at <a href="mailto:{{ site.email }}">{{ site.email }}</a>. We read everything, and we reply to real questions.</p>
+    {% endif %}
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
