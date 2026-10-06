@@ -97,13 +97,19 @@ def product_card(m):
             best = p
     btns = "".join('<a class="btn btn-%s" href="%s" rel="sponsored nofollow noopener" target="_blank">%s</a>' % (s, html.escape(u, True), l) for s, u, l in links)
     img = '<img src="%s" alt="%s" loading="lazy" width="320" height="320">' % (html.escape(image, True), html.escape(name, True)) if image else ""
-    return ('<div class="product-card">%s<div class="product-body"><h4>%s</h4>%s<div class="product-actions">%s</div>'
-            '<p class="product-note">We may earn a commission if you buy through these links. It never changes what you pay.</p></div></div>'
-            % (img, html.escape(name), ("<p>%s</p>" % html.escape(best)) if best else "", btns))
+    return ('<div class="product-card%s">%s<div class="product-body"><h4>%s</h4>%s</div><div class="product-actions">%s</div>'
+            '<p class="product-note">We may earn a commission if you buy through this link. It never changes what you pay.</p></div>'
+            % ("" if image else " no-image", img, html.escape(name), ("<p>%s</p>" % html.escape(best)) if best else "", btns))
+
+
+def product_group(m):
+    """consecutive ::product lines (blank lines allowed between them) become one side-by-side row of cards"""
+    cards = [product_card(re.match(r"::product (.+)", line.strip())) for line in m.group(0).split("\n") if line.strip().startswith("::product ")]
+    return '\n<div class="product-grid cols-%d">%s</div>\n' % (min(len(cards), 3), "".join(cards))
 
 
 def render_markdown(body):
-    body = re.sub(r"^::product (.+)$", product_card, body, flags=re.M)
+    body = re.sub(r"(?:^::product .+$\n?)(?:\n*^::product .+$\n?)*", product_group, body, flags=re.M)
     MD.reset()
     out = MD.convert(body)
     out = components.render(out)

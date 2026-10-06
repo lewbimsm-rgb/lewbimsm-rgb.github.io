@@ -164,18 +164,24 @@ p{margin:0 0 1.1em}
 .toc a:hover{color:var(--pink-dark);text-decoration:underline}
 @media (max-width:1000px){.post-layout{grid-template-columns:minmax(0,740px)}.post-aside{display:none}}
 
-/* product card */
-.product-card{display:grid;grid-template-columns:160px 1fr;gap:1.2rem;align-items:start;margin:2rem 0;padding:1.2rem;background:var(--paper);border:1px solid var(--edge);border-radius:var(--radius);box-shadow:var(--shadow)}
+/* product cards: side by side (up to 3 across), stacking on phones */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1rem;margin:1.8rem 0 2.2rem}
+.product-grid.cols-1{grid-template-columns:1fr;max-width:460px}
+.product-card{display:flex;flex-direction:column;gap:.6rem;padding:1.2rem 1.2rem 1.1rem;background:var(--paper);border:1px solid var(--edge);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease}
+.product-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.product-card::before{content:"";display:block;height:4px;border-radius:999px;background:var(--grad);margin:-.2rem 0 .3rem}
 .product-card img{margin:0;border-radius:12px;box-shadow:none;width:100%;aspect-ratio:1;object-fit:cover}
-.product-body h4{margin:0 0 .4rem;font-size:1.25rem}
-.product-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin:.6rem 0}
-.product-actions .btn{padding:.6rem 1.1rem;font-size:.92rem}
+.product-body{flex:1}
+.product-body h4{margin:0 0 .4rem;font-size:1.12rem;line-height:1.25}
+.product-body p{font-size:.95rem;line-height:1.5;margin:0;color:var(--ink)}
+.product-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.2rem}
+.product-actions .btn{padding:.6rem 1rem;font-size:.9rem;width:100%;text-align:center}
 .btn-amazon{background:#ffb84d;color:#1a1a1a}
 .btn-amazon:hover{background:#f0a52e;color:#111}
 .btn-selkirk,.btn-target,.btn-link{background:var(--green);color:#fff}
 .btn-selkirk:hover,.btn-target:hover,.btn-link:hover{background:var(--green-dark);color:#fff}
-.product-note{font-size:.8rem;color:var(--mute);margin:0}
-@media (max-width:600px){.product-card{grid-template-columns:1fr}}
+.product-note{font-size:.74rem;color:var(--mute);margin:0;line-height:1.35}
+.post-body .product-card{margin:0}
 
 /* related */
 .related{padding:1rem 20px 4rem}
