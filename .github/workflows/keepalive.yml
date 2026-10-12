@@ -1,0 +1,16 @@
+# Keeps the writing-desk database (Supabase free plan) awake: free projects pause after 7 days without requests.
+# One tiny read per day. The key below is the public anon key (row-level security protects the data).
+name: desk-keepalive
+on:
+  schedule:
+    - cron: "17 15 * * *"
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping the desk database
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" "https://qjoowhfonktziuktmcjb.supabase.co/rest/v1/templates?select=key&limit=1" -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqb293aGZvbmt0eml1a3RtY2piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3NzA4OTksImV4cCI6MjEwNzM0Njg5OX0.7NDXr0lP8ArShg9Gdwq5cTqRPZ6BTdgYhEstoCwocJM")
+          echo "status $code"
+          test "$code" = "200"

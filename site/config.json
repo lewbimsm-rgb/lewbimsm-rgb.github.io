@@ -111,5 +111,7 @@
     "/signin/": "/admin/"
   },
   "editor_url": "https://app.pagescms.org/lewbimsm-rgb/lewbimsm-rgb.github.io/main",
-  "default_post_image": "/images/photos/hostinger/court.jpg"
+  "default_post_image": "/images/photos/hostinger/court.jpg",
+  "desk_url": "https://qjoowhfonktziuktmcjb.supabase.co",
+  "desk_key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqb293aGZvbmt0eml1a3RtY2piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3NzA4OTksImV4cCI6MjEwNzM0Njg5OX0.7NDXr0lP8ArShg9Gdwq5cTqRPZ6BTdgYhEstoCwocJM"
 }

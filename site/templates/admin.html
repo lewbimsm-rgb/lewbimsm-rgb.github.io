@@ -1,70 +1,32 @@
-{% extends "base.html" %}
-{% block title %}Editor sign-in | {{ site.site_name }}{% endblock %}
-{% block description %}Private writing desk for the {{ site.site_name }} editors.{% endblock %}
-{% block head %}<meta name="robots" content="noindex, nofollow">
-<style>
-.desk{max-width:var(--content);margin:auto;padding:0 5% 80px}
-.desk-cta{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:6px 0 40px}
-.desk-cta .button{font-size:16px;padding:18px 28px;min-height:58px}
-.desk-cta small{color:var(--quiet);font-size:13px;max-width:420px;line-height:1.6}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin:0 0 40px;padding:0;list-style:none;counter-reset:step}
-.steps li{background:#fff;border:1px solid var(--edge);border-radius:10px;padding:24px 22px;counter-increment:step;position:relative}
-.steps li:before{content:counter(step);display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--lime);color:var(--ink);font-family:var(--display);font-weight:700;margin-bottom:12px}
-.steps h3{font-size:20px;margin:0 0 8px;color:var(--ink)}
-.steps p{font-size:14px;line-height:1.75;color:#43516a}
-.kinds{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:0 0 40px}
-.kind{border-radius:9px;padding:20px;color:var(--ink)}
-.kind:nth-child(4n+1){background:var(--lime)}.kind:nth-child(4n+2){background:var(--blue-soft)}.kind:nth-child(4n+3){background:var(--coral)}.kind:nth-child(4n){background:#fff;border:1px solid var(--edge)}
-.kind strong{display:block;font-family:var(--display);font-size:18px;margin-bottom:6px}
-.kind span{font-size:13px;line-height:1.6}
-.tips{background:var(--blue-soft);border-radius:10px;padding:26px 28px;color:var(--ink)}
-.tips h2{font-size:24px;margin:0 0 12px}
-.tips ul{margin:0;padding-left:1.2rem;line-height:1.9;font-size:15px}
-</style>
-{% endblock %}
-{% block content %}
-<div class="page-intro">
-  <span class="eyebrow">Editor sign-in</span>
-  <h1>Your writing desk.</h1>
-  <p>Write, add your photos, keep drafts, and publish to {{ site.site_name }}. You sign in with your email; there is no password to remember.</p>
-</div>
-<div class="desk">
-  <div class="desk-cta">
-    <a class="button primary" href="{{ site.editor_url }}">Open my writing desk <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
-    <small>Opens in the writing app we use (Pages CMS). Bookmark this page, smartselectlabs.com/admin, and start here every time.</small>
-  </div>
-
-  <ol class="steps">
-    <li><h3>Sign in with your email</h3><p>Press <b>Open my writing desk</b>, choose <b>Continue with email</b>, and type the Gmail address Lewis set up for you.</p></li>
-    <li><h3>Type the 6-digit code</h3><p>Check your Gmail for <b>&ldquo;Your Pages CMS temporary code&rdquo;</b> and type the six numbers. You stay signed in for a while after that.</p></li>
-    <li><h3>Pick a template</h3><p>On the left, choose a template, then press <b>Add an entry</b>. The outline is already there: replace the sample lines with your own words. To go back to a post, open <b>All my posts</b>.</p></li>
-    <li><h3>Add a photo, save often</h3><p>Use <b>Upload</b> under <b>Main picture</b> for your own photo. Leave <b>Keep as a draft</b> ON while you write and press <b>Save</b> as often as you like.</p></li>
-    <li><h3>Publish</h3><p>When it is ready, turn <b>Keep as a draft</b> OFF and press <b>Save</b>. Your post appears on the site in about two minutes.</p></li>
-  </ol>
-
-  <h2 style="font-size:28px;margin:0 0 6px">Your template library</h2>
-  <p style="color:var(--quiet);margin:0 0 18px;font-size:15px">Each one opens a new post with the outline already written. Every post you make from a template is listed under it, and <b>All my posts</b> at the top of the menu shows everything in one place: drafts, published posts, all of it.</p>
-  <div class="kinds">
-    <div class="kind"><strong>Best ___ for ___</strong><span>A gear list: three or four picks, a comparison table, who should buy and who should skip.</span></div>
-    <div class="kind"><strong>___ vs ___</strong><span>Two products or brands head to head, and who should pick which.</span></div>
-    <div class="kind"><strong>One product review</strong><span>Something you used yourself: how you tested it, what you liked and didn&rsquo;t, your stars.</span></div>
-    <div class="kind"><strong>Outfits &amp; style</strong><span>What to wear on the court and after: outfit formulas and picks.</span></div>
-    <div class="kind"><strong>How-to &amp; lessons</strong><span>Teach one thing: a rule, a shot, a habit, your first game.</span></div>
-    <div class="kind"><strong>Checklists &amp; lists</strong><span>&ldquo;15 things to pack&rdquo;, &ldquo;what to bring&rdquo;. One short paragraph per item.</span></div>
-    <div class="kind"><strong>Health &amp; care routine</strong><span>Sun care, warm-ups, sore knees, recovery. Practical, gentle, no medical claims.</span></div>
-    <div class="kind"><strong>Story &amp; weekly diary</strong><span>A morning at open play, something you learned this week. Just write.</span></div>
-  </div>
-
-  <div class="tips">
-    <h2>Good to know</h2>
-    <ul>
-      <li>It works on your phone too. Same steps.</li>
-      <li>To go back to a draft or fix a live post: <b>All my posts</b>, open it, change it, press <b>Save</b>. To take a post down, turn <b>Keep as a draft</b> back ON.</li>
-      <li>Your own photos only. Never save a picture from Amazon or a store website.</li>
-      <li>Don&rsquo;t type exact Amazon prices (&ldquo;about $90&rdquo; is fine). Amazon&rsquo;s rule.</li>
-      <li>A weekly rhythm works best: one post a week, the same day each week.</li>
-      <li>Stuck? Message Lewis. Nothing you do here can break the website.</li>
-    </ul>
-  </div>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing desk | {{ site.site_name }}</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta name="theme-color" content="#172d50">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/desk/desk.css">
+<script>
+  window.DESK_CONFIG = {
+    url: {{ site.desk_url|tojson }},
+    key: {{ site.desk_key|tojson }},
+    site: {{ site.url|tojson }},
+    logo: {{ site.logo|tojson }},
+    defaultImage: {{ site.default_post_image|tojson }}
+  };
+</script>
+</head>
+<body>
+<div id="app"><main style="padding:60px 20px;text-align:center;font-family:Manrope,sans-serif;color:#5c6b80">Opening the writing desk…</main></div>
+<noscript><p style="padding:20px">The writing desk needs JavaScript switched on.</p></noscript>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script src="/assets/desk/desk.js"></script>
+</body>
+</html>
