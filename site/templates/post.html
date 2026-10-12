@@ -9,46 +9,35 @@
 {% endblock %}
 {% block content %}
 <article class="post">
-  <header class="post-header wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="{{ post.category_url }}">{{ post.category }}</a></nav>
+  <header class="article-header">
+    <a class="eyebrow" href="{{ post.category_url }}">{{ post.category }} / The journal</a>
     <h1>{{ post.title }}</h1>
-    <p class="post-lede">{{ post.description }}</p>
-    <p class="post-meta">By {{ post.author }} &middot; {{ post.date_display }} &middot; {{ post.minutes }} min read</p>
+    <p>{{ post.description }}</p>
+    <div class="article-byline">By {{ post.author }} &middot; Published {{ post.date_display }}{% if post.updated %} &middot; Updated {{ post.updated }}{% endif %} &middot; {{ post.minutes }} min read</div>
   </header>
-  {% if post.image %}
-  <figure class="post-hero wrap">
-    <img src="{{ post.image }}" alt="{{ post.image_alt }}" width="{{ post.image_w }}" height="{{ post.image_h }}" fetchpriority="high">
-  </figure>
-  {% endif %}
-  <div class="post-layout wrap">
-    <div class="post-body">
-      {% if post.affiliate %}<p class="disclosure">SmartSelect Labs is reader-supported. If you buy through a link on this page we may earn a small commission, at no extra cost to you. <a href="/affiliate-disclosure/">How we make money</a>.</p>{% endif %}
-      {{ post.body|safe }}
-      <div class="author-box">
-        <img src="/assets/icon-180.png" alt="" width="56" height="56">
-        <div><strong>{{ post.author }}</strong><p>{{ site.author_blurb }}</p></div>
-      </div>
+  {% if post.image %}<img class="article-cover" src="{{ post.image }}" alt="{{ post.image_alt }}" width="{{ post.image_w }}" height="{{ post.image_h }}" fetchpriority="high">{% endif %}
+  <div class="article-body">
+    {% if post.affiliate %}<p class="disclosure">{{ site.site_name }} is reader-supported. If you buy through a link on this page we may earn a small commission, at no extra cost to you. <a href="/affiliate-disclosure/">How we make money</a>.</p>{% endif %}
+    {% if post.toc %}
+    <nav class="article-toc" aria-label="In this article"><strong>IN THIS ARTICLE</strong>{% for t in post.toc %}<a href="#{{ t.id }}">{{ "%02d"|format(loop.index) }} &middot; {{ t.name }}</a>{% endfor %}</nav>
+    {% endif %}
+    {{ post.body|safe }}
+    <aside class="notice"><strong>Our approach:</strong> plain-English guidance, not medical advice. When we have not used a product ourselves, we say so. Some links are affiliate links; <a href="/affiliate-disclosure/">here is how that works</a>.</aside>
+    <div class="author-box">
+      <img src="/assets/icon-180.png" alt="" width="52" height="52">
+      <div><strong>{{ post.author }}</strong><p>{{ site.author_blurb }}</p></div>
     </div>
-    <aside class="post-aside">
-      {% if post.toc %}
-      <div class="toc">
-        <h2>On this page</h2>
-        <ol>{% for t in post.toc %}<li><a href="#{{ t.id }}">{{ t.name }}</a></li>{% endfor %}</ol>
-      </div>
-      {% endif %}
-    </aside>
+    <div class="admin-actions">
+      <a class="button primary" href="{{ site.cta_href }}">{{ site.cta_label }}</a>
+      <a class="text-link" href="/category/gear-reviews/">Explore gear guides <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+    </div>
   </div>
 </article>
 {% if related %}
-<section class="related wrap">
-  <div class="section-head"><span class="kicker">Keep reading</span><h2>More from {{ post.category }}</h2></div>
-  <div class="card-grid">
-    {% for p in related %}
-    <a class="card" href="{{ p.url }}">
-      <div class="card-media"><img src="{{ p.image }}" alt="{{ p.image_alt }}" width="{{ p.image_w }}" height="{{ p.image_h }}" loading="lazy"></div>
-      <div class="card-body"><span class="chip">{{ p.category }}</span><h3>{{ p.title }}</h3><span class="meta">{{ p.minutes }} min read</span></div>
-    </a>
-    {% endfor %}
+<section class="page-content">
+  <h2 class="related-heading">One more good read.</h2>
+  <div class="articles-grid">
+    {% for p in related %}{% include "_card.html" %}{% endfor %}
   </div>
 </section>
 {% endif %}

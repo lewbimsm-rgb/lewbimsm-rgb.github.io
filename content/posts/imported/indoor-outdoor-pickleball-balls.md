@@ -3,7 +3,7 @@ title: "Indoor vs. outdoor balls: the useful differences."
 description: "Choose a ball for the surface and conditions, not just the color on the shelf."
 date: 2026-10-06
 category: Gear Reviews
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "Indoor vs. outdoor balls: the useful differences."
 keyphrase: ""
 affiliate: false

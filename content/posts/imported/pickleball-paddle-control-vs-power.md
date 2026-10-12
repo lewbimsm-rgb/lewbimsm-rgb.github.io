@@ -3,7 +3,7 @@ title: "Control or power? Pick the paddle for your game."
 description: "A clear comparison of paddle feel, shape, weight, and the trade-offs behind buying decisions."
 date: 2026-10-06
 category: Gear Reviews
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "Control or power? Pick the paddle for your game."
 keyphrase: ""
 affiliate: false

@@ -3,7 +3,7 @@ title: "The third-shot drop, without the mystery."
 description: "A practical progression for moving from the baseline toward the kitchen under control."
 date: 2026-10-06
 category: Beginner Guides
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "The third-shot drop, without the mystery."
 keyphrase: ""
 affiliate: false

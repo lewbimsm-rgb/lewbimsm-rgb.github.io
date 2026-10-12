@@ -2,6 +2,7 @@
 title: Privacy Policy
 slug: privacy-policy
 description: What information smartselectlabs.com collects, why, and the choices you have.
+kicker: "The small print"
 ---
 
 **Effective date: October 5, 2026**

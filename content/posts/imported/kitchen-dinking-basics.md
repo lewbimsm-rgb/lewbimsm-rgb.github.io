@@ -3,7 +3,7 @@ title: "Make friends with the kitchen."
 description: "Learn the soft shot that slows the game down—and gives you time to think."
 date: 2026-10-06
 category: Beginner Guides
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "Make friends with the kitchen."
 keyphrase: ""
 affiliate: false

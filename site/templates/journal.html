@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}The journal: every article | {{ site.site_name }}{% endblock %}
+{% block description %}Every {{ site.site_name }} article in one place: beginner guides, gear reviews, and staying healthy on the court.{% endblock %}
+{% block content %}
+<div class="page-intro">
+  <span class="eyebrow">The SmartSelect journal</span>
+  <h1>Curious minds.<br>Better games.</h1>
+  <p>Your reading list for life on and off the court. Plain-English lessons, honest gear picks, and the small things that keep you playing.</p>
+</div>
+<div class="page-content">
+  <div class="filter-bar">
+    <a href="/blog/" class="selected">All stories</a>
+    {% for c in cats %}<a href="{{ c.url }}">{{ c.name }}</a>{% endfor %}
+  </div>
+  <p class="helper-text">{{ posts|length }} articles &middot; Written by {{ site.author }}</p>
+  <div class="articles-grid">
+    {% for p in posts %}{% include "_card.html" %}{% endfor %}
+  </div>
+</div>
+{% endblock %}

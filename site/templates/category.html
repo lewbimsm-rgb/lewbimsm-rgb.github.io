@@ -2,25 +2,26 @@
 {% block title %}{{ cat.name }} | {{ site.site_name }}{% endblock %}
 {% block description %}{{ cat.blurb }}{% endblock %}
 {% block content %}
-<section class="page-head wrap">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> {{ cat.name }}</nav>
+<div class="page-intro">
+  <span class="eyebrow">{{ cat.kicker or "The SmartSelect journal" }}</span>
   <h1>{{ cat.name }}</h1>
-  <p class="lede">{{ cat.blurb }}</p>
-</section>
-<section class="wrap">
+  <p>{{ cat.blurb }}</p>
+</div>
+<div class="page-content">
+  <div class="filter-bar">
+    <a href="/blog/">All stories</a>
+    {% for c in cats %}<a href="{{ c.url }}"{% if c.slug == cat.slug %} class="selected"{% endif %}>{{ c.name }}</a>{% endfor %}
+  </div>
+  <p class="helper-text">{{ cat.posts|length }} {% if cat.posts|length == 1 %}article{% else %}articles{% endif %} &middot; Written by {{ site.author }}</p>
   {% if cat.posts %}
-  <div class="card-grid">
-    {% for p in cat.posts %}
-    <a class="card" href="{{ p.url }}">
-      <div class="card-media"><img src="{{ p.image }}" alt="{{ p.image_alt }}" width="{{ p.image_w }}" height="{{ p.image_h }}" loading="lazy"></div>
-      <div class="card-body"><span class="chip">{{ p.category }}</span><h3>{{ p.title }}</h3><p>{{ p.description }}</p><span class="meta">{{ p.minutes }} min read &middot; {{ p.date_display }}</span></div>
-    </a>
-    {% endfor %}
+  <div class="articles-grid">
+    {% for p in cat.posts %}{% include "_card.html" %}{% endfor %}
   </div>
   {% else %}
-  <div class="empty">
-    <p>Nothing here yet. The first {{ cat.name|lower }} articles are on the way. In the meantime, start with the <a href="/pickleball-for-beginners-guide/">complete beginner&rsquo;s guide</a>.</p>
+  <div class="empty-state">
+    <h2>Coming soon</h2>
+    <p>The first {{ cat.name|lower }} articles are on the way. In the meantime, start with the <a href="/pickleball-for-beginners-guide/">complete beginner&rsquo;s guide</a>.</p>
   </div>
   {% endif %}
-</section>
+</div>
 {% endblock %}

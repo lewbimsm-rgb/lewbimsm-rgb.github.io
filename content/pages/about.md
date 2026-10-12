@@ -2,6 +2,7 @@
 title: About SmartSelect Labs
 slug: about
 description: A small, family-run pickleball blog for people who play at the park, the rec center or the community court.
+kicker: "About SmartSelect Labs"
 ---
 
 SmartSelect Labs is a small, family-run blog about getting into pickleball and choosing gear without the hype.

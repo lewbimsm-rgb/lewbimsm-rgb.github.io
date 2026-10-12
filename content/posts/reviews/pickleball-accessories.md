@@ -4,8 +4,8 @@ seo_title: 10 Pickleball Accessories That Make Playing More Comfortable
 description: Ten pickleball accessories for park players over 50, each with who it is for and who should skip it. Overgrip, sun sleeves, eye protection and more.
 date: 2026-10-09
 category: Gear Reviews
-image: /images/pickleball-accessories-hero.png
-image_alt: Graphic of ten small pickleball accessories that fix big annoyances, from an overgrip to a folding chair
+image: "/images/photos/hostinger/balls.jpg"
+image_alt: "Yellow and orange pickleballs and paddles on a blue court"
 keyphrase: pickleball accessories
 affiliate: true
 draft: false

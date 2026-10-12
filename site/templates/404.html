@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 {% block title %}Page not found | {{ site.site_name }}{% endblock %}
 {% block content %}
-<section class="page-head wrap">
+<div class="page-intro">
+  <span class="eyebrow">404</span>
   <h1>That one went into the kitchen.</h1>
-  <p class="lede">The page you were looking for isn&rsquo;t here. Try one of these instead.</p>
-  <p><a class="btn btn-primary" href="/">Home</a> <a class="btn btn-ghost" href="/pickleball-for-beginners-guide/">The beginner&rsquo;s guide</a></p>
-</section>
+  <p>The page you were looking for isn&rsquo;t here. Try one of these instead.</p>
+</div>
+<div class="page-content">
+  <div class="admin-actions">
+    <a class="button primary" href="/">Home</a>
+    <a class="button" href="/pickleball-for-beginners-guide/">The beginner&rsquo;s guide</a>
+    <a class="text-link" href="/blog/">All stories</a>
+  </div>
+</div>
 {% endblock %}

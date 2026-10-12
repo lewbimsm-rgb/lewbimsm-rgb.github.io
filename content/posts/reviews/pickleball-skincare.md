@@ -4,8 +4,8 @@ seo_title: "Pickleball Skincare: Sunscreen & a Simple Routine"
 description: "Pickleball skincare for players over 50 on the court by 9 a.m.: SPF 30+ broad spectrum, reapply at two hours, a hat and sleeves, then a simple after-play plan."
 date: 2026-10-09
 category: "Health & Recovery"
-image: "/images/pickleball-skincare-hero.png"
-image_alt: "Pickleball skincare essentials: sunscreen, SPF lip balm, a brimmed hat and sun sleeves laid out beside a paddle"
+image: "/images/photos/hostinger/skincare.jpg"
+image_alt: "Sunscreen beside a paddle and balls on a green court"
 keyphrase: "pickleball skincare"
 affiliate: true
 draft: false

@@ -2,6 +2,7 @@
 title: Affiliate Disclosure
 slug: affiliate-disclosure
 description: How SmartSelect Labs makes money, and why it never changes what we recommend.
+kicker: "The small print"
 ---
 
 **Last updated: October 5, 2026**

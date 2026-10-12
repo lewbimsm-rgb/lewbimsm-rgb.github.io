@@ -4,78 +4,62 @@
 {% endblock %}
 {% block content %}
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow reveal">Pickleball gear reviews &amp; beginner guides</p>
-      <h1 class="reveal">Pickleball,<br><em>made simple.</em></h1>
-      <p class="lede reveal">Plain-English guides and honest gear picks for new players, and for anyone who wants to keep playing for years. No jargon, no hype.</p>
-      <div class="hero-actions reveal">
-        <a class="btn btn-primary" href="/pickleball-for-beginners-guide/">Start here: the beginner&rsquo;s guide</a>
-        <a class="btn btn-ghost" href="/category/gear-reviews/">Gear reviews</a>
-      </div>
-    </div>
-    <figure class="hero-art reveal">
-      <img src="{{ site.hero_image }}" alt="{{ site.hero_image_alt }}" width="1050" height="700" fetchpriority="high">
-      <figcaption>{{ site.hero_caption }}</figcaption>
-    </figure>
+  <div class="hero-kicker"><span class="status-dot"></span> {{ site.hero_kicker }}</div>
+  <h1>{{ site.hero_line1 }}<br><span>{{ site.hero_line2 }}</span><svg class="hero-asterisk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M17.196 9 6.804 15M6.804 9l10.392 6"/></svg></h1>
+  <p>{{ site.hero_text|safe }}</p>
+  <div class="hero-actions">
+    <a class="button primary" href="{{ site.hero_cta_href }}">{{ site.hero_cta }} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+    <a class="text-link" href="{{ site.hero_link_href }}">{{ site.hero_link }} <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
   </div>
-  <div class="court-lines" aria-hidden="true"></div>
+  <div class="hero-photo">
+    <img src="{{ site.hero_image }}" alt="{{ site.hero_image_alt }}" width="1472" height="640" fetchpriority="high">
+    <div class="photo-note"><span>{{ site.hero_note|safe }}</span><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
+    <div class="photo-label"><span>THE SMARTSELECT WAY</span><span>PLAY. LEARN. REPEAT. <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></span></div>
+  </div>
 </section>
 
-{% if featured %}
-<section class="featured wrap">
-  <div class="section-head"><span class="kicker">Start here</span><h2>New to the game? Read this first.</h2></div>
-  <a class="feature-card" href="{{ featured.url }}">
-    <div class="feature-media"><img src="{{ featured.image }}" alt="{{ featured.image_alt }}" width="{{ featured.image_w }}" height="{{ featured.image_h }}" loading="lazy"></div>
-    <div class="feature-body">
-      <span class="chip">{{ featured.category }}</span>
-      <h3>{{ featured.title }}</h3>
-      <p>{{ featured.description }}</p>
-      <span class="meta">{{ featured.minutes }} min read &middot; {{ featured.date_display }}</span>
-    </div>
-  </a>
-</section>
-{% endif %}
-
-<section class="latest wrap">
-  <div class="section-head"><span class="kicker">Latest</span><h2>Fresh from the court</h2></div>
-  <div class="card-grid">
-    {% for p in latest %}
-    <a class="card" href="{{ p.url }}">
-      <div class="card-media"><img src="{{ p.image }}" alt="{{ p.image_alt }}" width="{{ p.image_w }}" height="{{ p.image_h }}" loading="lazy"></div>
-      <div class="card-body">
-        <span class="chip">{{ p.category }}</span>
-        <h3>{{ p.title }}</h3>
-        <p>{{ p.description }}</p>
-        <span class="meta">{{ p.minutes }} min read</span>
+<section class="level-section" id="sections">
+  <div class="section-heading">
+    <div><span class="eyebrow">A little better, every rally</span><h2>Find your kind of progress.</h2></div>
+    <p>No gatekeeping. No complicated jargon.<br>Just a clear next step, wherever you&rsquo;re starting.</p>
+  </div>
+  <div class="level-grid">
+    {% for c in cats %}
+    <a class="level-card {{ ['beginner','intermediate','advanced'][loop.index0 % 3] }}" href="{{ c.url }}">
+      <div class="level-top"><span>0{{ loop.index }} / {{ c.kicker }}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
+      <div class="court-mark" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div>
+        <span class="level-label">{{ c.label }}</span>
+        <h3>{{ c.name }}</h3>
+        <p>{{ c.blurb }}</p>
+        <span class="level-link">Browse {{ c.posts|length }} {% if c.posts|length == 1 %}article{% else %}articles{% endif %} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
       </div>
     </a>
     {% endfor %}
   </div>
 </section>
 
-<section class="topics">
-  <div class="wrap">
-    <div class="section-head light"><span class="kicker">What you&rsquo;ll find here</span><h2>Three things, done properly.</h2></div>
-    <div class="topic-grid">
-      {% for c in cats %}
-      <a class="topic" href="{{ c.url }}">
-        <span class="topic-num">0{{ loop.index }}</span>
-        <h3>{{ c.name }}</h3>
-        <p>{{ c.blurb }}</p>
-        <span class="topic-link">Browse {{ c.posts|length }} {% if c.posts|length == 1 %}article{% else %}articles{% endif %} &rarr;</span>
-      </a>
-      {% endfor %}
-    </div>
+<section class="stories-section">
+  <div class="section-heading">
+    <div><span class="eyebrow">Fresh from the lab</span><h2>A good read. A better game.</h2></div>
+    <a class="text-link" href="/blog/">Explore all {{ posts|length }} stories <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+  </div>
+  <div class="articles-grid">
+    {% for p in latest[:3] %}{% include "_card.html" %}{% endfor %}
   </div>
 </section>
 
-<section class="about-strip wrap">
-  <div class="about-inner">
-    <span class="kicker">Why SmartSelect Labs</span>
-    <h2>Written for the rest of us.</h2>
-    <p>{{ site.author_blurb }}</p>
-    <p><a href="/about/">More about us</a> &nbsp;&middot;&nbsp; <a href="/affiliate-disclosure/">How we make money</a></p>
+<section class="gear-feature">
+  <div class="gear-copy">
+    <span class="eyebrow">Good picks, on &amp; off the court</span>
+    <h2>{{ site.feature_line1 }}<br>{{ site.feature_line2 }}<br><span>{{ site.feature_line3 }}</span></h2>
+    <p>{{ site.feature_text }}</p>
+    <a class="button primary" href="{{ site.feature_cta_href }}">{{ site.feature_cta }} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+    <small>Independent guidance. Affiliate links are clearly disclosed.</small>
+  </div>
+  <div class="gear-media">
+    <img src="{{ site.feature_image }}" alt="{{ site.feature_image_alt }}" width="1280" height="832" loading="lazy">
+    <span class="gear-sticker"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.6L19.5 10.5 13.9 12.4 12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/></svg> LESS GUESSING.<br>MORE PLAYING.</span>
   </div>
 </section>
 {% endblock %}

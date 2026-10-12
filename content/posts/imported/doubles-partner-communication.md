@@ -3,7 +3,7 @@ title: "Be the doubles partner everyone wants."
 description: "Middle-ball calls, shared movement, and reset habits that turn two players into a team."
 date: 2026-10-06
 category: Beginner Guides
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "Be the doubles partner everyone wants."
 keyphrase: ""
 affiliate: false

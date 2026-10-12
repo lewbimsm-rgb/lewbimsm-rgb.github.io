@@ -3,7 +3,7 @@ title: "What to wear when the court heats up."
 description: "A practical court wardrobe that moves with you, from fabric choice to comfortable coverage."
 date: 2026-10-06
 category: Health & Recovery
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "What to wear when the court heats up."
 keyphrase: ""
 affiliate: false

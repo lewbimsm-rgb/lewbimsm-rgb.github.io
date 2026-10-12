@@ -4,8 +4,8 @@ seo_title: "Best Performance Pickleball Outfits for Men"
 description: "Pickleball outfits for men who play outdoors: three formulas that work, the fabrics that matter, and picks from Vuori, lululemon, Nike and Amazon."
 date: 2026-10-09
 category: "Gear Reviews"
-image: "/images/pickleball-outfits-for-men-hero.png"
-image_alt: "Pickleball outfits for men: lined shorts and a wicking tee, a polo, and a quarter-zip laid out beside a paddle and a cap"
+image: "/images/photos/hostinger/clothing.jpg"
+image_alt: "Court-ready clothing laid out beside a paddle"
 keyphrase: "pickleball outfits for men"
 affiliate: true
 draft: false

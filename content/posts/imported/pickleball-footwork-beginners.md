@@ -3,7 +3,7 @@ title: "Better feet. Better pickleball."
 description: "Simple movement habits to help you reach the ball without rushing your swing."
 date: 2026-10-06
 category: Beginner Guides
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "Better feet. Better pickleball."
 keyphrase: ""
 affiliate: false

@@ -3,7 +3,7 @@ title: "Advanced players don’t attack every ball."
 description: "Build better speed-up decisions with contact height, opponent position, and recovery in mind."
 date: 2026-10-06
 category: Beginner Guides
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "Advanced players don’t attack every ball."
 keyphrase: ""
 affiliate: false

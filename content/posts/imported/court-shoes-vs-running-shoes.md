@@ -3,7 +3,7 @@ title: "Court shoes are not just running shoes in disguise."
 description: "Lateral support, fit, and traction: what to look for before your next pair."
 date: 2026-10-06
 category: Gear Reviews
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "Court shoes are not just running shoes in disguise."
 keyphrase: ""
 affiliate: false

@@ -4,8 +4,8 @@ seo_title: "Pickleball Rules for Beginners: Serve, Score and the Kitchen"
 description: "Pickleball rules for beginners in plain English: how to serve, the two-bounce rule, the kitchen, scoring and calling the score, and the faults that end a rally."
 date: 2026-10-04
 category: "Beginner Guides"
-image: "/images/court-diagram.png"
-image_alt: "Labeled pickleball court diagram showing the kitchen, service boxes and net height"
+image: "/images/photos/hostinger/dink.jpg"
+image_alt: "A player dinking at the kitchen line"
 keyphrase: "pickleball rules for beginners"
 affiliate: true
 ---

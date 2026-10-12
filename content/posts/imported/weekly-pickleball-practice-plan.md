@@ -3,7 +3,7 @@ title: "A smarter week on the pickleball court."
 description: "Balance drills, match play, and recovery with a flexible practice plan you can actually follow."
 date: 2026-10-06
 category: Beginner Guides
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "A smarter week on the pickleball court."
 keyphrase: ""
 affiliate: false

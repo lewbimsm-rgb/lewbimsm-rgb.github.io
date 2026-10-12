@@ -3,7 +3,7 @@ title: "Slow down a rally that is speeding up."
 description: "Learn when to block, when to reset, and why a smaller swing can give you a bigger advantage."
 date: 2026-10-06
 category: Beginner Guides
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "Slow down a rally that is speeding up."
 keyphrase: ""
 affiliate: false

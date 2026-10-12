@@ -3,7 +3,7 @@ title: "A reliable serve beats a spectacular one."
 description: "Build a repeatable serve with simple targets, a relaxed grip, and a ten-minute practice routine."
 date: 2026-10-06
 category: Beginner Guides
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "A reliable serve beats a spectacular one."
 keyphrase: ""
 affiliate: false

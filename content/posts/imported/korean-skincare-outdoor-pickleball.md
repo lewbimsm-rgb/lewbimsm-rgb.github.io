@@ -3,7 +3,7 @@ title: "K-skincare meets court time: keep it simple."
 description: "A straightforward outdoor-play routine focused on sun protection, gentle cleansing, and comfort."
 date: 2026-10-06
 category: Health & Recovery
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "K-skincare meets court time: keep it simple."
 keyphrase: ""
 affiliate: false

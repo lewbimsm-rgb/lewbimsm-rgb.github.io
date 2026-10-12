@@ -216,7 +216,7 @@ def build():
     posts = load_posts(); pages = load_pages()
     cats = []
     for name, c in CFG["categories"].items():
-        cats.append(dict(name=name, slug=c["slug"], url="/category/%s/" % c["slug"], blurb=c["blurb"], posts=[p for p in posts if p["category"] == name]))
+        cats.append(dict(name=name, slug=c["slug"], url="/category/%s/" % c["slug"], blurb=c["blurb"], kicker=c.get("kicker", ""), label=c.get("label", ""), posts=[p for p in posts if p["category"] == name]))
     ctx = dict(posts=posts, pages=pages, cats=cats)
 
     featured = next((p for p in posts if p["slug"] == CFG.get("featured_slug")), posts[0] if posts else None)
@@ -224,6 +224,7 @@ def build():
     for p in posts:
         related = [q for q in posts if q["slug"] != p["slug"] and q["category"] == p["category"]][:3] or [q for q in posts if q["slug"] != p["slug"]][:3]
         write(p["url"] + "index.html", env.get_template("post.html").render(post=p, related=related, page_url=p["url"], **ctx))
+    write("/blog/index.html", env.get_template("journal.html").render(page_url="/blog/", **ctx))
     for c in cats:
         write(c["url"] + "index.html", env.get_template("category.html").render(cat=c, page_url=c["url"], **ctx))
     for pg in pages:
@@ -232,7 +233,7 @@ def build():
 
     # machine files
     base = CFG["url"].rstrip("/")
-    urls = ["/"] + [p["url"] for p in posts] + [c["url"] for c in cats] + [pg["url"] for pg in pages]
+    urls = ["/", "/blog/"] + [p["url"] for p in posts] + [c["url"] for c in cats] + [pg["url"] for pg in pages]
     today = datetime.date.today().isoformat()
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
           "".join("  <url><loc>%s%s</loc><lastmod>%s</lastmod></url>\n" % (base, u, today) for u in urls) + "</urlset>\n")

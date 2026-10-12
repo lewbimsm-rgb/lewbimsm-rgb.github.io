@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% block title %}{{ site.site_name }}: Pickleball Gear Reviews &amp; Beginner Guides{% endblock %}</title>
+<title>{% block title %}{{ site.site_name }}: {{ site.tagline }}{% endblock %}</title>
 <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
 <link rel="canonical" href="{{ site.url }}{{ page_url }}">
 <meta property="og:site_name" content="{{ site.site_name }}">
@@ -18,10 +18,10 @@
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="{{ site.site_name }}" href="/feed.xml">
-<meta name="theme-color" content="#0b0f2a">
+<meta name="theme-color" content="#172d50">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
 <link rel="stylesheet" href="/assets/components.css">
 {% block head %}{% endblock %}
@@ -32,42 +32,46 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="announcement">{{ site.announcement }} <span>{{ site.announcement_accent }}</span></div>
 <header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="/" aria-label="{{ site.site_name }} home"><img src="{{ site.logo }}" alt="{{ site.site_name }}" width="1600" height="275"></a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open menu">
-    <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
-    <nav class="site-nav" aria-label="Main">
-      {% for item in site.nav %}<a href="{{ item.href }}"{% if page_url == item.href %} aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor %}
-      <a class="nav-cta" href="/pickleball-for-beginners-guide/">Start here</a>
-    </nav>
-  </div>
+  <a class="brand" href="/" aria-label="{{ site.site_name }} home"><span class="brand-logo-window"><img src="{{ site.logo }}" alt="{{ site.site_name }}" width="1600" height="275"></span></a>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open menu">
+  <label for="nav-toggle" class="mobile-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+  <nav class="main-nav" aria-label="Main">
+    {% for item in site.nav %}<a href="{{ item.href }}"{% if page_url == item.href %} class="active"{% endif %}>{{ item.label }}</a>{% endfor %}
+    <a class="nav-cta" href="{{ site.cta_href }}">{{ site.cta_label }} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+  </nav>
 </header>
 <main id="main">
 {% block content %}{% endblock %}
 </main>
 <footer class="site-footer">
-  <div class="wrap footer-grid">
+  <div class="footer-top">
     <div>
-      <img class="footer-logo" src="{{ site.logo }}" alt="" width="1600" height="275">
-      <p class="footer-blurb">{{ site.description }}</p>
+      <a class="brand" href="/" aria-label="{{ site.site_name }} home"><span class="brand-logo-window"><img src="{{ site.logo }}" alt="" width="1600" height="275"></span></a>
+      <p>{{ site.footer_blurb|safe }}</p>
     </div>
     <div>
-      <h3>Read</h3>
+      <h3>Keep exploring</h3>
       {% for c in cats %}<a href="{{ c.url }}">{{ c.name }}</a>{% endfor %}
+      <a href="/blog/">All {{ posts|length }} stories</a>
+    </div>
+    <div>
+      <h3>The small print</h3>
+      <a href="/about/">About &amp; editorial standards</a>
+      <a href="/privacy-policy/">Privacy policy</a>
+      <a href="/affiliate-disclosure/">Affiliate disclosure</a>
       <a href="/feed.xml">RSS feed</a>
     </div>
     <div>
-      <h3>SmartSelect Labs</h3>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-      <a href="/affiliate-disclosure/">Affiliate disclosure</a>
-      <a href="/privacy-policy/">Privacy policy</a>
+      <h3>Say hello</h3>
+      <a href="/contact/">Contact the lab <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
       <a href="mailto:{{ site.email }}">{{ site.email }}</a>
     </div>
   </div>
-  <div class="wrap footer-legal">
-    <p>&copy; {{ now.year }} {{ site.site_name }}. {{ site.site_name }} is reader-supported. As an Amazon Associate we earn from qualifying purchases.</p>
+  <div class="footer-bottom">
+    <span>&copy; {{ now.year }} {{ site.site_name }}. Play curious.</span>
+    <span>Reader-supported. As an Amazon Associate we earn from qualifying purchases.</span>
   </div>
 </footer>
 </body>

@@ -4,8 +4,8 @@ seo_title: "Cute Pickleball Outfits for Women: From the Court to Coffee"
 description: "Cute pickleball outfits for women who play at the park: five outfit formulas, the fabrics that matter, and picks from lululemon, Vuori, Athleta and Nike."
 date: 2026-10-09
 category: "Gear Reviews"
-image: "/images/cute-pickleball-outfits-for-women-hero.png"
-image_alt: "Cute pickleball outfits for women: a tennis dress, a skort with a tank and a long-sleeve layer laid out beside a paddle"
+image: "/images/photos/hostinger/clothing.jpg"
+image_alt: "Court-ready clothing laid out beside a paddle"
 keyphrase: "cute pickleball outfits"
 affiliate: true
 draft: false

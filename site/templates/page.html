@@ -2,12 +2,12 @@
 {% block title %}{{ page.title }} | {{ site.site_name }}{% endblock %}
 {% block description %}{{ page.description or site.description }}{% endblock %}
 {% block content %}
-<section class="page-head wrap">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> {{ page.title }}</nav>
+<div class="page-intro">
+  <span class="eyebrow">{{ page.meta.kicker or site.site_name }}</span>
   <h1>{{ page.title }}</h1>
-  {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
-</section>
-<section class="wrap page-body">
+  {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+</div>
+<div class="reading-layout">
   {{ page.body|safe }}
   {% if page.slug == "contact" %}
   <div class="contact-block">
@@ -16,12 +16,12 @@
       <label>Name <input type="text" name="name" required></label>
       <label>Email <input type="email" name="email" required></label>
       <label>Message <textarea name="message" rows="6" required></textarea></label>
-      <button class="btn btn-primary" type="submit">Send message</button>
+      <button class="button primary" type="submit">Send message</button>
     </form>
     {% else %}
     <p class="contact-email">Email us at <a href="mailto:{{ site.email }}">{{ site.email }}</a>. We read everything, and we reply to real questions.</p>
     {% endif %}
   </div>
   {% endif %}
-</section>
+</div>
 {% endblock %}

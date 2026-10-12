@@ -4,8 +4,8 @@ seo_title: "Best Pickleball Shoes for Men: Performance, Comfort & Value"
 description: "The best pickleball shoes for men, sorted by performance, comfort and value: six court shoes with real side-to-side support, plus when to replace them."
 date: 2026-10-09
 category: "Gear Reviews"
-image: "/images/best-pickleball-shoes-for-men-hero.png"
-image_alt: "Best pickleball shoes for men: three men's court shoes labelled performance, comfort and value, shown from the side beside a paddle"
+image: "/images/photos/hostinger/shoes.jpg"
+image_alt: "White court shoes with blue trim on an outdoor pickleball court"
 keyphrase: "best pickleball shoes for men"
 affiliate: true
 draft: false

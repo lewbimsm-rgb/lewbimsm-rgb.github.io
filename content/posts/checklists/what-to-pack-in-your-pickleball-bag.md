@@ -4,8 +4,8 @@ seo_title: 15 Things to Pack in Your Pickleball Bag
 description: The 15 things to pack in your pickleball bag, for park and rec players over 50. Must-haves, comfort items and the ice pack you will be glad you brought.
 date: 2026-10-09
 category: Beginner Guides
-image: /images/what-to-pack-in-your-pickleball-bag-hero.png
-image_alt: Checklist graphic of the 15 things to pack in your pickleball bag, sorted into must-haves, comfort items and glad-I-had-it extras
+image: "/images/photos/hostinger/gear.jpg"
+image_alt: "Pickleball gear laid out ready to pack"
 keyphrase: pack in your pickleball bag
 affiliate: true
 draft: false

@@ -1,13 +1,13 @@
 {
   "site_name": "SmartSelect Labs",
-  "tagline": "Pickleball, made simple.",
+  "tagline": "Your next level of pickleball",
   "description": "Plain-English pickleball guides and honest gear picks for new players, and for anyone who wants to keep playing for years. No jargon, no hype.",
   "url": "https://smartselectlabs.com",
   "email": "hello@smartselectlabs.com",
   "author": "SmartSelect Labs",
   "author_blurb": "SmartSelect Labs is a small, family-run blog written for people who play at the park, the rec center or the community court. We explain the game in plain English and recommend gear by saying who it is for and why.",
   "logo": "/images/logo-lotus.png",
-  "share_image": "/images/social-share.jpg",
+  "share_image": "/images/photos/hostinger/court.jpg",
   "adsense_client": "ca-pub-3242839684084183",
   "ga4_id": "G-8DH9Y1Q2K5",
   "contact_form_endpoint": "",
@@ -15,43 +15,71 @@
   "head_extra": "",
   "head_extra_note": "AvantLink application 1661649 ownership VERIFIED 2026-10-06 (tag removed as instructed). head_extra is a free slot for any future verification tag (Google Search Console, Pinterest, etc.).",
   "featured_slug": "pickleball-for-beginners-guide",
-  "hero_image": "/images/photos/Pickle-photo-1.jpeg",
-  "hero_image_alt": "Yellow pickleballs and paddles laid out on the grass before a game",
+  "hero_image": "/images/photos/hostinger/court.jpg",
+  "hero_image_alt": "Two players rally on a sunny blue outdoor pickleball court",
   "hero_caption": "Everything starts with a paddle and a few balls.",
   "categories": {
     "Beginner Guides": {
       "slug": "beginner-guides",
-      "blurb": "Start here: how the game works, what to buy first, and how to get better fast."
+      "kicker": "Start here",
+      "label": "Just getting started",
+      "blurb": "How the game works, what to buy first, and the habits that make new players better fast."
     },
     "Gear Reviews": {
       "slug": "gear-reviews",
-      "blurb": "Paddles, shoes, balls and bags compared on what matters: comfort, control, durability and price."
+      "kicker": "Honest picks",
+      "label": "Buying without the hype",
+      "blurb": "Paddles, shoes, bottles and outfits compared on what matters: comfort, control, durability and price."
     },
     "Health & Recovery": {
       "slug": "health-recovery",
-      "blurb": "Staying on the court: warm-ups, protecting knees and elbows, and recovering between sessions."
+      "kicker": "Keep playing",
+      "label": "Play for years",
+      "blurb": "Sun care, warm-ups, protecting knees and elbows, and recovering between sessions."
     }
   },
   "nav": [
     {
-      "label": "Beginner Guides",
+      "label": "Improve your game",
       "href": "/category/beginner-guides/"
     },
     {
-      "label": "Gear Reviews",
+      "label": "Gear & comparisons",
       "href": "/category/gear-reviews/"
     },
     {
-      "label": "Health & Recovery",
+      "label": "Health & care",
       "href": "/category/health-recovery/"
     },
     {
-      "label": "About",
-      "href": "/about/"
+      "label": "The journal",
+      "href": "/blog/"
     },
     {
-      "label": "Contact",
-      "href": "/contact/"
+      "label": "About us",
+      "href": "/about/"
     }
-  ]
+  ],
+  "announcement": "A little practice. A smarter pick. A better game.",
+  "announcement_accent": "Let’s play.",
+  "cta_label": "Start here",
+  "cta_href": "/pickleball-for-beginners-guide/",
+  "hero_kicker": "Your game. Your gear. Your next level.",
+  "hero_line1": "Small court.",
+  "hero_line2": "Big possibilities.",
+  "hero_text": "From your first dink to your next big win.<br>Pickleball know-how, honest gear guides, and a little off-court glow.",
+  "hero_cta": "Let’s improve your game",
+  "hero_cta_href": "/category/beginner-guides/",
+  "hero_link": "Find your perfect gear",
+  "hero_link_href": "/category/gear-reviews/",
+  "hero_note": "GOOD DAYS START<br>ON THE COURT.",
+  "feature_line1": "Your paddle.",
+  "feature_line2": "Your fit.",
+  "feature_line3": "Your glow.",
+  "feature_text": "Cut through the noise. Paddle comparisons, court-ready clothing, water bottles and simple skincare for your sunny-day lineup.",
+  "feature_cta": "Meet your next smart pick",
+  "feature_cta_href": "/category/gear-reviews/",
+  "feature_image": "/images/photos/hostinger/gear.jpg",
+  "feature_image_alt": "Blue and coral paddles, yellow pickleballs, court shoes, a sports top, and sunscreen",
+  "footer_blurb": "More confidence on the court.<br>Smarter choices off it."
 }

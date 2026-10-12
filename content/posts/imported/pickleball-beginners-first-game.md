@@ -3,7 +3,7 @@ title: "Your first pickleball game starts here."
 description: "The court, the scoring, and the simple rules you need before your first rally. No jargon, just a confident start."
 date: 2026-10-06
 category: Beginner Guides
-image: /images/photos/Pickle-photo-1.jpeg
+image: "/images/photos/hostinger/court.jpg"
 image_alt: "Your first pickleball game starts here."
 keyphrase: ""
 affiliate: false

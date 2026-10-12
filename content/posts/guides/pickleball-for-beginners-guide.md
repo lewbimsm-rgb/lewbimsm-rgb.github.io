@@ -4,8 +4,8 @@ seo_title: "Pickleball for Beginners: The Complete Starting Guide"
 description: "Pickleball for beginners, explained simply: what the game is, the gear you really need, kitchen and scoring basics, and the mistakes to avoid."
 date: 2026-10-03
 category: "Beginner Guides"
-image: "/images/first-game-checklist-hero.png"
-image_alt: "Pickleball for beginners first-game checklist: paddle, balls, court shoes, clothing, water bottle"
+image: "/images/photos/hostinger/beginner.jpg"
+image_alt: "Two players at the net on an outdoor pickleball court"
 keyphrase: "pickleball for beginners"
 affiliate: true
 ---

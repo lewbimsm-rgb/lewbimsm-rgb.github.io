@@ -4,8 +4,8 @@ seo_title: "Best Water Bottles for Pickleball: YETI, Owala, Stanley"
 description: "The best water bottles for pickleball if you play two-hour sessions on hot courts: YETI, Owala, Stanley and Hydro Flask compared on size, lids and leaks."
 date: 2026-10-09
 category: "Gear Reviews"
-image: "/images/best-water-bottles-for-pickleball-hero.png"
-image_alt: "Best water bottles for pickleball: insulated steel bottles from YETI, Owala, Stanley and Hydro Flask lined up on a court bench"
+image: "/images/photos/hostinger/gear.jpg"
+image_alt: "Pickleball gear and a water bottle laid out on a blue background"
 keyphrase: "best water bottles for pickleball"
 affiliate: true
 draft: false

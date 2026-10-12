@@ -4,8 +4,8 @@ seo_title: "Selkirk vs JOOLA vs CRBN: Which Paddle Should You Buy?"
 description: "Selkirk vs JOOLA vs CRBN for rec players over 50: Selkirk for control and range, JOOLA for power, CRBN for raw carbon feel. Start at 16 mm, about 8 oz."
 date: 2026-10-09
 category: Gear Reviews
-image: /images/selkirk-vs-joola-vs-crbn-paddles-hero.png
-image_alt: "Selkirk vs JOOLA vs CRBN: three paddle outlines labelled control, power and raw carbon feel"
+image: "/images/photos/hostinger/paddles.jpg"
+image_alt: "Three pickleball paddles and yellow balls on a blue background"
 keyphrase: selkirk vs joola vs crbn
 affiliate: true
 draft: false

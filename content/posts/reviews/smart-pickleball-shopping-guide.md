@@ -4,8 +4,8 @@ seo_title: "The Smart Pickleball Shopping Guide: What's Worth It"
 description: "A money-first pickleball shopping guide for rec players over 50: spend on shoes and sun protection, buy a $60 to $120 paddle, and skip pro gear for now."
 date: 2026-10-09
 category: Gear Reviews
-image: /images/smart-pickleball-shopping-guide-hero.png
-image_alt: "Smart pickleball shopping guide hero graphic: a court kit laid out with tags sorted into worth it, not yet and skip"
+image: "/images/photos/hostinger/gear.jpg"
+image_alt: "Paddles, balls, court shoes, a sports top and sunscreen laid out together"
 keyphrase: pickleball shopping guide
 affiliate: true
 draft: false
