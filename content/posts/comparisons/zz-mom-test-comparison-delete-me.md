@@ -4,7 +4,7 @@ date: 2026-10-11
 category: Gear Reviews
 description: A short test summary typed by Mom's account.
 affiliate: true
-draft: true
+draft: false
 ---
 Who this comparison is for, then the short answer: pick A if ..., pick B if .... (Replace this paragraph.)
 
