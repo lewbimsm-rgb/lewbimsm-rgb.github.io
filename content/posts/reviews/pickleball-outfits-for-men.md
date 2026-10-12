@@ -7,8 +7,8 @@ category: "Gear Reviews"
 image: "/images/pickleball-outfits-for-men-hero.png"
 image_alt: "Pickleball outfits for men: lined shorts and a wicking tee, a polo, and a quarter-zip laid out beside a paddle and a cap"
 keyphrase: "pickleball outfits for men"
-affiliate: !!bool "true"
-draft: !!bool "false"
+affiliate: true
+draft: false
 ---
 This guide is for men who play outdoors a few mornings a week and want clothes that just work. The short answer: the best pickleball outfits for men come down to three formulas. Lined 7-inch shorts and a wicking tee cover most days, and the other two handle club play and cold mornings.
 

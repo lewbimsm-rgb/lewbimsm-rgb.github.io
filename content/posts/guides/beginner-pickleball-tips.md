@@ -7,7 +7,7 @@ category: "Beginner Guides"
 image: "/images/photos/Pickle-photo-1.jpeg"
 image_alt: "A pickleball paddle and ball on the court"
 keyphrase: "beginner pickleball tips"
-affiliate: !!bool "false"
+affiliate: false
 ---
 These five beginner pickleball tips fix the mistakes almost every new player makes. Most beginners lose points the same five ways, and the good news is that none of them are about talent. They're habits, and each one has a simple fix you can practice in your very next game.
 

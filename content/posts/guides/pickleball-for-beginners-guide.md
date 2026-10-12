@@ -7,7 +7,7 @@ category: "Beginner Guides"
 image: "/images/first-game-checklist-hero.png"
 image_alt: "Pickleball for beginners first-game checklist: paddle, balls, court shoes, clothing, water bottle"
 keyphrase: "pickleball for beginners"
-affiliate: !!bool "true"
+affiliate: true
 ---
 If you're looking for a pickleball for beginners guide that doesn't assume you already play tennis, this is it. Pickleball has quickly become one of the most popular recreational sports in the United States, and what started as a small backyard game is now a favorite for people of all ages and fitness levels. Maybe you've seen a group playing at the park, maybe a friend keeps inviting you, or maybe you're just curious what the fuss is about.
 

@@ -7,7 +7,7 @@ category: "Beginner Guides"
 image: "/images/court-diagram.png"
 image_alt: "Labeled pickleball court diagram showing the kitchen, service boxes and net height"
 keyphrase: "pickleball rules for beginners"
-affiliate: !!bool "true"
+affiliate: true
 ---
 These are the pickleball rules for beginners that actually matter in your first games, in plain English. If you're new to the sport, you're probably wondering three things: What do I need? How do I play? And what should I buy? This article answers the middle one. For gear and what to buy first, start with our [complete beginner's guide](/pickleball-for-beginners-guide/).
 

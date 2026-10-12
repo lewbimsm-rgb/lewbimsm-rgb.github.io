@@ -7,8 +7,8 @@ category: "Gear Reviews"
 image: "/images/best-water-bottles-for-pickleball-hero.png"
 image_alt: "Best water bottles for pickleball: insulated steel bottles from YETI, Owala, Stanley and Hydro Flask lined up on a court bench"
 keyphrase: "best water bottles for pickleball"
-affiliate: !!bool "true"
-draft: !!bool "false"
+affiliate: true
+draft: false
 ---
 This guide is for the player who sweats through two-hour sessions on an outdoor court. For that player, the best water bottles for pickleball are insulated steel. They hold 32 to 40 ounces and open with one hand. Our top pick is the YETI Rambler, in the 26 oz Straw or the 36 oz Chug Cap version. It keeps ice through a hot morning, and the Chug Cap does not leak in a bag.
 

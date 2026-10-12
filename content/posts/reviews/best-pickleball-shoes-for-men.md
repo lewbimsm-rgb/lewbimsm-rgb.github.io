@@ -7,8 +7,8 @@ category: "Gear Reviews"
 image: "/images/best-pickleball-shoes-for-men-hero.png"
 image_alt: "Best pickleball shoes for men: three men's court shoes labelled performance, comfort and value, shown from the side beside a paddle"
 keyphrase: "best pickleball shoes for men"
-affiliate: !!bool "true"
-draft: !!bool "false"
+affiliate: true
+draft: false
 ---
 This guide is for men who play a few mornings a week and want a shoe that will not roll an ankle on a hard stop. The short answer: the best pickleball shoes for men are court shoes, and they come in three kinds. Performance shoes are firm and grippy for fast movers. Comfort shoes are wider and softer for sore knees and bigger players. Value shoes get you a real court sole for under about $80.
 
