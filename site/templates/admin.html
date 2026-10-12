@@ -14,7 +14,7 @@
 .steps p{font-size:14px;line-height:1.75;color:#43516a}
 .kinds{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:0 0 40px}
 .kind{border-radius:9px;padding:20px;color:var(--ink)}
-.kind:nth-child(1){background:var(--lime)}.kind:nth-child(2){background:var(--blue-soft)}.kind:nth-child(3){background:var(--coral)}.kind:nth-child(4){background:#fff;border:1px solid var(--edge)}
+.kind:nth-child(4n+1){background:var(--lime)}.kind:nth-child(4n+2){background:var(--blue-soft)}.kind:nth-child(4n+3){background:var(--coral)}.kind:nth-child(4n){background:#fff;border:1px solid var(--edge)}
 .kind strong{display:block;font-family:var(--display);font-size:18px;margin-bottom:6px}
 .kind span{font-size:13px;line-height:1.6}
 .tips{background:var(--blue-soft);border-radius:10px;padding:26px 28px;color:var(--ink)}
@@ -37,23 +37,29 @@
   <ol class="steps">
     <li><h3>Sign in with your email</h3><p>Press <b>Open my writing desk</b>, choose <b>Continue with email</b>, and type the Gmail address Lewis set up for you.</p></li>
     <li><h3>Type the 6-digit code</h3><p>Check your Gmail for <b>&ldquo;Your Pages CMS temporary code&rdquo;</b> and type the six numbers. You stay signed in for a while after that.</p></li>
-    <li><h3>Pick a kind of post</h3><p>On the left, choose the kind of post, then press <b>Add an entry</b>. The outline is already there: replace the sample lines with your own words.</p></li>
+    <li><h3>Pick a template</h3><p>On the left, choose a template, then press <b>Add an entry</b>. The outline is already there: replace the sample lines with your own words. To go back to a post, open <b>All my posts</b>.</p></li>
     <li><h3>Add a photo, save often</h3><p>Use <b>Upload</b> under <b>Main picture</b> for your own photo. Leave <b>Keep as a draft</b> ON while you write and press <b>Save</b> as often as you like.</p></li>
     <li><h3>Publish</h3><p>When it is ready, turn <b>Keep as a draft</b> OFF and press <b>Save</b>. Your post appears on the site in about two minutes.</p></li>
   </ol>
 
+  <h2 style="font-size:28px;margin:0 0 6px">Your template library</h2>
+  <p style="color:var(--quiet);margin:0 0 18px;font-size:15px">Each one opens a new post with the outline already written. Every post you make from a template is listed under it, and <b>All my posts</b> at the top of the menu shows everything in one place: drafts, published posts, all of it.</p>
   <div class="kinds">
-    <div class="kind"><strong>Gear reviews</strong><span>Paddles, shoes, bottles, outfits, skincare. The outline has the shopping boxes built in.</span></div>
-    <div class="kind"><strong>Guides and lessons</strong><span>Rules, habits, your first game, drills. Just headings and paragraphs.</span></div>
-    <div class="kind"><strong>Checklists and lists</strong><span>&ldquo;10 things to pack&rdquo;, &ldquo;what to bring&rdquo;. One short paragraph per item.</span></div>
-    <div class="kind"><strong>Stories and diary</strong><span>A morning at open play, something you learned this week. Just write.</span></div>
+    <div class="kind"><strong>Best ___ for ___</strong><span>A gear list: three or four picks, a comparison table, who should buy and who should skip.</span></div>
+    <div class="kind"><strong>___ vs ___</strong><span>Two products or brands head to head, and who should pick which.</span></div>
+    <div class="kind"><strong>One product review</strong><span>Something you used yourself: how you tested it, what you liked and didn&rsquo;t, your stars.</span></div>
+    <div class="kind"><strong>Outfits &amp; style</strong><span>What to wear on the court and after: outfit formulas and picks.</span></div>
+    <div class="kind"><strong>How-to &amp; lessons</strong><span>Teach one thing: a rule, a shot, a habit, your first game.</span></div>
+    <div class="kind"><strong>Checklists &amp; lists</strong><span>&ldquo;15 things to pack&rdquo;, &ldquo;what to bring&rdquo;. One short paragraph per item.</span></div>
+    <div class="kind"><strong>Health &amp; care routine</strong><span>Sun care, warm-ups, sore knees, recovery. Practical, gentle, no medical claims.</span></div>
+    <div class="kind"><strong>Story &amp; weekly diary</strong><span>A morning at open play, something you learned this week. Just write.</span></div>
   </div>
 
   <div class="tips">
     <h2>Good to know</h2>
     <ul>
       <li>It works on your phone too. Same steps.</li>
-      <li>To fix a post that is already live, open it from the list, change the words, press <b>Save</b>.</li>
+      <li>To go back to a draft or fix a live post: <b>All my posts</b>, open it, change it, press <b>Save</b>. To take a post down, turn <b>Keep as a draft</b> back ON.</li>
       <li>Your own photos only. Never save a picture from Amazon or a store website.</li>
       <li>Don&rsquo;t type exact Amazon prices (&ldquo;about $90&rdquo; is fine). Amazon&rsquo;s rule.</li>
       <li>A weekly rhythm works best: one post a week, the same day each week.</li>
