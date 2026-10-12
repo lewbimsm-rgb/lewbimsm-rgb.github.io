@@ -2,6 +2,7 @@
 title: ZZ Mom test comparison delete me
 date: 2026-10-11
 category: Gear Reviews
+description: A short test summary typed by Mom's account.
 affiliate: true
 draft: true
 ---
