@@ -1,0 +1,3 @@
+import { Link } from 'react-router';
+import type { sitePages } from '@/data/site-pages';
+export function InformationPage({page}:{page:(typeof sitePages)[string]}){return <main><div className="page-intro"><span className="eyebrow">{page.kicker}</span><h1>{page.title}</h1></div><div className="reading-layout">{page.sections.map(s=><section key={s.heading}><h2><span style={{ color: 'rgb(191, 152, 10)' }}>{s.heading}</span></h2><p>{s.text}</p>{'link' in s && s.link ? <p><a href={s.link.href} target="_blank" rel="noopener noreferrer">{s.link.label}</a></p> : null}</section>)}<Link className="button primary" to="/contact">Contact SmartSelectLabs</Link></div></main>;}

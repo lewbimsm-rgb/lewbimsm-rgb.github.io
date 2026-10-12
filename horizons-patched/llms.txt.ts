@@ -1,0 +1,6 @@
+import type { Route } from './+types/llms.txt';
+import { siteOrigin } from '@/lib/site-origin.server';
+import { getPublishedArticles } from '@/lib/editorial.server';
+/** Google AdSense ownership file, served at /ads.txt (see routes.ts). The publisher id belongs to the site owner. */
+const ADS_TXT = 'google.com, pub-3242839684084183, DIRECT, f08c47fec0942fa0\n';
+export async function loader({request}:Route.LoaderArgs){if(new URL(request.url).pathname.endsWith('/ads.txt')){return new Response(ADS_TXT,{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'public, max-age=3600'}});}const origin=siteOrigin(request);const posts=await getPublishedArticles();return new Response(`# SmartSelectLabs\n\n> Independent pickleball lessons, gear comparisons, and court lifestyle guidance.\n\n## Pages\n- [Lessons](${origin}/learn): Beginner, intermediate, and advanced practice.\n- [Gear](${origin}/gear): Selection criteria and retailer recommendations.\n- [Editorial standards](${origin}/about): Methods and limitations.\n\n## Journal\n${posts.map(p=>`- [${p.title}](${origin}/blog/${p.slug}): ${p.excerpt}`).join('\n')}\n`,{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'public, max-age=3600'}});}

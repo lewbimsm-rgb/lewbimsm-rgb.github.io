@@ -155,8 +155,14 @@ def verdict(body):
         heading = first[1] if len(first) > 1 and first[1] else heading
         text_lines = lines[1:]
     except ValueError:
-        heading = first[0] if first[0] else heading
-        text_lines = lines[1:] if len(first) == 1 and len(lines) > 1 else lines
+        if len(first) > 1 and first[0].strip() in ("", "-", "none", "no stars"):   # "- | Heading" = no stars (COMPONENTS.md)
+            heading = first[1] or heading
+            text_lines = lines[1:]
+        elif len(first) == 1 and len(lines) > 1 and len(first[0]) <= 40:            # a bare heading line
+            heading = first[0] or heading
+            text_lines = lines[1:]
+        else:
+            text_lines = lines
     stars = ""
     if rating is not None:
         full = int(rating); half = 1 if rating - full >= 0.5 else 0

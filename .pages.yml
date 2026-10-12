@@ -1,23 +1,25 @@
 # Pages CMS configuration for smartselectlabs.com  (https://pagescms.org)
 # ---------------------------------------------------------------------------------------------------------
-# What this gives Mom: a simple web page (app.pagescms.org) with a "Posts" list, an "Add" button, a form
-# (title, category, summary, picture, body) and a Save button. Saving writes the Markdown file straight
-# into this GitHub repository; the GitHub Action in .github/workflows/build.yml rebuilds and publishes the
-# site about a minute later. No WordPress, no plugins, nothing to update.
+# Mom's posting screen. She signs in at app.pagescms.org with her email (no GitHub account needed once Lewis
+# has invited her). The left menu shows one entry per kind of post; each "Add" button opens a form with the
+# right starter text already in the body. Saving writes a Markdown file into this repository; the GitHub Action
+# in .github/workflows/build.yml rebuilds and publishes the site about a minute later.
 #
-# The field names below match exactly what site/build.py reads from each post's front matter.
-# Keep this file at the ROOT of the repository that holds content/ and site/.
+# Templates = folders: content/posts/reviews, guides, checklists, stories (+ imported = the old Hostinger posts).
+# site/build.py reads all of them; the web address of a post is just its file name (/best-pickleball-shoes-for-women/).
+# Field names match what site/build.py reads from each post's front matter.
 # ---------------------------------------------------------------------------------------------------------
 
 media:
-  input: content/images          # where uploaded pictures are stored in the repo
-  output: /images                # how they are referenced on the live site (build.py copies content/images -> /images)
+  input: content/images
+  output: /images
 
 content:
-  - name: posts
-    label: Posts
+  - name: reviews
+    label: "Gear reviews"
+    description: "Paddles, shoes, bottles, outfits, skincare: the posts that earn. Starter text already has the money boxes."
     type: collection
-    path: content/posts
+    path: content/posts/reviews
     filename: "{primary}.md"
     format: yaml-frontmatter
     view:
@@ -31,13 +33,368 @@ content:
         label: Title
         type: string
         required: true
-        description: "The headline readers and Google see. Say what it is and who it is for, e.g. 'Best Pickleball Shoes for Seniors (Tested on Outdoor Courts)'."
+        description: "What it is and who it is for. Example: Best Pickleball Shoes for Women: Nike, On, ASICS & New Balance"
       - name: date
         label: Date
         type: date
         description: "Today's date. Newest posts show first."
       - name: category
-        label: Section
+        label: Section of the site
+        type: select
+        required: true
+        default: "Gear Reviews"
+        options:
+          values: ["Beginner Guides", "Gear Reviews", "Health & Recovery"]
+      - name: description
+        label: Short summary
+        type: text
+        description: "One or two sentences, about 150 characters. Shows under the title and in Google."
+      - name: image
+        label: Main picture
+        type: image
+        description: "The big picture at the top. Your own photo is best. Wider than tall."
+      - name: image_alt
+        label: What is in the picture?
+        type: string
+        description: "A plain sentence for people who cannot see it and for Google."
+      - name: keyphrase
+        label: Search phrase (optional)
+        type: string
+        description: "The words someone types into Google to find this post, e.g. best pickleball shoes for women. Lewis can fill this in."
+      - name: affiliate
+        label: This post has shopping links
+        type: boolean
+        default: true
+      - name: draft
+        label: Keep as a draft (not public yet)
+        type: boolean
+        default: true
+        description: "Leave ON while writing. Turn OFF to publish. You can turn it back on any time."
+      - name: body
+        label: Post
+        type: rich-text
+        options:
+          format: markdown
+          media:
+            path: content/images/posts
+            extensions: [jpg, jpeg, png, webp]
+            rename: safe
+        default: |
+          Who this is for, in one or two sentences, then the short answer and one reason. (Replace this paragraph.)
+
+          ```quick
+          **The short answer:** one or two sentences a reader could act on without reading further.
+          ```
+
+          ```picks
+          Best overall | Product name | one line on why | https://brand-store-link | Brand
+          Best value | Product name | one line on why | https://www.amazon.com/s?k=search+words&tag=smartselec0a7-20 | Amazon
+          Best for sore knees | Product name | one line on why | https://brand-store-link | Brand
+          ```
+
+          ## What matters when you choose
+
+          Three or four short paragraphs. Numbers beat adjectives: weight, width, SPF, ounces, how many sessions.
+
+          ## Side by side
+
+          ```compare
+          Product | Weight | Best for | Amazon
+          Product one | 7.8 oz | Most beginners | https://www.amazon.com/s?k=product+one&tag=smartselec0a7-20
+          Product two | 7.6 oz | Sore elbows | https://www.amazon.com/s?k=product+two&tag=smartselec0a7-20
+          ```
+
+          ### Product one: best overall
+
+          Two or three short paragraphs on who it suits and why. Say who should skip it.
+
+          ```buyif
+          + you want ...
+          + you play ...
+          - you already have ...
+          - you want to spend under ...
+          ```
+
+          ```cta
+          See it on Amazon | https://www.amazon.com/s?k=product+one&tag=smartselec0a7-20 | Amazon
+          ```
+
+          ## What to skip
+
+          One short paragraph.
+
+          ## How we chose
+
+          Two or three honest sentences. Say what you used yourself and what rests on specs and other players.
+
+          ```faq
+          Q: A real question people ask at open play?
+          A: A two or three sentence answer.
+          Q: Another real question?
+          A: Answer.
+          ```
+
+          ```verdict
+          - | Our verdict
+          Two or three sentences. Which one to buy, and for whom.
+          ```
+
+  - name: guides
+    label: "Guides and lessons"
+    description: "How-to posts: rules, habits, first game, drills. No shopping boxes needed."
+    type: collection
+    path: content/posts/guides
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      primary: title
+      sort: date
+      order: desc
+      search: true
+      fields: [title, category, date, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+      - name: category
+        label: Section of the site
+        type: select
+        required: true
+        default: "Beginner Guides"
+        options:
+          values: ["Beginner Guides", "Gear Reviews", "Health & Recovery"]
+      - name: description
+        label: Short summary
+        type: text
+      - name: image
+        label: Main picture
+        type: image
+      - name: image_alt
+        label: What is in the picture?
+        type: string
+      - name: keyphrase
+        label: Search phrase (optional)
+        type: string
+      - name: affiliate
+        label: This post has shopping links
+        type: boolean
+        default: false
+      - name: draft
+        label: Keep as a draft (not public yet)
+        type: boolean
+        default: true
+      - name: body
+        label: Post
+        type: rich-text
+        options:
+          format: markdown
+          media:
+            path: content/images/posts
+            extensions: [jpg, jpeg, png, webp]
+            rename: safe
+        default: |
+          Who this is for and what they will be able to do after reading it. (Replace this paragraph.)
+
+          ## The first thing to know
+
+          Short paragraphs. One idea each.
+
+          ## The second thing
+
+          > **SmartSelect Tip:** a tip box looks like this.
+
+          ## The third thing
+
+          **Two-minute drill:** something they can try in their next game.
+
+          ## Common questions
+
+          ```faq
+          Q: A question people ask?
+          A: A short answer.
+          ```
+
+          Finish with a link to a related post on the site.
+
+  - name: checklists
+    label: "Checklists and lists"
+    description: "'15 things to pack', '10 accessories', 'what to bring'. Numbered items, one short paragraph each."
+    type: collection
+    path: content/posts/checklists
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      primary: title
+      sort: date
+      order: desc
+      search: true
+      fields: [title, category, date, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+      - name: category
+        label: Section of the site
+        type: select
+        required: true
+        default: "Beginner Guides"
+        options:
+          values: ["Beginner Guides", "Gear Reviews", "Health & Recovery"]
+      - name: description
+        label: Short summary
+        type: text
+      - name: image
+        label: Main picture
+        type: image
+      - name: image_alt
+        label: What is in the picture?
+        type: string
+      - name: keyphrase
+        label: Search phrase (optional)
+        type: string
+      - name: affiliate
+        label: This post has shopping links
+        type: boolean
+        default: true
+      - name: draft
+        label: Keep as a draft (not public yet)
+        type: boolean
+        default: true
+      - name: body
+        label: Post
+        type: rich-text
+        options:
+          format: markdown
+          media:
+            path: content/images/posts
+            extensions: [jpg, jpeg, png, webp]
+            rename: safe
+        default: |
+          Who this list is for and how it is grouped. (Replace this paragraph.)
+
+          ```quick
+          **The short answer:** the three things people forget most often.
+          ```
+
+          ## The must-haves
+
+          ### 1. Item
+
+          Why it is on the list, and which cheap version is fine. Add a link if there is one to buy.
+
+          ### 2. Item
+
+          ### 3. Item
+
+          ## The nice-to-haves
+
+          ### 4. Item
+
+          ### 5. Item
+
+          ## What to leave at home
+
+          One short paragraph.
+
+          ```faq
+          Q: A question people ask?
+          A: A short answer.
+          ```
+
+  - name: stories
+    label: "Stories and diary"
+    description: "A morning at open play, something you learned, a tournament. Just write."
+    type: collection
+    path: content/posts/stories
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      primary: title
+      sort: date
+      order: desc
+      search: true
+      fields: [title, category, date, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+      - name: category
+        label: Section of the site
+        type: select
+        required: true
+        default: "Health & Recovery"
+        options:
+          values: ["Beginner Guides", "Gear Reviews", "Health & Recovery"]
+      - name: description
+        label: Short summary
+        type: text
+      - name: image
+        label: Main picture
+        type: image
+      - name: image_alt
+        label: What is in the picture?
+        type: string
+      - name: affiliate
+        label: This post has shopping links
+        type: boolean
+        default: false
+      - name: draft
+        label: Keep as a draft (not public yet)
+        type: boolean
+        default: true
+      - name: body
+        label: Post
+        type: rich-text
+        options:
+          format: markdown
+          media:
+            path: content/images/posts
+            extensions: [jpg, jpeg, png, webp]
+            rename: safe
+        default: |
+          Start with the moment: where you were, what happened. (Replace this paragraph.)
+
+          ## What happened
+
+          ## What I learned
+
+          ## If you are new, try this
+
+  - name: imported
+    label: "Old posts from the Hostinger site"
+    description: "The 15 short posts from the first site, saved as drafts. Rewrite, publish or delete."
+    type: collection
+    path: content/posts/imported
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      primary: title
+      sort: date
+      order: desc
+      search: true
+      fields: [title, category, date, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+      - name: category
+        label: Section of the site
         type: select
         required: true
         options:
@@ -45,33 +402,26 @@ content:
       - name: description
         label: Short summary
         type: text
-        description: "One or two sentences (about 150 characters). Shows under the title, on the home page cards, and in Google results."
       - name: image
         label: Main picture
         type: image
-        description: "The big picture at the top of the post. Your own photo is best. Landscape (wider than tall) works best."
       - name: image_alt
         label: What is in the picture?
         type: string
-        description: "A plain sentence describing the picture, for people who cannot see it and for Google. E.g. 'Two women at the kitchen line during morning open play'."
+      - name: keyphrase
+        label: Search phrase (optional)
+        type: string
       - name: affiliate
         label: This post has shopping links
         type: boolean
         default: false
-        description: "Turn on if the post links to products. It adds the required 'we may earn a commission' line at the top."
       - name: draft
         label: Keep as a draft (not public yet)
         type: boolean
         default: true
-        description: "Leave ON while you are writing. Turn OFF to publish. You can turn it back on any time."
-      - name: slug
-        label: Web address (optional)
+      - name: source
+        label: Where it came from
         type: string
-        description: "Leave blank. Lewis sets this: lowercase words with dashes, e.g. best-pickleball-shoes-for-seniors."
-      - name: author
-        label: Author
-        type: string
-        description: "Leave blank to use the site default."
       - name: body
         label: Post
         type: rich-text
@@ -83,7 +433,7 @@ content:
             rename: safe
 
   - name: pages
-    label: Pages (About, Contact, Policies)
+    label: "Pages (About, Contact, Policies)"
     type: collection
     path: content/pages
     filename: "{primary}.md"
@@ -116,7 +466,7 @@ content:
             path: content/images
 
   - name: settings
-    label: Site settings (Lewis only)
+    label: "Site settings (Lewis only)"
     type: file
     path: site/config.json
     format: json

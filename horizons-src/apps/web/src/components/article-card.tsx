@@ -1,0 +1,4 @@
+import { Link } from 'react-router';
+import { ArrowUpRight } from 'lucide-react';
+import { type Article } from '@/data/articles';
+export function ArticleCard({article}:{article:Article}){const words=article.sections.reduce((n,s)=>n+s.text.split(/\s+/).length,0);return <Link className="article-card" to={`/blog/${article.slug}`}><div className={`article-image ${article.category==='Lifestyle'?'lifestyle-image':''}`}><img src={article.image} alt={article.category==='Gear'||article.category==='Lifestyle'?'Pickleball gear, court clothing, and sunscreen arranged on a blue background':'Players practicing on an outdoor pickleball court'} width={600} height={400} loading="lazy"/><span>{article.category}</span><div className="article-arrow"><ArrowUpRight size={22}/></div></div><div className="article-meta">THE SMARTSELECT JOURNAL <span>{Math.max(2,Math.ceil(words/200))} MIN READ</span></div><h3>{article.title}</h3><p>{article.excerpt}</p></Link>;}

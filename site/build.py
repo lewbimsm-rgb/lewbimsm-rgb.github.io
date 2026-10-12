@@ -142,10 +142,14 @@ def display_date(d):
 def load_posts():
     posts = []
     pdir = os.path.join(CONTENT, "posts")
-    for fn in sorted(os.listdir(pdir)):
-        if not fn.endswith(".md"):
-            continue
-        meta, body = parse_front_matter(open(os.path.join(pdir, fn), encoding="utf-8").read())
+    files = []  # posts live in content/posts and in one level of sub-folders (one per posting template: guides, reviews, checklists, stories, imported)
+    for root, dirs, names in os.walk(pdir):
+        for fn in names:
+            if fn.endswith(".md") and not fn.startswith("_"):
+                files.append(os.path.join(root, fn))
+    for path in sorted(files):
+        fn = os.path.basename(path)
+        meta, body = parse_front_matter(open(path, encoding="utf-8").read())
         if truthy(meta.get("draft", False)):
             continue
         if not str(meta.get("title", "")).strip():

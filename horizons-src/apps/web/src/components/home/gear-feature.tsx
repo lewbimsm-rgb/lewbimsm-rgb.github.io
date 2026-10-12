@@ -1,0 +1,4 @@
+import { Link } from 'react-router';
+import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { gearImage } from '@/data/articles';
+export function GearFeature(){return <section className="gear-feature"><div className="gear-copy"><span className="eyebrow">GOOD PICKS, ON & OFF THE COURT</span><h2>Your paddle.<br/>Your fit.<br/><span>Your glow.</span></h2><p>Cut through the noise. Explore paddle comparisons, court-ready clothing, and simple K-skincare routines for your sunny-day lineup.</p><Link className="button primary" to="/gear">Meet your next smart pick <ArrowUpRight size={19}/></Link><small>Independent guidance. Affiliate links are clearly disclosed.</small></div><div className="gear-media"><img src={gearImage} alt="Blue and coral paddles, yellow pickleballs, court shoes, a sports top, and sunscreen" width={1200} height={800} loading="lazy"/><span className="gear-sticker"><Sparkles size={22}/> LESS GUESSING.<br/>MORE PLAYING.</span></div></section>;}
