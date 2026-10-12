@@ -93,7 +93,7 @@ content:
   label: Best ___ for ___ (gear list)
   description: 'Three or four picks with labels, a comparison table, buy-if / pass-if for each. Example: Best Water Bottles for Pickleball.'
   type: collection
-  path: content/posts/reviews
+  path: content/posts/gear-lists
   subfolders: false
   filename: '{primary}.md'
   format: yaml-frontmatter
@@ -649,7 +649,7 @@ content:
   label: How-to & lessons
   description: 'Teach one thing: a rule, a shot, a habit, your first game. Headings and short paragraphs.'
   type: collection
-  path: content/posts/guides
+  path: content/posts/how-to
   subfolders: false
   filename: '{primary}.md'
   format: yaml-frontmatter
