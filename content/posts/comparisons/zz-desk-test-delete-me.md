@@ -7,7 +7,7 @@ image: "/images/posts/zz-desk-test-delete-me/1791786432763-paddles.jpg"
 image_alt: ""
 keyphrase: ""
 affiliate: true
-draft: false
+draft: true
 ---
 This is a test of the writing desk. Pick the first one if you want comfort, the second if you want speed.
 
