@@ -21,7 +21,7 @@ h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;line-height:1.15;co
 .brand span{font-family:var(--display);font-weight:600;font-size:15px;padding-left:12px;border-left:1px solid var(--edge)}
 .bar .spacer{flex:1}
 .who{font-size:14px;color:var(--quiet)}
-.link-btn{background:none;border:0;color:var(--headline);cursor:pointer;font-size:14px;font-weight:600;padding:8px 4px;text-decoration:none}
+.link-btn{white-space:nowrap;background:none;border:0;color:var(--headline);cursor:pointer;font-size:14px;font-weight:600;padding:8px 4px;text-decoration:none}
 .link-btn:hover{text-decoration:underline}
 
 /* buttons */
@@ -159,7 +159,7 @@ h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;line-height:1.15;co
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-weight:700;z-index:70;box-shadow:var(--shadow)}
 
 @media(max-width:700px){
-  .bar-in{padding:10px 14px;gap:10px}.brand span{display:none}.who{display:none}
+  .bar-in{padding:10px 14px;gap:8px}.brand span{display:none}.who{display:none}.brand img{height:22px}.bar .link-btn{font-size:13px;padding:6px 3px}
   .wrap{padding:20px 14px 70px}.home-head h1{font-size:28px}
   .ed{padding:18px 14px 110px}.title-input{font-size:27px}
   .row2,.item-grid{grid-template-columns:1fr}
