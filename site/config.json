@@ -81,5 +81,29 @@
   "feature_cta_href": "/category/gear-reviews/",
   "feature_image": "/images/photos/hostinger/gear.jpg",
   "feature_image_alt": "Blue and coral paddles, yellow pickleballs, court shoes, a sports top, and sunscreen",
-  "footer_blurb": "More confidence on the court.<br>Smarter choices off it."
+  "footer_blurb": "More confidence on the court.<br>Smarter choices off it.",
+  "redirects": {
+    "/privacy/": "/privacy-policy/",
+    "/disclosure/": "/affiliate-disclosure/",
+    "/terms/": "/terms-of-use/",
+    "/gear/": "/category/gear-reviews/",
+    "/learn/": "/category/beginner-guides/",
+    "/admin/": "/",
+    "/info/": "/about/",
+    "/blog/pickleball-beginners-first-game/": "/pickleball-for-beginners-guide/",
+    "/blog/beginner-serve-lesson/": "/pickleball-rules-for-beginners/",
+    "/blog/kitchen-dinking-basics/": "/beginner-pickleball-tips/",
+    "/blog/pickleball-footwork-beginners/": "/beginner-pickleball-tips/",
+    "/blog/third-shot-drop-intermediate/": "/category/beginner-guides/",
+    "/blog/doubles-partner-communication/": "/category/beginner-guides/",
+    "/blog/reset-fast-pickleball-rally/": "/category/beginner-guides/",
+    "/blog/advanced-speed-up-selection/": "/category/beginner-guides/",
+    "/blog/tournament-preparation-plan/": "/what-to-pack-in-your-pickleball-bag/",
+    "/blog/weekly-pickleball-practice-plan/": "/beginner-pickleball-tips/",
+    "/blog/pickleball-paddle-control-vs-power/": "/selkirk-vs-joola-vs-crbn-paddles/",
+    "/blog/indoor-outdoor-pickleball-balls/": "/pickleball-for-beginners-guide/",
+    "/blog/court-shoes-vs-running-shoes/": "/best-pickleball-shoes-for-women/",
+    "/blog/pickleball-clothing-guide/": "/cute-pickleball-outfits-for-women/",
+    "/blog/korean-skincare-outdoor-pickleball/": "/pickleball-skincare/"
+  }
 }

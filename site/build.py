@@ -230,6 +230,13 @@ def build():
     for pg in pages:
         write(pg["url"] + "index.html", env.get_template(pg["template"]).render(page=pg, page_url=pg["url"], **ctx))
     write("404.html", env.get_template("404.html").render(page_url="/404.html", **ctx))
+    # forwarding pages for old addresses (Mom's first Hostinger site): /privacy, /gear, /blog/<old-slug> ...
+    for src, dst in CFG.get("redirects", {}).items():
+        target = CFG["url"].rstrip("/") + dst
+        write(src.rstrip("/") + "/index.html",
+              '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Moved</title><link rel="canonical" href="%s">'
+              '<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=%s"></head>'
+              '<body><p>This page moved to <a href="%s">%s</a>.</p></body></html>' % (target, dst, dst, target))
 
     # machine files
     base = CFG["url"].rstrip("/")
