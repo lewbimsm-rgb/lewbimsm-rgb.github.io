@@ -1,15 +1,14 @@
 ---
-title: Beginner Pickleball Tips: 5 Habits That Fix Most Mistakes
-seo_title: Beginner Pickleball Tips: 5 Habits That Fix Most Mistakes
-description: Five beginner pickleball tips that fix the most common mistakes: hitting too hard, hanging back, aiming wide, looking up early and reaching instead of moving.
+title: "Beginner Pickleball Tips: 5 Habits That Fix Most Mistakes"
+seo_title: "Beginner Pickleball Tips: 5 Habits That Fix Most Mistakes"
+description: "Five beginner pickleball tips that fix the most common mistakes: hitting too hard, hanging back, aiming wide, looking up early and reaching instead of moving."
 date: 2026-10-05
-category: Beginner Guides
-image: /images/photos/Pickle-photo-1.jpeg
-image_alt: A pickleball paddle and ball on the court
-keyphrase: beginner pickleball tips
-affiliate: false
+category: "Beginner Guides"
+image: "/images/photos/Pickle-photo-1.jpeg"
+image_alt: "A pickleball paddle and ball on the court"
+keyphrase: "beginner pickleball tips"
+affiliate: !!bool "false"
 ---
-
 These five beginner pickleball tips fix the mistakes almost every new player makes. Most beginners lose points the same five ways, and the good news is that none of them are about talent. They're habits, and each one has a simple fix you can practice in your very next game.
 
 ![Beginner pickleball tips summary card: control before power, get to the kitchen line, aim for the middle, watch the ball, move your feet](/images/five-beginner-tips.png)

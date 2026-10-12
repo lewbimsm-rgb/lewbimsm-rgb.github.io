@@ -1,16 +1,15 @@
 ---
-title: Cute Pickleball Outfits for Women: From the Court to Coffee
-seo_title: Cute Pickleball Outfits for Women: From the Court to Coffee
-description: Cute pickleball outfits for women who play at the park: five outfit formulas, the fabrics that matter, and picks from lululemon, Vuori, Athleta and Nike.
+title: "Cute Pickleball Outfits for Women: From the Court to Coffee"
+seo_title: "Cute Pickleball Outfits for Women: From the Court to Coffee"
+description: "Cute pickleball outfits for women who play at the park: five outfit formulas, the fabrics that matter, and picks from lululemon, Vuori, Athleta and Nike."
 date: 2026-10-09
-category: Gear Reviews
-image: /images/cute-pickleball-outfits-for-women-hero.png
-image_alt: Cute pickleball outfits for women: a tennis dress, a skort with a tank and a long-sleeve layer laid out beside a paddle
-keyphrase: cute pickleball outfits
-affiliate: true
-draft: false
+category: "Gear Reviews"
+image: "/images/cute-pickleball-outfits-for-women-hero.png"
+image_alt: "Cute pickleball outfits for women: a tennis dress, a skort with a tank and a long-sleeve layer laid out beside a paddle"
+keyphrase: "cute pickleball outfits"
+affiliate: !!bool "true"
+draft: !!bool "false"
 ---
-
 This guide is for women who play at the park or the rec center and want to look put together. You do not need a second wardrobe. The short answer: cute pickleball outfits come from five simple formulas. A tennis dress with built-in shorts is the easiest place to start. It covers you, it moves with you, and nothing rides up when you lunge for a low ball.
 
 ```quick

@@ -1,15 +1,14 @@
 ---
-title: Pickleball Rules for Beginners: Serving, Scoring and the Kitchen, Explained Simply
-seo_title: Pickleball Rules for Beginners: Serve, Score and the Kitchen
-description: Pickleball rules for beginners in plain English: how to serve, the two-bounce rule, the kitchen, scoring and calling the score, and the faults that end a rally.
+title: "Pickleball Rules for Beginners: Serving, Scoring and the Kitchen, Explained Simply"
+seo_title: "Pickleball Rules for Beginners: Serve, Score and the Kitchen"
+description: "Pickleball rules for beginners in plain English: how to serve, the two-bounce rule, the kitchen, scoring and calling the score, and the faults that end a rally."
 date: 2026-10-04
-category: Beginner Guides
-image: /images/court-diagram.png
-image_alt: Labeled pickleball court diagram showing the kitchen, service boxes and net height
-keyphrase: pickleball rules for beginners
-affiliate: true
+category: "Beginner Guides"
+image: "/images/court-diagram.png"
+image_alt: "Labeled pickleball court diagram showing the kitchen, service boxes and net height"
+keyphrase: "pickleball rules for beginners"
+affiliate: !!bool "true"
 ---
-
 These are the pickleball rules for beginners that actually matter in your first games, in plain English. If you're new to the sport, you're probably wondering three things: What do I need? How do I play? And what should I buy? This article answers the middle one. For gear and what to buy first, start with our [complete beginner's guide](/pickleball-for-beginners-guide/).
 
 You don't need to memorize a rulebook. If you understand the five things below, you can walk onto a recreational court tomorrow and play a real game.

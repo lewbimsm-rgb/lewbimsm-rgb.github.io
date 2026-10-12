@@ -1,16 +1,15 @@
 ---
-title: Best Pickleball Shoes for Women: Nike, On, adidas, ASICS & New Balance
-seo_title: Best Pickleball Shoes for Women: Nike, On, ASICS & More
-description: The best pickleball shoes for women who play at the park or rec center: five court shoes with side-to-side support, knee-friendly cushion and wide fits.
+title: "Best Pickleball Shoes for Women: Nike, On, adidas, ASICS & New Balance"
+seo_title: "Best Pickleball Shoes for Women: Nike, On, ASICS & More"
+description: "The best pickleball shoes for women who play at the park or rec center: five court shoes with side-to-side support, knee-friendly cushion and wide fits."
 date: 2026-10-09
-category: Gear Reviews
-image: /images/best-pickleball-shoes-for-women-hero.png
-image_alt: Best pickleball shoes for women: a women's court shoe shown from the side, with the picks from ASICS, New Balance, On, Nike and adidas listed beside it
-keyphrase: best pickleball shoes for women
-affiliate: true
-draft: false
+category: "Gear Reviews"
+image: "/images/best-pickleball-shoes-for-women-hero.png"
+image_alt: "Best pickleball shoes for women: a women's court shoe shown from the side, with the picks from ASICS, New Balance, On, Nike and adidas listed beside it"
+keyphrase: "best pickleball shoes for women"
+affiliate: !!bool "true"
+draft: !!bool "false"
 ---
-
 This guide is for women who play at the park or the rec center and want shoes that protect their ankles and knees. The short answer: the best pickleball shoes for women are court shoes, not running shoes. Our pick for most players is the ASICS Gel-Resolution line. It holds your foot through side-to-side moves, and the outsole lasts on rough outdoor courts.
 
 ```quick

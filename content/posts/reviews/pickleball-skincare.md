@@ -1,16 +1,15 @@
 ---
-title: Pickleball Skincare: Sunscreen & Simple Skin Care for Active Players
-seo_title: Pickleball Skincare: Sunscreen & a Simple Routine
-description: Pickleball skincare for players over 50 on the court by 9 a.m.: SPF 30+ broad spectrum, reapply at two hours, a hat and sleeves, then a simple after-play plan.
+title: "Pickleball Skincare: Sunscreen & Simple Skin Care for Active Players"
+seo_title: "Pickleball Skincare: Sunscreen & a Simple Routine"
+description: "Pickleball skincare for players over 50 on the court by 9 a.m.: SPF 30+ broad spectrum, reapply at two hours, a hat and sleeves, then a simple after-play plan."
 date: 2026-10-09
-category: Health & Recovery
-image: /images/pickleball-skincare-hero.png
-image_alt: Pickleball skincare essentials: sunscreen, SPF lip balm, a brimmed hat and sun sleeves laid out beside a paddle
-keyphrase: pickleball skincare
-affiliate: true
-draft: false
+category: "Health & Recovery"
+image: "/images/pickleball-skincare-hero.png"
+image_alt: "Pickleball skincare essentials: sunscreen, SPF lip balm, a brimmed hat and sun sleeves laid out beside a paddle"
+keyphrase: "pickleball skincare"
+affiliate: !!bool "true"
+draft: !!bool "false"
 ---
-
 This is for the player who is on the court by 9 a.m. two or three mornings a week, especially if you are over 50. Pickleball skincare comes down to one routine. Put a broad-spectrum SPF 30 or higher on every exposed inch before you leave the house. Reapply at the two-hour mark, wear a hat and sun sleeves, and rinse and moisturize after. The reason is simple. Two hours on a bright court with your arms and neck out, week after week, adds up over years. Most skin cancers trace back to sun exposure.
 
 ```quick
