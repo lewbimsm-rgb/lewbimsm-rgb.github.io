@@ -88,7 +88,6 @@
     "/terms/": "/terms-of-use/",
     "/gear/": "/category/gear-reviews/",
     "/learn/": "/category/beginner-guides/",
-    "/admin/": "/",
     "/info/": "/about/",
     "/blog/pickleball-beginners-first-game/": "/pickleball-for-beginners-guide/",
     "/blog/beginner-serve-lesson/": "/pickleball-rules-for-beginners/",
@@ -104,6 +103,13 @@
     "/blog/indoor-outdoor-pickleball-balls/": "/pickleball-for-beginners-guide/",
     "/blog/court-shoes-vs-running-shoes/": "/best-pickleball-shoes-for-women/",
     "/blog/pickleball-clothing-guide/": "/cute-pickleball-outfits-for-women/",
-    "/blog/korean-skincare-outdoor-pickleball/": "/pickleball-skincare/"
-  }
+    "/blog/korean-skincare-outdoor-pickleball/": "/pickleball-skincare/",
+    "/write/": "/admin/",
+    "/login/": "/admin/",
+    "/editor/": "/admin/",
+    "/post/": "/admin/",
+    "/signin/": "/admin/"
+  },
+  "editor_url": "https://app.pagescms.org/lewbimsm-rgb/lewbimsm-rgb.github.io/main",
+  "default_post_image": "/images/photos/hostinger/court.jpg"
 }

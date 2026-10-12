@@ -134,6 +134,15 @@ def reading_time(html_text):
     return max(1, round(words / 220)), words
 
 
+def auto_summary(html_text, limit=155):
+    """first real paragraph, as plain text, cut at a word boundary (used when a post has no Short summary)"""
+    for m in re.finditer(r"<p>(.*?)</p>", html_text, flags=re.S):
+        t = html.unescape(re.sub(r"<[^>]+>", "", m.group(1))).strip()
+        if len(t) > 40 and "(Replace this paragraph.)" not in t:
+            return t if len(t) <= limit else t[:limit].rsplit(" ", 1)[0].rstrip(",;:") + "..."
+    return ""
+
+
 def display_date(d):
     return d.strftime("%B %d, %Y").replace(" 0", " ")
 
@@ -159,12 +168,12 @@ def load_posts():
         slug = slugify(meta.get("slug") or fn[:-3])
         cat = str(meta.get("category") or "Beginner Guides")
         catcfg = CFG["categories"].get(cat, {"slug": slugify(cat), "blurb": ""})
-        img = str(meta.get("image") or "")
+        img = str(meta.get("image") or "") or CFG.get("default_post_image", "")   # Mom may skip the picture
         w, h = image_size(os.path.join(CONTENT, img.lstrip("/"))) if img else (None, None)
         date = as_date(meta.get("date"))
         posts.append(dict(
             meta=meta, slug=slug, url="/%s/" % slug, title=str(meta["title"]), seo_title=str(meta.get("seo_title") or meta["title"]),
-            description=str(meta.get("description") or ""), date=date, date_display=display_date(date),
+            description=str(meta.get("description") or "") or auto_summary(html_body), date=date, date_display=display_date(date),
             category=cat, category_slug=catcfg["slug"], category_url="/category/%s/" % catcfg["slug"],
             image=img, image_alt=str(meta.get("image_alt") or meta["title"]), image_w=w, image_h=h,
             body=html_body, toc=toc, minutes=minutes, words=words, affiliate=truthy(meta.get("affiliate", False)),
@@ -225,6 +234,7 @@ def build():
         related = [q for q in posts if q["slug"] != p["slug"] and q["category"] == p["category"]][:3] or [q for q in posts if q["slug"] != p["slug"]][:3]
         write(p["url"] + "index.html", env.get_template("post.html").render(post=p, related=related, page_url=p["url"], **ctx))
     write("/blog/index.html", env.get_template("journal.html").render(page_url="/blog/", **ctx))
+    write("/admin/index.html", env.get_template("admin.html").render(page_url="/admin/", **ctx))   # Mom's sign-in page
     for c in cats:
         write(c["url"] + "index.html", env.get_template("category.html").render(cat=c, page_url=c["url"], **ctx))
     for pg in pages:
