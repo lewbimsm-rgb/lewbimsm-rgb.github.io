@@ -6,7 +6,7 @@ category: "Beginner Guides"
 image: "/images/photos/hostinger/court.jpg"
 image_alt: "A reliable serve beats a spectacular one."
 keyphrase: ""
-affiliate: false
+affiliate: true
 draft: false
 source: "imported from the Hostinger site on 2026-10-11 (its category: Beginner)"
 ---
