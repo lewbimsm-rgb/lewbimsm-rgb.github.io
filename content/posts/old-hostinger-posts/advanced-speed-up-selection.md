@@ -2,15 +2,14 @@
 title: "Advanced players don’t attack every ball."
 description: "Build better speed-up decisions with contact height, opponent position, and recovery in mind."
 date: 2026-10-06
-category: Beginner Guides
-image: "/images/photos/hostinger/court.jpg"
+category: "Beginner Guides"
+image: "/images/posts/advanced-speed-up-selection/1791983101062-pic8.jpg"
 image_alt: "Advanced players don’t attack every ball."
 keyphrase: ""
-affiliate: false
-draft: true
+affiliate: true
+draft: false
 source: "imported from the Hostinger site on 2026-10-11 (its category: Advanced)"
 ---
-
 ## Choose the ball before the shot
 
 An attacking opportunity depends on more than a ball being close to the net. Consider contact height, your balance, the opponent’s paddle position, and the angle available. A ball below net height may require lifting, which increases risk. Advanced play often means declining a tempting attack until the conditions are better, not producing more spectacular winners.
