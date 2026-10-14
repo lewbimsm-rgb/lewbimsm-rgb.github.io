@@ -8,6 +8,7 @@ image: "/images/photos/hostinger/beginner.jpg"
 image_alt: "Two players at the net on an outdoor pickleball court"
 keyphrase: "pickleball for beginners"
 affiliate: true
+draft: false
 ---
 If you're looking for a pickleball for beginners guide that doesn't assume you already play tennis, this is it. Pickleball has quickly become one of the most popular recreational sports in the United States, and what started as a small backyard game is now a favorite for people of all ages and fitness levels. Maybe you've seen a group playing at the park, maybe a friend keeps inviting you, or maybe you're just curious what the fuss is about.
 
