@@ -2,15 +2,14 @@
 title: "A reliable serve beats a spectacular one."
 description: "Build a repeatable serve with simple targets, a relaxed grip, and a ten-minute practice routine."
 date: 2026-10-06
-category: Beginner Guides
+category: "Beginner Guides"
 image: "/images/photos/hostinger/court.jpg"
 image_alt: "A reliable serve beats a spectacular one."
 keyphrase: ""
 affiliate: false
-draft: true
+draft: false
 source: "imported from the Hostinger site on 2026-10-11 (its category: Beginner)"
 ---
-
 ## Choose a simple motion
 
 A good beginner serve starts the point without drama. For a volley serve, use an underhand motion and review the current rules on contact height and paddle position. A drop serve is another option: release the ball without propelling it and strike after the bounce. Its legal requirements differ from a volley serve. Pick one method and practice it consistently before adding spin or pace.
