@@ -4,6 +4,13 @@
 {% endblock %}
 {% block content %}
 <section class="hero hero-compact">
+  <div class="hero-deco" aria-hidden="true"><svg class="hero-court" viewBox="0 0 440 200" focusable="false">
+    <rect x="10" y="10" width="420" height="180" rx="4" fill="none" stroke="var(--blue-soft)" stroke-width="3"/>
+    <rect x="150" y="10" width="140" height="180" fill="var(--lime)" opacity=".28"/>
+    <line x1="150" y1="10" x2="150" y2="190" stroke="var(--blue-soft)" stroke-width="3"/><line x1="290" y1="10" x2="290" y2="190" stroke="var(--blue-soft)" stroke-width="3"/>
+    <line x1="10" y1="100" x2="150" y2="100" stroke="var(--blue-soft)" stroke-width="3"/><line x1="290" y1="100" x2="430" y2="100" stroke="var(--blue-soft)" stroke-width="3"/>
+    <line x1="220" y1="4" x2="220" y2="196" stroke="var(--blue-soft)" stroke-width="3"/>
+  </svg></div>
   <div class="hero-kicker"><span class="status-dot"></span> {{ site.hero_kicker }}</div>
   <h1>{{ site.hero_line1 }}<br><span>{{ site.hero_line2 }}</span><svg class="hero-asterisk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M17.196 9 6.804 15M6.804 9l10.392 6"/></svg></h1>
   <p>{{ site.hero_text|safe }}</p>

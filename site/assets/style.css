@@ -325,3 +325,11 @@ blockquote p{margin:0}
 @media(max-width:1000px){.mag{grid-template-columns:1fr}.mag.flip .mag-big{order:1}.mag.flip .mag-stack{order:2}.mag-big-image{height:300px}}
 @media(max-width:600px){.mag-big-image{height:230px}.mag-big h3{font-size:26px}.mag-mini{grid-template-columns:104px 1fr;padding:10px}.mag-mini-image{width:104px;height:104px}.mag-mini h3{font-size:16px}}
 .mag .mag-stack{align-self:stretch;justify-content:center}
+
+/* ---- 2026-10-21 evening: faded court lines behind the hero headline (Lewis picked treatment A) ---- */
+.hero{position:relative}
+.hero>*:not(.hero-deco){position:relative;z-index:1}
+.hero-deco{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.hero-court{position:absolute;left:50%;top:50%;width:min(980px,118vw);height:auto;transform:translate(-50%,-52%) rotate(-5deg)}
+@media(max-width:760px){.hero-court{width:150vw;transform:translate(-50%,-50%) rotate(-7deg)}}
+@media(prefers-reduced-motion:no-preference){.hero-court{transition:transform .6s ease}}
