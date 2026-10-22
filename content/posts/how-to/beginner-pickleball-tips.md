@@ -1,8 +1,9 @@
 ---
 title: "Beginner Pickleball Tips: 5 Habits That Fix Most Mistakes"
 seo_title: "Beginner Pickleball Tips: 5 Habits That Fix Most Mistakes"
-description: "Five beginner pickleball tips that fix the most common mistakes: hitting too hard, hanging back, aiming wide, looking up early and reaching instead of moving."
+description: "Five beginner pickleball tips from someone who spent a month hitting the ball over the fence: softer shots, the kitchen line, the middle, your eyes and feet."
 date: 2026-10-05
+updated: 2026-10-22
 category: "Beginner Guides"
 image: "/images/posts/beginner-pickleball-tips/1791983422792-images5.jpg"
 image_alt: "Players mid-rally on an outdoor court"
@@ -10,57 +11,35 @@ keyphrase: "beginner pickleball tips"
 affiliate: true
 draft: false
 ---
-These five beginner pickleball tips fix the mistakes almost every new player makes. Most beginners lose points the same five ways, and the good news is that none of them are about talent. They're habits, and each one has a simple fix you can practice in your very next game.
+
+For my first month of pickleball I had one idea, and it was to hit the ball as hard as I could. It felt wonderful for about a second, and then the ball would sail over the fence or come straight back at my face while I was still admiring my swing. Someone I was paired with one morning finally suggested I try hitting it a little less. That turned out to be the first of five beginner pickleball tips that fixed most of what I was doing wrong. None of them take talent, just a fix you can try in your next game.
 
 ![Beginner pickleball tips summary card: control before power, get to the kitchen line, aim for the middle, watch the ball, move your feet](/images/posts/beginner-pickleball-tips/1791983462448-paddle-up.jpg)
 
-## Tip 1: Don't hit every ball hard
+## Hit it softer than feels right
 
-The number one beginner mistake is treating every shot like a smash. Hard shots feel satisfying, but at the beginner level they mostly fly long, hit the net, or come straight back at you faster than you can react.
+Hard shots are satisfying, which is the whole problem. At our level they mostly fly long or clip the net, so a medium-paced ball that lands in beats a rocket that lands out. What helped me was keeping the paddle out in front instead of back by my hip, where it kept winding up for the big one, and pushing the ball softly over near the kitchen instead of driving it. Count how many shots in a row you and a partner can keep in play; the power comes back once the control is there.
 
-Control comes before power. A medium-paced ball that lands in beats a rocket that lands out, every single time. A few things that help:
+## Get up to the kitchen line
 
-- Keep your paddle out in front of you, not back by your hip.
-- Aim for the middle of the court, not the lines.
-- When you're close to the kitchen, use a soft shot instead of a drive.
-- Swing smoothly and let the paddle do the work.
+After the serve and return, the goal is to get up to the non-volley zone line, the kitchen line. Hanging back feels safer, and I did it for weeks, but from the baseline you only react; from the line you choose the angles. The [two-bounce rule](/pickleball-rules-for-beginners/) sets the timing: the serving team lets the return bounce, then comes forward, together, because a gap between partners is where the ball will go. The drill is the dink, a soft shot that just clears the net into their kitchen; the first time I got ten in a row I felt let in on a secret.
 
-**Two-minute drill:** rally with a partner and count how many shots in a row you can keep in play. Try to beat your number each time. Power will come on its own once control is there.
+## Aim for the middle
 
-## Tip 2: Get to the kitchen line
+When in doubt, hit between your opponents. A ball down the middle creates a "yours or mine?" moment, and it crosses the net at its lowest point, 34 inches in the center against 36 at the sidelines, per the [official rules](https://usapickleball.org/what-is-pickleball/official-rules/). Two inches does not sound like much until you have clipped the tape a few times. Going for the sideline is how a good rally becomes an unforced error. Put a towel in the middle of the far court and aim for it.
 
-After you serve and return, the goal is to move up to the non-volley zone line (the kitchen line) as soon as it's safe. Beginners tend to hang back near the baseline because it feels safer. It isn't. From the back of the court you're reacting to everything; from the kitchen line you control the point and have far more angles to play.
+## Watch the ball to the paddle
 
-Remember the [two-bounce rule](/pickleball-rules-for-beginners/): the serving team has to let the return bounce before coming forward. Once that's done, work your way up, ideally together with your partner so you don't leave a gap between you.
+Looking up early is the mishit's best friend. You look up to see where it is going, and that glance is exactly when the ball finds the edge of the paddle. My fix sounds silly: during the warm-up, say "hit" out loud every time the ball touches your paddle, which keeps your eyes on the contact. The next court will look over the first few times, and then they stop.
 
-**Two-minute drill:** at the kitchen line, practice "dinks", soft shots that just clear the net and land in the other team's kitchen. Ten in a row with a partner is a great goal.
+## Move your feet before you reach
 
-## Tip 3: Aim for the middle
-
-When you're not sure where to hit, aim between your opponents. A ball down the middle creates a moment of "yours or mine?" confusion, it crosses the lowest part of the net (34 inches in the centre versus 36 at the sidelines, per the [official rules](https://usapickleball.org/what-is-pickleball/official-rules/)), and it gives you the biggest margin for error. Going for the sideline is how beginners turn a safe rally into an unforced error.
-
-**Two-minute drill:** put a towel or a cone in the middle of the far side of the court and see how many shots you can land near it.
-
-## Tip 4: Watch the ball, not your opponent
-
-Keep your eyes on the ball all the way to your paddle. Beginners look up early, usually to see where the ball is going or what the other players are doing, and that's exactly when mishits happen: off the edge of the paddle, into the net, or skywards.
-
-Trust that the ball will go where you aimed. You'll see the result soon enough.
-
-**Two-minute drill:** during a warm-up rally, say "hit" out loud every time the ball touches your paddle. It sounds silly and it works, because it forces your eyes to stay on contact.
-
-## Tip 5: Move your feet
-
-Good pickleball isn't just about your paddle. It's about where your feet put you. Beginners reach for balls, stretch, lunge and hit off balance. Experienced players take two small adjustment steps and hit from a comfortable, balanced position.
-
-Stay light on your feet, keep your weight slightly forward, use small shuffles rather than big lunges, and avoid reaching whenever you can. Court shoes, with proper side-to-side support, make this much easier than running shoes do.
-
-**Two-minute drill:** before a game, shuffle side to side along the kitchen line for 30 seconds, touching the sideline each time. It wakes your legs up and reminds you to move.
+Good pickleball is less about the paddle than where your feet have put you. New players reach, stretch, lunge and hit off balance, and I was a champion reacher. A shuffle leaves you ready for the next ball, and at our age a lunge leaves you somewhere you have to climb back from, so now I take two small steps instead of one big reach. Court shoes make this easier than running shoes, since a running shoe is built to go forward and pickleball is mostly sideways. Thirty seconds of shuffling along the kitchen line before a game wakes the legs up.
 
 ::product Pickleball court shoes | Best for: anyone who has played three or more times in running shoes and felt their ankles wobble. Look for a flat, grippy sole and a firm side wall. Both tennis and dedicated pickleball shoes work. | amazon=https://www.amazon.com/s?k=pickleball+court+shoes&tag=smartselec0a7-20
 
-## Putting the beginner pickleball tips together
+## Using these beginner pickleball tips
 
-You don't have to fix all five at once. Pick one tip, make it your focus for a whole session, and move on to the next one next time. Within a few weeks you'll notice you're winning rallies not because you hit anything spectacular, but because you stopped giving points away.
+Please do not try to fix all five at once; I did, and for a week I played worse, thinking about my feet while the ball went past. Pick one of these beginner pickleball tips and make it the only thing you think about for a whole session; the rest can wait.
 
-New to the game? Start with our [complete beginner's guide](/pickleball-for-beginners-guide/) and the [rules explained simply](/pickleball-rules-for-beginners/).
+It took me closer to a season than a month, and the people I play with were in no hurry either. If you are brand new, start with the [complete beginner's guide](/pickleball-for-beginners-guide/), and keep the [rules explained simply](/pickleball-rules-for-beginners/) handy for the first few mornings.
