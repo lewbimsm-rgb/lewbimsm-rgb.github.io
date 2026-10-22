@@ -254,3 +254,44 @@ blockquote p{margin:0}
 .article-body h2:after,.article-body h3:after{content:"";display:table;clear:both}
 @media(max-width:1000px){.feature-post{grid-template-columns:1fr}.feature-post-image{min-height:260px}.feature-post-body{padding:22px 24px 26px}}
 @media(max-width:760px){.latest-section{padding:30px 5% 44px}.article-meta{font-size:12px}.article-body img.img-medium,.article-body img.img-small,.article-body img.img-left,.article-body img.img-right{max-width:100%;float:none;margin:1.4rem auto}}
+
+/* ---- 2026-10-21 evening: readability pass (Lewis: "fonts are hard to read"), buttons keep their colours, quiet disclosure, Judy's box ---- */
+.article-body p{font-size:18px;line-height:1.75;color:#213552}
+.article-body li{font-size:17px;line-height:1.7;color:#213552}
+.article-body table{font-size:16px}
+.article-toc a{font-size:15px}
+.article-body p.caption{font-size:14px}
+.article-body .disclosure{font-size:12.5px;color:#6b7a90;background:none;padding:0;margin:0 0 18px;border-radius:0;line-height:1.5}
+.article-body .disclosure a{color:#6b7a90;text-decoration:underline}
+.author-box{padding:22px 24px;gap:18px;align-items:center}
+.author-box img{width:64px;height:64px;object-fit:cover;background:var(--pale)}
+.author-box strong{font-size:18px}
+.author-box p{font-size:16px;color:#2d4060;line-height:1.65}
+.author-box .author-dates{font-size:13px}
+/* article links were painting the store buttons blue and underlined */
+.article-body a.ss-btn,.article-body .product-actions a,.article-body a.button{text-decoration:none}
+.article-body a.ss-btn-store,.article-body a.ss-btn-store:hover,.article-body .product-actions a.btn-link,.article-body .product-actions a.btn-selkirk,.article-body .product-actions a.btn-target{color:#fff}
+.article-body a.ss-btn-amazon,.article-body a.ss-btn-amazon:hover,.article-body .product-actions a.btn-amazon{color:#1a1a1a}
+.article-body .product-actions .btn{font-size:15px}
+.article-body .product-note{font-size:14px}
+.article-body .ss-btn{font-size:1rem}
+.article-body .ss-btn-sm{font-size:.9rem}
+.article-body .ss-pick p{font-size:1.02rem;color:#213552}
+.article-body .ss-cta-note{font-size:.95rem}
+.article-body .ss-compare,.article-body .ss-table{font-size:1rem}
+.article-body .ss-spec dt{font-size:1rem}
+.article-body .ss-buyif-col li{font-size:1.02rem}
+.article-body .ss-quick p{font-size:1.1rem}
+/* site-wide small print was too small */
+.hero>p{font-size:17px}
+.section-heading>p{font-size:15px}
+.level-card p{font-size:15px}
+.article-card>p{font-size:15px;color:#43516a}
+.feature-post-body p{font-size:16px;color:#43516a}
+.article-meta{font-size:12px;letter-spacing:1px}
+.button{font-size:15px}
+.text-link{font-size:15px}
+.main-nav{font-size:15px}
+.footer-top>div>a:not(.brand){font-size:14px}
+.footer-top p{font-size:14px}
+.footer-bottom{font-size:12px}

@@ -26,14 +26,13 @@
   </header>
   {% if post.image and post.meta.image_size != 'none' %}<img class="article-cover{% if post.meta.image_size %} cover-{{ post.meta.image_size }}{% endif %}" src="{{ post.image }}" alt="{{ post.image_alt }}" width="{{ post.image_w }}" height="{{ post.image_h }}" fetchpriority="high">{% if post.meta.image_credit %}<p class="caption cover-caption">{{ post.image_credit_html|safe }}</p>{% endif %}{% endif %}
   <div class="article-body">
-    {% if post.affiliate %}<p class="disclosure">{{ site.site_name }} is reader-supported. If you buy through a link on this page we may earn a small commission, at no extra cost to you. <a href="/affiliate-disclosure/">How we make money</a>.</p>{% endif %}
+    {% if post.affiliate %}<p class="disclosure">Some links on this page are affiliate links. If you buy through one, SmartSelect Labs may earn a small commission at no cost to you. <a href="/affiliate-disclosure/">Details</a>.</p>{% endif %}
     {% if post.toc %}
     <nav class="article-toc" aria-label="In this article"><strong>IN THIS ARTICLE</strong>{% for t in post.toc %}<a href="#{{ t.id }}">{{ "%02d"|format(loop.index) }} &middot; {{ t.name }}</a>{% endfor %}</nav>
     {% endif %}
     {{ post.body|safe }}
-    <aside class="notice"><strong>Our approach:</strong> plain-English guidance, not medical advice. When we have not used a product ourselves, we say so. Some links are affiliate links; <a href="/affiliate-disclosure/">here is how that works</a>.</aside>
     <div class="author-box">
-      <img src="{{ site.author_photo or '/assets/icon-180.png' }}" alt="" width="52" height="52">
+      <img src="{{ site.author_photo or '/assets/avatar-lotus.png' }}" alt="" width="52" height="52">
       <div><strong>{{ post.author }}</strong><p>{{ site.author_blurb }}</p><p class="author-dates">First published {{ post.date_display }}{% if post.updated_display and post.updated_display != post.date_display %}, last updated {{ post.updated_display }}{% endif %}.</p></div>
     </div>
     <div class="admin-actions">

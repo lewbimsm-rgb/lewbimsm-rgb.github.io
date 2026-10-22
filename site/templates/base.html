@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
-<link rel="stylesheet" href="/assets/components.css">
+<link rel="stylesheet" href="/assets/style.css?v={{ asset_v }}">
+<link rel="stylesheet" href="/assets/components.css?v={{ asset_v }}">
 {% block head %}{% endblock %}
 {% if site.head_extra %}{{ site.head_extra|safe }}{% endif %}
 {% if site.ga4_id %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id }}"></script>

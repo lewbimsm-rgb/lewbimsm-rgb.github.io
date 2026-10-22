@@ -17,7 +17,7 @@ We started it because most pickleball buying advice is written for tournament pl
 
 ## Who writes this
 
-SmartSelect Labs is written by **Judy**, a recreational player who picked up pickleball at the park and never put the paddle down, with help from her son, Lewis, who looks after the website. Judy writes about what she actually uses and plays with: the paddle that was kind to her elbow, the shoes that stopped her ankles rolling, the sunscreen that survives a two-hour morning session. When a recommendation comes from research rather than her own hands, the post says so.
+Hi, I’m Judy. I picked up pickleball at the park and never put the paddle down. I started SmartSelect Labs with my son Lewis, who looks after the website, so I could share what I actually use and play with, what was worth the money, and the small habits that keep me on the court. I would rather tell you honestly who something is for, and who should skip it, than talk you into anything. Thanks for reading, and I hope to see you out there.
 
 ## How we work
 
