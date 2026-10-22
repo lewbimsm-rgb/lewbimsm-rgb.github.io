@@ -24,7 +24,7 @@
       <span>{{ post.minutes }} min read</span>
     </div>
   </header>
-  {% if post.image and post.meta.image_size != 'none' %}<img class="article-cover{% if post.meta.image_size %} cover-{{ post.meta.image_size }}{% endif %}" src="{{ post.image }}" alt="{{ post.image_alt }}" width="{{ post.image_w }}" height="{{ post.image_h }}" fetchpriority="high">{% if post.meta.image_credit %}<p class="caption cover-caption">{{ post.image_credit_html|safe }}</p>{% endif %}{% endif %}
+  {% if post.image and post.meta.image_size != 'none' %}<img class="article-cover{% if post.meta.image_size %} cover-{{ post.meta.image_size }}{% endif %}{% if post.image_w and post.image_h and (post.image_h|int) >= (post.image_w|int) * 0.9 %} cover-tall{% endif %}" src="{{ post.image }}" alt="{{ post.image_alt }}" width="{{ post.image_w }}" height="{{ post.image_h }}" fetchpriority="high">{% if post.meta.image_credit %}<p class="caption cover-caption">{{ post.image_credit_html|safe }}</p>{% endif %}{% endif %}
   <div class="article-body">
     {% if post.affiliate %}<p class="disclosure">Some links on this page are affiliate links. If you buy through one, SmartSelect Labs may earn a small commission at no cost to you. <a href="/affiliate-disclosure/">Details</a>.</p>{% endif %}
     {% if post.toc %}

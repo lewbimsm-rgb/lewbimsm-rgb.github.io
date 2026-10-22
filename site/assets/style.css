@@ -333,3 +333,9 @@ blockquote p{margin:0}
 .hero-court{position:absolute;left:50%;top:50%;width:min(980px,118vw);height:auto;transform:translate(-50%,-52%) rotate(-5deg)}
 @media(max-width:760px){.hero-court{width:150vw;transform:translate(-50%,-50%) rotate(-7deg)}}
 @media(prefers-reduced-motion:no-preference){.hero-court{transition:transform .6s ease}}
+
+/* ---- 2026-10-22: cover photos. Landscape covers favour the top of the picture (faces); portrait and square covers show whole ---- */
+.article-cover{object-position:center 30%}
+.article-cover.cover-tall{height:auto;max-height:560px;width:auto;max-width:100%;object-fit:contain}
+.article-image img,.mag-big-image img,.mag-mini-image img,.feature-post-image img{object-position:center 30%}
+@media(max-width:760px){.article-cover.cover-tall{max-height:420px}}
