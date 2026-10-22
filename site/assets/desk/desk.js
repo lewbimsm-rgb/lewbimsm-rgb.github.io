@@ -3,7 +3,8 @@
    Screens: sign in -> My posts (#/) -> pick a template (#/new) -> write (#/post/<id>) -> Templates (#/templates, #/template/<key>).
    Autosaves; "Save now" forces it; Publish sends the post to the site.
    2026-10-21: picture sizes + captions, heading sizes, main-picture size, photo library (your photos, site photos,
-   free licensed photos), editable templates ("Save as template", duplicate, edit boxes and hints). */
+   free licensed photos), editable templates ("Save as template", duplicate, edit boxes and hints).
+   2026-10-21 evening: crop / adjust dialog (frame + move + zoom + rotate + brightness), drop and paste pictures, By-link import with a blocked-source guard. */
 (function () {
   "use strict";
   const CFG = window.DESK_CONFIG;
@@ -216,9 +217,9 @@
         break;
       case "tip": body = hint + inp(B + ' data-k="label"', b.label, "Label, e.g. SmartSelect Tip") + '<div style="margin-top:8px">' + area(B + ' data-k="text"', b.text, "The tip") + "</div>"; break;
       case "image":
-        body = hint + '<div class="photo"><div class="photo-box' + (b.size && b.size !== "full" ? " is-" + esc(b.size) : "") + '">' + (b.url ? '<img src="' + esc(imgSrc(b.url)) + '" alt="">' : "No picture yet") + "</div>" +
+        body = hint + '<div class="photo"><div class="photo-box' + (b.size && b.size !== "full" ? " is-" + esc(b.size) : "") + '" data-drop="' + i + '" title="You can also drop a photo file here">' + (b.url ? '<img src="' + esc(imgSrc(b.url)) + '" alt="">' : "No picture yet") + "</div>" +
           '<div class="photo-side"><div class="photo-btns"><button type="button" class="btn small primary" data-lib-block="' + i + '">Choose a photo</button><label class="btn small">' + (b.url ? "Upload a different one" : "Upload from this device") + '<input type="file" accept="image/*" class="hidden" data-upload-block="' + i + '"></label>' +
-          (b.url ? '<button type="button" class="btn small ghost" data-rm-img="' + i + '">Remove</button>' : "") + "</div>" +
+          (b.url ? '<button type="button" class="btn small" data-edit-img="' + i + '">✂ Crop / adjust</button><button type="button" class="btn small ghost" data-rm-img="' + i + '">Remove</button>' : "") + "</div>" +
           '<label class="lbl">Size on the page</label>' + sel(B + ' data-k="size"', SIZES, b.size || "full") +
           '<label class="lbl">Caption (optional)</label>' + inp(B + ' data-k="caption"', b.caption, "A line under the picture") +
           '<label class="lbl">What is in the picture?</label>' + inp(B + ' data-k="alt"', b.alt, "A few words, for people who cannot see it") + "</div></div>";
@@ -266,10 +267,10 @@
       (p.status === "trash" ? '<button data-act="restore">Restore from the trash</button>' : '<button data-act="trash">Move to the trash</button>') + "</div></div></div></div>" +
       '<main class="ed"><p class="hint" style="margin:0 0 6px"><span class="chip">' + esc(t.emoji + " " + t.label) + '</span> &nbsp;<span class="words" id="words"></span></p>' +
       '<input class="title-input" data-f="title" value="' + esc(p.title) + '" placeholder="Your headline, e.g. Best Pickleball Shoes for Women">' +
-      '<section class="panel"><h3>Main picture</h3><p class="hint">Shows at the top of the post and on the home page. Your own photo is best, wider than tall.</p><div class="photo"><div class="photo-box" id="cover">' +
+      '<section class="panel"><h3>Main picture</h3><p class="hint">Shows at the top of the post and on the home page. Your own photo is best, wider than tall.</p><div class="photo"><div class="photo-box" id="cover" data-drop="cover" title="You can also drop a photo file here">' +
       (p.cover_url ? '<img src="' + esc(imgSrc(p.cover_url)) + '" alt="">' : "No picture yet.<br>If you skip it, the site uses a court photo.") + "</div>" +
       '<div class="photo-side"><div class="photo-btns"><button type="button" class="btn small primary" data-act="libcover">Choose a photo</button><label class="btn small">' + (p.cover_url ? "Upload a different one" : "Upload from this device") + '<input type="file" accept="image/*" class="hidden" id="coverfile"></label>' +
-      (p.cover_url ? '<button class="btn small ghost" data-act="rmcover">Remove</button>' : "") + "</div>" +
+      (p.cover_url ? '<button type="button" class="btn small" data-act="editcover">✂ Crop / adjust</button><button class="btn small ghost" data-act="rmcover">Remove</button>' : "") + "</div>" +
       '<label class="lbl">Size at the top of the post</label>' + sel('data-x="image_size"', [["full", "Big banner (default)"], ["smaller", "Smaller banner"], ["none", "Do not show it on the post (cards only)"]], coverSize) +
       '<label class="lbl">What is in the picture?</label>' + inp('data-f="cover_alt"', p.cover_alt, "Describe the picture in a few words") +
       (p.extra && p.extra.image_credit ? '<p class="hint">Credit line (shown under the picture): ' + esc(p.extra.image_credit) + "</p>" : "") + "</div></div></section>" +
@@ -283,7 +284,8 @@
       '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px"><button class="btn" data-act="preview">Preview</button>' + publishLabel(p) + "</div></main>";
     document.querySelectorAll(".textarea").forEach(autosize);
     updateSaved(); updateWords();
-    document.getElementById("coverfile").addEventListener("change", (e) => uploadPicture(e.target.files[0], (url) => { state.post.cover_url = url; delete state.post.extra.image_credit; markDirty(true); renderEditor(); }));
+    document.getElementById("coverfile").addEventListener("change", (e) => uploadPicture(e.target.files[0], (url) => { state.post.cover_url = url; delete state.post.extra.image_credit; markDirty(true); renderEditor();
+      openPictureEditor(url, { shape: "banner", title: "Crop the main picture", skip: true, name: "cover" }, (u) => { if (u) { state.post.cover_url = u; markDirty(true); renderEditor(); } }); }));
     bindBlockUploads();
   }
   function bindBlockUploads() {
@@ -343,12 +345,7 @@
     toast("Adding your picture…", 4000);
     try {
       const blob = await shrinkToJpeg(file);
-      const base = (file.name || "photo").replace(/\.[^.]+$/, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "photo";
-      const path = (state.post ? state.post.id : "library") + "/" + Date.now() + "-" + base + ".jpg";
-      const { error } = await sb.storage.from("desk-images").upload(path, blob, { contentType: "image/jpeg", upsert: false });
-      if (error) throw error;
-      state.library.mine = null;
-      done(sb.storage.from("desk-images").getPublicUrl(path).data.publicUrl);
+      done(await uploadBlob(blob, (file.name || "photo").replace(/\.[^.]+$/, "")));
       toast("Picture added ✓");
     } catch (e) { toast("Couldn't add the picture. Try a different photo, or try again."); }
   }
@@ -374,12 +371,12 @@
   function openLibrary(onPick) {
     const v = document.createElement("div"); v.className = "veil";
     v.innerHTML = '<div class="dialog lib"><div class="lib-head"><h2>Choose a photo</h2><button class="icon-btn" data-close title="Close">✕</button></div>' +
-      '<div class="tabs"><button class="tab on" data-ltab="mine">Your photos</button><button class="tab" data-ltab="site">Site photos</button><button class="tab" data-ltab="find">Find a free photo</button></div>' +
+      '<div class="tabs"><button class="tab on" data-ltab="mine">Your photos</button><button class="tab" data-ltab="site">Site photos</button><button class="tab" data-ltab="find">Find a free photo</button><button class="tab" data-ltab="link">By link</button></div>' +
       '<div id="lib-body"><p class="hint">Loading…</p></div></div>';
     document.body.appendChild(v);
-    let tab = "mine", page = 1, q = "pickleball";
+    let tab = "mine", page = 1, q = "pickleball", seq = 0;
     async function show() {
-      const body = v.querySelector("#lib-body");
+      const body = v.querySelector("#lib-body"), my = ++seq;   // a slow list must not overwrite a tab opened after it
       v.querySelectorAll("[data-ltab]").forEach((b) => b.classList.toggle("on", b.dataset.ltab === tab));
       if (tab === "find") {
         body.innerHTML = '<form class="lib-search" id="libsearch"><input class="input" id="libq" value="' + esc(q) + '" placeholder="e.g. pickleball court, paddle, sunscreen"><button class="btn primary">Search</button></form>' +
@@ -388,13 +385,31 @@
         runSearch();
         return;
       }
+      if (tab === "link") {
+        body.innerHTML = '<form class="lib-search" id="liblink"><input class="input" id="liburl" placeholder="Paste the picture’s address (https://…)"><button class="btn primary">Add</button></form>' +
+          '<p class="hint">For pictures you are allowed to use: a brand’s press photos, a shop that gave you permission, or your own photo stored online. Pictures from Pinterest, Google Images, Amazon or Instagram belong to someone else; Google checks for that, and it is the quickest way to lose the ads application. For those ideas, use <b>Find a free photo</b> or take your own.</p><div id="linkres"></div>';
+        body.querySelector("#liblink").addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const u = body.querySelector("#liburl").value.trim(), res = body.querySelector("#linkres");
+          let host = ""; try { host = new URL(u).hostname; } catch (_) { res.innerHTML = '<div class="empty">That does not look like a picture address. It should start with https://</div>'; return; }
+          if (BLOCKED_HOSTS.test(host)) { res.innerHTML = '<div class="empty">That picture is from ' + esc(host.replace(/^www\./, "")) + ', so it is not ours to use. Try <button type="button" class="btn small" data-ltab="find">Find a free photo</button> instead.</div>'; return; }
+          res.innerHTML = '<p class="hint">Fetching the picture…</p>';
+          const { data, error } = await sb.functions.invoke("desk-photos", { body: { action: "import", url: u, title: host, post_id: state.post ? state.post.id : "library" } });
+          if (error || !data || data.error) { res.innerHTML = '<div class="empty">' + esc((data && data.error) || "Couldn’t fetch that picture. Save it to your device and use Upload instead.") + "</div>"; return; }
+          state.library.mine = null; v.remove(); onPick({ url: data.url, credit: "", alt: "" });
+        });
+        return;
+      }
       const list = tab === "mine" ? await loadMine() : await loadSitePhotos();
+      if (my !== seq || !v.isConnected) return;
       body.innerHTML = list.length ? '<div class="pgrid">' + list.map((ph) => tile(ph)).join("") + "</div>" : '<div class="empty">' + (tab === "mine" ? "No uploads yet. Use “Upload from this device”, or find a free photo." : "No site photos found.") + "</div>";
     }
     async function runSearch() {
       const res = v.querySelector("#libres"); if (!res) return;
       res.innerHTML = '<p class="hint">Searching…</p>';
+      const my = seq;
       const { data, error } = await sb.functions.invoke("desk-photos", { body: { action: "search", q, page } });
+      if (my !== seq || !res.isConnected) return;
       if (error || !data || data.error) { res.innerHTML = '<div class="empty">The photo search is not answering right now. Try again in a minute, or upload your own photo.</div>'; return; }
       if (!data.results.length) { res.innerHTML = '<div class="empty">Nothing found for “' + esc(q) + "”. Try another word.</div>"; return; }
       res.innerHTML = data.results.map((ph) => tile(ph, ' data-import=\'' + esc(JSON.stringify(ph)) + "'")).join("") +
@@ -417,6 +432,93 @@
     });
     show();
   }
+
+  // ------------------------------------------------------------ pictures: crop / adjust (a frame you move the picture inside), drop + paste, "by link"
+  const SHAPES = [["banner", "Banner (wide)", 16 / 9], ["wide", "Wide", 3 / 2], ["square", "Square", 1], ["free", "No crop", 0]];
+  const BLOCKED_HOSTS = /(^|\.)(pinterest\.[a-z.]+|pinimg\.com|google\.[a-z.]+|googleusercontent\.com|gstatic\.com|amazon\.[a-z.]+|media-amazon\.com|instagram\.com|cdninstagram\.com|facebook\.com|fbcdn\.net|etsystatic\.com|shein\.com|temu\.com|tiktok\.com|bing\.com)$/i;
+  function loadImg(url) {
+    return new Promise((res, rej) => { const im = new Image(); im.crossOrigin = "anonymous"; im.onload = () => res(im); im.onerror = rej; im.src = url + (url.includes("?") ? "&" : "?") + "edit=" + Date.now(); });
+  }
+  async function uploadBlob(blob, base) {
+    const safe = String(base || "photo").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "photo";
+    const path = (state.post ? state.post.id : "library") + "/" + Date.now() + "-" + safe + ".jpg";
+    const { error } = await sb.storage.from("desk-images").upload(path, blob, { contentType: "image/jpeg", upsert: false });
+    if (error) throw error;
+    state.library.mine = null;
+    return sb.storage.from("desk-images").getPublicUrl(path).data.publicUrl;
+  }
+  // opts: {shape, title, skip, name}; done(newUrl) or done(null) when "use it as it is"
+  async function openPictureEditor(url, opts, done) {
+    let img;
+    try { img = await loadImg(imgSrc(url)); }
+    catch (_) { toast("This picture can't be edited here. Upload it from your device and try again.", 4000); return; }
+    let shape = opts.shape || "banner", rot = 0, zoom = 1, ox = 0, oy = 0, bright = 1, drag = null;
+    const v = document.createElement("div"); v.className = "veil";
+    v.innerHTML = '<div class="dialog edit"><div class="lib-head"><h2>' + esc(opts.title || "Crop and adjust") + '</h2><button class="icon-btn" data-close title="Close">✕</button></div>' +
+      '<p class="hint">Drag the picture to move it inside the frame. Slide to zoom in. Pick a shape on the right.</p>' +
+      '<div class="edit-wrap"><div class="frame-wrap"><canvas class="frame" id="edc"></canvas></div>' +
+      '<div class="edit-side"><span class="lbl">Shape</span><div class="shape-btns">' + SHAPES.map(([k, l]) => '<button type="button" class="btn small' + (k === shape ? " primary" : "") + '" data-shape="' + k + '">' + l + "</button>").join("") + "</div>" +
+      '<label class="lbl" for="edzoom">Zoom</label><input type="range" id="edzoom" min="100" max="300" value="100">' +
+      '<label class="lbl" for="edbright">Brightness</label><input type="range" id="edbright" min="70" max="140" value="100">' +
+      '<div class="shape-btns"><button type="button" class="btn small" data-rot>↻ Rotate</button><button type="button" class="btn small ghost" data-reset>Start over</button></div></div></div>' +
+      '<div class="acts"><button class="btn" data-close>Cancel</button>' + (opts.skip ? '<button class="btn" data-skip>Use it as it is</button>' : "") + '<button class="btn go" data-use>Use this picture</button></div></div>';
+    document.body.appendChild(v);
+    const c = v.querySelector("#edc"), wrap = v.querySelector(".frame-wrap");
+    const W = Math.min(720, Math.max(260, (wrap.clientWidth || 700) - 20));
+    const dims = () => { const r = SHAPES.find((s) => s[0] === shape)[2]; const iw = rot % 180 ? img.height : img.width, ih = rot % 180 ? img.width : img.height; const ratio = r || iw / ih; return { w: W, h: Math.round(W / ratio), iw, ih }; };
+    const cover = () => { const d = dims(); return Math.max(d.w / d.iw, d.h / d.ih); };
+    function clamp() { const d = dims(), s = cover() * zoom; const mx = Math.max(0, (d.iw * s - d.w) / 2), my = Math.max(0, (d.ih * s - d.h) / 2); ox = Math.max(-mx, Math.min(mx, ox)); oy = Math.max(-my, Math.min(my, oy)); }
+    function paint(target, outW) {
+      const d = dims(), cv = target || c, k = outW ? outW / d.w : 1;
+      cv.width = Math.round(d.w * k); cv.height = Math.round(d.h * k);
+      const x = cv.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, cv.width, cv.height); x.filter = "brightness(" + bright + ")";
+      x.save(); x.translate(cv.width / 2 + ox * k, cv.height / 2 + oy * k); x.rotate(rot * Math.PI / 180); const s = cover() * zoom * k; x.scale(s, s); x.drawImage(img, -img.width / 2, -img.height / 2); x.restore();
+    }
+    c.addEventListener("pointerdown", (e) => { drag = { x: e.clientX, y: e.clientY, ox, oy }; c.setPointerCapture(e.pointerId); });
+    c.addEventListener("pointermove", (e) => { if (!drag) return; const k = dims().w / c.getBoundingClientRect().width; ox = drag.ox + (e.clientX - drag.x) * k; oy = drag.oy + (e.clientY - drag.y) * k; clamp(); paint(); });
+    const stop = () => { drag = null; }; c.addEventListener("pointerup", stop); c.addEventListener("pointercancel", stop);
+    v.addEventListener("input", (e) => { if (e.target.id === "edzoom") { zoom = e.target.value / 100; clamp(); paint(); } if (e.target.id === "edbright") { bright = e.target.value / 100; paint(); } });
+    v.addEventListener("click", async (e) => {
+      if (e.target === v || e.target.closest("[data-close]")) { v.remove(); return; }
+      const sh = e.target.closest("[data-shape]"); if (sh) { shape = sh.dataset.shape; v.querySelectorAll("[data-shape]").forEach((b) => b.classList.toggle("primary", b === sh)); ox = oy = 0; clamp(); paint(); return; }
+      if (e.target.closest("[data-rot]")) { rot = (rot + 90) % 360; ox = oy = 0; clamp(); paint(); return; }
+      if (e.target.closest("[data-reset]")) { rot = 0; zoom = 1; ox = oy = 0; bright = 1; v.querySelector("#edzoom").value = 100; v.querySelector("#edbright").value = 100; clamp(); paint(); return; }
+      if (e.target.closest("[data-skip]")) { v.remove(); done(null); return; }
+      const use = e.target.closest("[data-use]"); if (!use) return;
+      use.disabled = true; use.textContent = "Saving…";
+      try {
+        const out = document.createElement("canvas"), d = dims();
+        paint(out, Math.min(1600, Math.round(d.w / (cover() * zoom))));
+        const blob = await new Promise((r) => out.toBlob(r, "image/jpeg", 0.86));
+        const u = await uploadBlob(blob, opts.name || "picture");
+        v.remove(); done(u); toast("Picture saved ✓");
+      } catch (_) { use.disabled = false; use.textContent = "Use this picture"; toast("Couldn't save the picture. Try again."); }
+    });
+    clamp(); paint();
+  }
+  // a picture file dropped or pasted into a slot: "cover" or a block index
+  function dropInto(slot, file) {
+    uploadPicture(file, (url) => {
+      if (slot === "cover") { state.post.cover_url = url; delete state.post.extra.image_credit; } else { doc().blocks[+slot].url = url; }
+      markDirty(true); rerender();
+    });
+  }
+  document.addEventListener("dragover", (e) => { const z = e.target.closest && e.target.closest("[data-drop]"); if (z) { e.preventDefault(); z.classList.add("over"); } });
+  document.addEventListener("dragleave", (e) => { const z = e.target.closest && e.target.closest("[data-drop]"); if (z) z.classList.remove("over"); });
+  document.addEventListener("drop", (e) => {
+    const z = e.target.closest && e.target.closest("[data-drop]"); if (!z) return;
+    e.preventDefault(); z.classList.remove("over");
+    const f = [...(e.dataTransfer.files || [])].find((x) => x.type.startsWith("image/"));
+    if (!f) { toast("Drop a picture file from your computer or phone. Pictures dragged straight off a website are not ours to use.", 4500); return; }
+    dropInto(z.dataset.drop, f);
+  });
+  document.addEventListener("paste", (e) => {
+    if (!state.post || !route().startsWith("/post/") || e.target.closest("input,textarea")) return;
+    const it = [...(e.clipboardData.items || [])].find((x) => x.type.startsWith("image/")); if (!it) return;
+    const f = it.getAsFile(); if (!f) return;
+    e.preventDefault();
+    if (!state.post.cover_url) dropInto("cover", f); else { state.post.blocks.push(newBlock("image")); dropInto(String(state.post.blocks.length - 1), f); }
+  });
 
   // ------------------------------------------------------------ preview (rendered like the site, in an isolated frame)
   function md(s) { return window.marked ? window.marked.parse(String(s || ""), { breaks: false }) : "<p>" + esc(s) + "</p>"; }
@@ -576,7 +678,7 @@
   // ------------------------------------------------------------ events
   document.addEventListener("click", async (e) => {
     const t = e.target.closest("[data-stop]"); if (t && !t.closest("[data-dup],[data-deltpl]")) { e.stopPropagation(); if (t.tagName !== "A") return; }
-    const a = e.target.closest("[data-act],[data-open],[data-tab],[data-tpl],[data-addblock],[data-up],[data-down],[data-del],[data-add-item],[data-rm-item],[data-add-row],[data-rm-row],[data-add-col],[data-rm-col],[data-fmt],[data-lib-block],[data-rm-img],[data-dup],[data-deltpl]");
+    const a = e.target.closest("[data-act],[data-open],[data-tab],[data-tpl],[data-addblock],[data-up],[data-down],[data-del],[data-add-item],[data-rm-item],[data-add-row],[data-rm-row],[data-add-col],[data-rm-col],[data-fmt],[data-lib-block],[data-rm-img],[data-edit-img],[data-dup],[data-deltpl]");
     if (!a) { const m = document.getElementById("more"); if (m && !e.target.closest(".rel")) m.classList.add("hidden"); return; }
     const d = a.dataset, p = doc();
     if (d.dup !== undefined) { e.preventDefault(); e.stopPropagation(); const src = tplOf(d.dup); state.tpl = blankTemplate(src.label + " (copy)", JSON.parse(JSON.stringify(src.blocks || [])), src); state.tpl.description = src.description; await saveTemplate(); return; }
@@ -597,6 +699,7 @@
     if (d.rmCol !== undefined) { const b = p.blocks[+d.b]; const c = b.headers.length - 2; b.headers.splice(c, 1); b.rows.forEach((r) => r.splice(c, 1)); markDirty(true); rerender(); return; }
     if (d.libBlock !== undefined) { const i = +d.libBlock; openLibrary((ph) => { p.blocks[i].url = ph.url; if (ph.credit && !p.blocks[i].caption) p.blocks[i].caption = ph.credit; if (ph.alt && !p.blocks[i].alt) p.blocks[i].alt = ph.alt; markDirty(true); rerender(); }); return; }
     if (d.rmImg !== undefined) { p.blocks[+d.rmImg].url = ""; markDirty(true); rerender(); return; }
+    if (d.editImg !== undefined) { const i = +d.editImg; openPictureEditor(p.blocks[i].url, { shape: "free", title: "Crop and adjust this picture", name: "picture" }, (u) => { if (u) { p.blocks[i].url = u; markDirty(true); rerender(); } }); return; }
     if (d.fmt) {
       const ta = document.querySelector('textarea[data-b="' + d.b + '"][data-k="text"]'); if (!ta) return;
       const s0 = ta.selectionStart, s1 = ta.selectionEnd, sel0 = ta.value.slice(s0, s1);
@@ -613,7 +716,7 @@
       case "savenow": clearTimeout(state.saveTimer); state.dirty = true; await save(); toast("Saved ✓"); break;
       case "signout": await flush(); await sb.auth.signOut(); state.user = null; viewSignIn(); break;
       case "help":
-        dialog("<h2>How the writing desk works</h2><ul><li>1. <b>Write a new post</b> → pick a template.</li><li>2. Fill in the boxes. The grey text is just a hint.</li><li>3. Everything <b>saves by itself</b> (top bar says “All changes saved ✓”). “Save now” forces it.</li><li>4. Pictures: <b>Choose a photo</b> opens your photos, the site’s photos, and a search for free licensed photos. Pick a size and add a caption.</li><li>5. Come back any time: <b>My posts</b> → your draft → Continue writing.</li><li>6. <b>Preview</b> shows how it will look. <b>Publish</b> puts it on the site in about two minutes.</li><li>7. Changed a live post? Press <b>Update the live post</b>.</li><li>8. <b>Templates</b> (top bar) lets you change the outlines, or save any post as your own template.</li></ul><p class=\"hint\">Your own or licensed photos only, never saved from Google Images or Amazon. No exact Amazon prices (“about $90” is fine). Stuck? Message Lewis; nothing here can break the website.</p><div class=\"acts\"><button class=\"btn primary\" data-close>Got it</button></div>");
+        dialog("<h2>How the writing desk works</h2><ul><li>1. <b>Write a new post</b> → pick a template.</li><li>2. Fill in the boxes. The grey text is just a hint.</li><li>3. Everything <b>saves by itself</b> (top bar says “All changes saved ✓”). “Save now” forces it.</li><li>4. Pictures: <b>Choose a photo</b> opens your photos, the site’s photos, a search for free licensed photos, and a place to paste a link. You can also drop a photo file onto any picture box, or paste a screenshot. <b>✂ Crop / adjust</b> frames, rotates and brightens it. Pick a size and add a caption.</li><li>5. Come back any time: <b>My posts</b> → your draft → Continue writing.</li><li>6. <b>Preview</b> shows how it will look. <b>Publish</b> puts it on the site in about two minutes.</li><li>7. Changed a live post? Press <b>Update the live post</b>.</li><li>8. <b>Templates</b> (top bar) lets you change the outlines, or save any post as your own template.</li></ul><p class=\"hint\">Your own or licensed photos only, never saved from Google Images or Amazon. No exact Amazon prices (“about $90” is fine). Stuck? Message Lewis; nothing here can break the website.</p><div class=\"acts\"><button class=\"btn primary\" data-close>Got it</button></div>");
         break;
       case "preview": showPreview(); break;
       case "publish": askPublish(); break;
@@ -624,6 +727,7 @@
       case "astemplate": document.getElementById("more").classList.add("hidden"); askSaveAsTemplate(); break;
       case "restore": { const { error } = await sb.from("posts").update({ status: "draft" }).eq("id", p.id); if (!error) { toast("Restored. It's a draft again."); state.tab = "drafts"; location.hash = "#/"; } break; }
       case "rmcover": p.cover_url = ""; delete p.extra.image_credit; markDirty(true); renderEditor(); break;
+      case "editcover": openPictureEditor(p.cover_url, { shape: "banner", title: "Crop the main picture", name: "cover" }, (u) => { if (u) { p.cover_url = u; delete p.extra.image_credit; markDirty(true); renderEditor(); } }); break;
       case "libcover": openLibrary((ph) => { p.cover_url = ph.url; if (ph.credit) p.extra.image_credit = ph.credit; else delete p.extra.image_credit; if (ph.alt && !p.cover_alt) p.cover_alt = ph.alt; markDirty(true); renderEditor(); }); break;
     }
   });

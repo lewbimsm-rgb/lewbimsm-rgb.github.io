@@ -194,3 +194,17 @@ h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;line-height:1.15;co
 .lib-search{display:flex;gap:8px;margin-bottom:8px}
 .lib-more{grid-column:1/-1;display:flex;justify-content:center;padding:10px 0}
 @media(max-width:700px){.row3,.h-row{grid-template-columns:1fr}.dialog.lib{padding:14px}.pgrid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}}
+
+/* 2026-10-21 evening: crop / adjust dialog, drag-and-drop targets, "by link" tab */
+.dialog.edit{max-width:1000px;width:100%;padding:22px 22px 18px;max-height:92vh;overflow:auto}
+.edit-wrap{display:grid;grid-template-columns:1fr 220px;gap:18px;align-items:start}
+.frame-wrap{background:var(--soft);border-radius:10px;padding:10px;display:grid;place-items:center;min-height:200px}
+canvas.frame{max-width:100%;height:auto;border-radius:6px;cursor:grab;touch-action:none;box-shadow:0 2px 12px rgba(0,0,0,.18);display:block;background:#fff}
+canvas.frame:active{cursor:grabbing}
+.edit-side{display:flex;flex-direction:column;gap:8px}
+.shape-btns{display:flex;flex-wrap:wrap;gap:6px}
+.edit-side input[type=range]{width:100%;accent-color:var(--accent)}
+.photo-box{transition:border-color .15s,background .15s}
+.photo-box.over{border-color:var(--accent);border-style:solid;background:#e4f5f1}
+.lib-search .input{min-width:0}
+@media(max-width:760px){.edit-wrap{grid-template-columns:1fr}.dialog.edit{padding:14px}}
