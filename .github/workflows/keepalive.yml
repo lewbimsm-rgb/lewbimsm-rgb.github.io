@@ -1,9 +1,10 @@
 # Keeps the writing-desk database (Supabase free plan) awake: free projects pause after 7 days without requests.
-# One tiny read per day. The key below is the public anon key (row-level security protects the data).
+# Four times a day: one read plus one tiny write (desk_heartbeat touches a single private row), because a lone
+# daily read was still flagged as 'insufficient activity' on 2026-10-21. The key below is the public anon key.
 name: desk-keepalive
 on:
   schedule:
-    - cron: "17 15 * * *"
+    - cron: "17 3,9,15,21 * * *"
   workflow_dispatch:
 jobs:
   ping:
@@ -12,5 +13,8 @@ jobs:
       - name: Ping the desk database
         run: |
           code=$(curl -s -o /dev/null -w "%{http_code}" "https://qjoowhfonktziuktmcjb.supabase.co/rest/v1/templates?select=key&limit=1" -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqb293aGZvbmt0eml1a3RtY2piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3NzA4OTksImV4cCI6MjEwNzM0Njg5OX0.7NDXr0lP8ArShg9Gdwq5cTqRPZ6BTdgYhEstoCwocJM")
-          echo "status $code"
+          echo "read status $code"
           test "$code" = "200"
+          beat=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://qjoowhfonktziuktmcjb.supabase.co/rest/v1/rpc/desk_heartbeat" -H "Content-Type: application/json" -d "{}" -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqb293aGZvbmt0eml1a3RtY2piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3NzA4OTksImV4cCI6MjEwNzM0Njg5OX0.7NDXr0lP8ArShg9Gdwq5cTqRPZ6BTdgYhEstoCwocJM")
+          echo "heartbeat status $beat"
+          test "$beat" = "200"
