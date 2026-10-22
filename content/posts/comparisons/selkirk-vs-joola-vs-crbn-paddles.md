@@ -172,10 +172,9 @@ One wrinkle: a new generation can take a few weeks to appear on the list. If you
 
 **Buying a used flagship.** Cores go soft after a year of hard play, and dead spots do not show in photos. A new SLK Halo beats a tired Perseus.
 
-## How we chose
+## A quick honest note
 
-We did not test these paddles ourselves, and we did not weigh them. The picks rest on the brands' spec pages, the weight and core ranges above, and what rec players over 50 report about each line after a season. We checked that every model named here exists under that name today. We will add our own on-court photos and notes as we play with them.
-
+I have not played with all three lines myself. This comparison comes from the brands’ own spec pages and from what the players at my courts say about them after a season. If I get my hands on one, you will read about it here first.
 ## Common questions
 
 ```faq

@@ -144,10 +144,9 @@ Small items ship cheaper together.
 
 Every ball you own. Outdoor balls crack, so carry three and store the rest. A full-size beach towel, a glass bottle and a hard cooler. The second paddle you never use. Lead tape and a knee brace, unless a physical therapist asked for them. And the heavy sunscreen bottle, which leaks onto your paddle face.
 
-## How we chose
+## Where this list comes from
 
-This list comes from what players over 50 reach for at park and rec courts. We cross-checked it against the specs the brands publish, not our own weigh-ins or tear-downs. We are adding our own court photos and first-hand notes as the season goes. Where a product name appears, we confirmed it exists under that name today. Where a feature was unclear, we told you to read the listing.
-
+This is my bag, plus what I watch other players dig out of theirs. I have not weighed or taken apart anything here; I read the same product pages you can. As I take more photos at the courts, they will show up in this post.
 ```faq
 Q: How many pickleballs should I pack?
 A: Two or three. Outdoor balls crack, especially on cold mornings, and a group goes through one or two a session. A whole sleeve just adds weight and a ball rolling around the bottom of the bag.

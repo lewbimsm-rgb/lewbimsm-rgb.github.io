@@ -188,12 +188,11 @@ Buy this kit over three months, not in one trip. Shoes and sun protection go fir
 
 **Skipping sunscreen because the session is short.** Two hours on a reflective court at nine in the morning is a lot of sun, and it adds up over a season.
 
-## How we chose, and how this site makes money
+## A quick honest note
 
-We did not test every product here ourselves. The picks rest on the brands' spec pages, the fit ranges we recommend across the site and what rec players over 50 report after a season. Mom adds her own on-court notes and photos as she uses them.
+I have not bought everything on this page. The picks come from the brands’ spec pages, the fit ranges I use across the site, and what players my age tell me after a season.
 
-One honest sentence about money: when you click a store button and buy something, this site may earn a small commission, and the price you pay does not change.
-
+One sentence about money: when you click a store button and buy something, this site may earn a small commission. The price you pay does not change.
 ## Common questions
 
 ```faq

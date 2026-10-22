@@ -164,10 +164,9 @@ Prices change; the button shows what is current.
 
 **Black at noon.** Black holds heat. Save the black kit for evening play and wear light colors in the sun.
 
-## How we chose
+## A quick honest note
 
-We chose these from current product pages, fabric specs and player reviews, not from a season of wearing each piece. We leaned on what we could confirm: inseam, liner, fiber content, pocket design and UPF rating. We also watched what the men at our courts wear every week and what they complain about. We will add on-court photos and notes over time, and if a brand renames a model, the line still holds.
-
+I do not wear men’s shorts, so this one comes from product pages, fabric specs, reviews, and watching what the men at my courts wear and complain about. If a brand renames a model, the advice still holds.
 ## Common questions
 
 ```faq

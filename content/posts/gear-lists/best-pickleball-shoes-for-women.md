@@ -147,6 +147,6 @@ A: Look at the outsole, not the calendar. When the zigzag tread under the ball o
 For most women over 50, the ASICS Gel-Resolution is the pair to buy: firm, stable and built for outdoor courts. If your knees complain first, choose the New Balance FuelCell 996. If your feet are wide, choose the New Balance 796 in a D. Indoors on a budget, the ASICS Gel-Rocket. Any of them beats a running shoe by the first lunge.
 ```
 
-We did not run a lab test; the picks rest on makers' specs, player reports and what we see on the feet of women at our local courts.
+A quick honest note: I have not worn all of these. The picks come from the makers’ sizing charts and from what the women at my courts swear by. When I have worn one, I say so.
 
 Shoes are the one place in your kit not to save money. For your husband or doubles partner, see our [best pickleball shoes for men](/best-pickleball-shoes-for-men/). New to the game? Start with the [complete beginner's guide](/pickleball-for-beginners-guide/), then [what to pack in your pickleball bag](/what-to-pack-in-your-pickleball-bag/).

@@ -124,10 +124,9 @@ Water is fine for anything under an hour or in mild weather. Over two hours in h
 
 ::product Electrolyte packets | Best for: sessions over two hours in heat, heavy sweaters and anyone who cramps after play. Check the sodium and sugar on the label. | amazon=https://www.amazon.com/s?k=electrolyte+packets+low+sugar&tag=smartselec0a7-20
 
-## How we chose
+## A quick honest note
 
-We did not run a lab test or weigh these bottles. The picks rest on the makers' published sizes, lid types and care guidance, plus what players reach for at our local courts. We will add our own on-court notes and photos as we use them.
-
+I have not put all of these through a hot afternoon. The picks come from the makers’ sizes and lid types and from what I see on the benches at my courts. When I have used one, I say so.
 ## Frequently asked questions
 
 ```faq

@@ -114,10 +114,9 @@ Skin thins with age, heals slower, and carries every summer you spent without su
 
 The [Skin Cancer Foundation](https://www.skincancer.org/skin-cancer-information/skin-cancer-facts/) advises a monthly self-check; add a professional exam once a year, and book sooner for any spot that is new, changing or bleeding, or a sore that does not heal in a few weeks. That appointment matters more than any product here.
 
-## How we chose
+## A quick honest note
 
-We did not run a sweat test. These picks rest on the makers' labels, checked against the AAD's guidance, and on what players at our courts reach for. We will add on-court notes as we use them.
-
+I have not tried every sunscreen on this page. The picks come from the labels, the dermatologists’ advice linked above, and what the women on my courts actually pull out of their bags at 9 a.m. When I have used one myself, I say so.
 ## FAQ
 
 ```faq

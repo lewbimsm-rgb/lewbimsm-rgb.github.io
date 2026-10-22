@@ -95,10 +95,9 @@ For men who play indoors at a rec center or gym. The Gel-Rocket is ASICS's volle
 
 Court shoes die from the bottom up. Once a month, check the tread under the ball of your foot (smooth means no grip), the heel (a lean on a flat table means the foam has collapsed) and the side wall (your foot sliding to the edge on a lunge means it has softened). Outdoor players get roughly 60 to 80 hours per pair, about three months at two hours, three times a week; indoor players get much longer.
 
-## How we chose
+## A quick honest note
 
-We did not run a lab test or weigh these shoes. The picks rest on the makers' published specs and width charts and on what players report about fit. The family will add on-court notes as they wear them.
-
+I have not worn these myself, which is probably obvious. The picks come from the makers’ sizing and width charts and from what the men at my courts say about fit. If someone in the family wears a pair, their notes go here.
 ```faq
 Q: Can I play pickleball in running shoes?
 A: You can, but not for long. Running shoes have a tall, soft, curved sole built for forward motion. Pickleball is mostly side-to-side, and that sole tips when you push sideways. A court shoe has a flatter sole and a firm side wall that holds your foot in place.

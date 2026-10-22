@@ -167,10 +167,9 @@ Prices change; the button shows what is current.
 
 **Running shoes.** The cutest outfit on the court does not fix running shoes rolling your ankle. Read our guide to the [best pickleball shoes for women](/best-pickleball-shoes-for-women/) before you spend on clothes.
 
-## How we chose
+## A quick honest note
 
-We chose these from current product pages, fit charts and player reviews, not from a season of wearing each one. We leaned on specs we could confirm: liners, UPF ratings and fiber content. We also watched what women at our courts wear week after week. We will add our own on-court photos and notes as we wear them. Brands rename models often, so if a name changes, the line still holds.
-
+I have not worn every piece here for a season. I chose from the product pages and fit charts, the details I could check (liners, UPF, fabric), and what the women at my courts wear week after week. Brands rename things constantly; if a name changes, the advice still holds.
 ## Common questions
 
 ```faq

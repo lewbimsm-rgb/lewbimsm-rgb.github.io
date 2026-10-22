@@ -211,10 +211,9 @@ Seat height matters more than weight.
 
 A few pickleball accessories cost money and fix nothing. Lead tape for a first paddle. It adds weight to a paddle that is already heavy enough and makes a sore elbow worse. Bulky hinged knee braces without a diagnosis; they change how you move and hide a problem a therapist should see. Pickleball-branded towels, cooling towels and grip sprays at three times the price of the plain version. And any sunglasses sold without a lens material listed, because you cannot tell what they protect against.
 
-## How we chose
+## Where these picks come from
 
-These picks rest on published specs, fit data and player feedback. We have not tested them hands-on, and we are adding our own notes as the season goes on. We favored pickleball accessories that solve one problem for a player over 50. Most cost under about $30 and come in enough sizes to fit. We kept out anything with its own guide on this site.
-
+I have not tried every item here. I picked things that fix one specific problem for a player my age, cost under about $30, and come in sizes that actually fit. Anything that deserves its own guide got one instead.
 ```faq
 Q: What pickleball accessories should a beginner buy first?
 A: A cushioned overgrip, because it fixes the most common complaint, a slipping or stinging handle, for a few dollars. Protective sunglasses come next if you play doubles. Add a neck-flap hat if you play outdoors in the middle of the day.
