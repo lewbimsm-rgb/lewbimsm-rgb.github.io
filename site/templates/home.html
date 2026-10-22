@@ -19,19 +19,26 @@
     <div><span class="eyebrow">Fresh from the lab</span><h2>The latest from the journal.</h2></div>
     <a class="text-link" href="/blog/">All {{ posts|length }} stories <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
   </div>
-  <a class="feature-post" href="{{ featured.url }}">
-    <div class="feature-post-image"><img src="{{ featured.image }}" alt="{{ featured.image_alt }}" width="{{ featured.image_w }}" height="{{ featured.image_h }}" fetchpriority="high"><span class="feature-badge">Newest</span></div>
-    <div class="feature-post-body">
-      <span class="eyebrow">{{ featured.category }}</span>
-      <h3>{{ featured.title }}</h3>
-      <p>{{ featured.description }}</p>
-      <div class="article-meta"><time datetime="{{ featured.date.isoformat() }}">{{ featured.date_display }}</time><span>{{ featured.minutes }} min read</span></div>
-      <span class="text-link">Read the post <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
+  {% set six = latest[:6] %}
+  {% for start in [0, 3] %}{% if six|length > start %}
+  {% set big = six[start] %}{% set minis = six[start+1:start+3] %}
+  <div class="mag{% if start %} flip{% endif %}">
+    <a class="mag-big" href="{{ big.url }}" data-cat="{{ big.category }}">
+      <div class="mag-big-image"><img src="{{ big.image }}" alt="{{ big.image_alt }}" width="{{ big.image_w }}" height="{{ big.image_h }}"{% if start == 0 %} fetchpriority="high"{% else %} loading="lazy"{% endif %}><span class="mag-chip">{% if start == 0 %}New this week{% else %}{{ big.category }}{% endif %}</span></div>
+      <h3>{{ big.title }}</h3>
+      <p>{{ big.description }}</p>
+      <div class="mag-by">{{ big.author }} · <time datetime="{{ big.date.isoformat() }}">{{ big.date_display }}</time></div>
+    </a>
+    <div class="mag-stack">
+      {% for p in minis %}
+      <a class="mag-mini" href="{{ p.url }}" data-cat="{{ p.category }}">
+        <div class="mag-mini-image"><img src="{{ p.image }}" alt="{{ p.image_alt }}" width="{{ p.image_w }}" height="{{ p.image_h }}" loading="lazy"></div>
+        <div><span class="mag-kicker">{{ p.category }}</span><h3>{{ p.title }}</h3><div class="mag-by">{{ p.author }} · <time datetime="{{ p.date.isoformat() }}">{{ p.date_display }}</time></div></div>
+      </a>
+      {% endfor %}
     </div>
-  </a>
-  <div class="articles-grid">
-    {% for p in latest if p.slug != featured.slug %}{% if loop.index <= 6 %}{% include "_card.html" %}{% endif %}{% endfor %}
   </div>
+  {% endif %}{% endfor %}
   <div class="latest-more"><a class="button" href="/blog/">See every post <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div>
 </section>
 {% endif %}
