@@ -5,7 +5,7 @@ description: How SmartSelect Labs makes money, and why it never changes what we 
 kicker: "The small print"
 ---
 
-**Last updated: October 5, 2026**
+**Last updated: October 21, 2026**
 
 SmartSelect Labs is reader-supported. Some of the links on this site are affiliate links. If you click one and buy something, we may earn a small commission from the retailer. It never costs you anything extra, and it helps us keep writing guides and reviews.
 
@@ -15,7 +15,7 @@ As an Amazon Associate, SmartSelect Labs earns from qualifying purchases. Amazon
 
 ## Other programs
 
-We also take part in affiliate programs run by other retailers and brands, including Selkirk Sport and Target. The same rule applies: you pay the same price, and we may receive a commission.
+We may also take part in affiliate programs run by other retailers and brands, such as Selkirk Sport and Target, as those applications are approved. The same rule applies: you pay the same price, and we may receive a commission.
 
 ## How this affects what we write
 

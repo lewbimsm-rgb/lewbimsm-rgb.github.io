@@ -5,7 +5,7 @@ description: "A few ground rules for using smartselectlabs.com."
 kicker: "The small print"
 ---
 
-**Updated October 11, 2026**
+**Updated October 21, 2026**
 
 ## Educational content
 
@@ -22,6 +22,10 @@ You may read and link to our publicly available articles for personal, non-comme
 ## Responsible access
 
 Do not misuse contact forms, attempt unauthorized editor access, interfere with the site, or submit unlawful or harmful material. Access to publishing tools is limited to approved editors. We may remove content or restrict abusive access to protect the service.
+
+## Corrections
+
+If you spot a mistake, email [hello@smartselectlabs.com](mailto:hello@smartselectlabs.com). We correct errors in the article itself and note the update date at the top of the post.
 
 ## Accuracy and availability
 

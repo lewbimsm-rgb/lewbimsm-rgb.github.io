@@ -5,16 +5,20 @@ description: What information smartselectlabs.com collects, why, and the choices
 kicker: "The small print"
 ---
 
-**Effective date: October 5, 2026**
+**Effective date: October 5, 2026. Updated October 21, 2026.**
 
 SmartSelect Labs ("we", "us") runs the website smartselectlabs.com. This page explains, in plain English, what information the site collects, why, and the choices you have. If anything here is unclear, email us at [hello@smartselectlabs.com](mailto:hello@smartselectlabs.com).
 
 ## What we collect
 
 - **Contact messages.** If you write to us, we receive the name, email address and message you send. We use them only to reply to you.
-- **Usage statistics.** Like most websites we may use analytics tools (such as Google Analytics) to see which pages are read, roughly where visitors come from, and what devices they use. This information is aggregated and does not identify you by name.
+- **Usage statistics.** We use Google Analytics 4 to see which pages are read, roughly where visitors come from (country and region, not street address) and what devices they use. Google Analytics sets cookies that start with `_ga`. The reports we see are aggregated and do not identify you by name. You can block it with Google's [opt-out browser add-on](https://tools.google.com/dlpage/gaoptout).
+- **Fonts.** The site's typefaces are loaded from Google Fonts, so your browser requests the font files from Google's servers, which see your IP address. Google describes this at [developers.google.com/fonts/faq/privacy](https://developers.google.com/fonts/faq/privacy).
+- **Editor accounts.** Only the people who write for the site have accounts (name, email, a password), kept with our database provider, Supabase, to let them sign in. Readers never create accounts.
 
-We do not have user accounts, and we do not sell personal information.
+We do not sell personal information, and we do not share it for cross-context behavioral advertising ourselves. The advertising and affiliate partners below may collect information about your visits to this and other websites over time, as described in their own policies.
+
+**Do Not Track and Global Privacy Control.** Our own site does not change what it collects in response to these browser signals, because it does not build profiles of you. Google and the retailers linked from this site handle those signals under their own policies.
 
 ## Cookies
 
@@ -38,7 +42,9 @@ Contact messages are kept as long as needed to deal with your question. Analytic
 
 ## Your choices and rights
 
-You can ask us what personal information we hold about you, ask us to correct it, or ask us to delete it. Email [hello@smartselectlabs.com](mailto:hello@smartselectlabs.com) and we will respond within 30 days.
+You can ask us what personal information we hold about you, ask us to correct it, or ask us to delete it. Email [hello@smartselectlabs.com](mailto:hello@smartselectlabs.com) and we will respond within 30 days. We will not treat you differently for asking.
+
+If you live in California, Nevada or another state with a privacy law, those laws may give you the same rights in more formal terms (access, correction, deletion, and the right to opt out of the sale or sharing of personal information). We do not sell or share personal information, so there is nothing to opt out of on our side; for advertising cookies, use the Google links above. Visitors in the European Union or the United Kingdom will be asked for consent before advertising cookies are set, once ads are running.
 
 ## Children
 
