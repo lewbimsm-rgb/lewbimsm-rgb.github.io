@@ -4,7 +4,9 @@
 {% block ogtype %}article{% endblock %}
 {% block ogimage %}{{ post.image }}{% endblock %}
 {% block head %}
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":{{ post.title|tojson }},"description":{{ post.description|tojson }},"image":"{{ site.url }}{{ post.image }}","datePublished":"{{ post.date.isoformat() }}","dateModified":"{{ post.updated or post.date.isoformat() }}","author":{"@type":"Organization","name":{{ post.author|tojson }}},"publisher":{"@type":"Organization","name":"{{ site.site_name }}","logo":{"@type":"ImageObject","url":"{{ site.url }}{{ site.logo }}"}},"mainEntityOfPage":"{{ site.url }}{{ post.url }}","wordCount":{{ post.words }}}</script>
+<meta property="article:published_time" content="{{ post.date.isoformat() }}">
+{% if post.updated %}<meta property="article:modified_time" content="{{ post.updated }}">{% endif %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":{{ post.title|tojson }},"description":{{ post.description|tojson }},"image":"{{ site.url }}{{ post.image }}","datePublished":"{{ post.date.isoformat() }}","dateModified":"{{ post.updated or post.date.isoformat() }}","author":{"@type":"Person","name":{{ post.author|tojson }},"url":"{{ site.url }}/about/"},"publisher":{"@type":"Organization","name":"{{ site.site_name }}","logo":{"@type":"ImageObject","url":"{{ site.url }}{{ site.logo }}"}},"mainEntityOfPage":"{{ site.url }}{{ post.url }}","wordCount":{{ post.words }}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":{{ post.category|tojson }},"item":"{{ site.url }}{{ post.category_url }}"},{"@type":"ListItem","position":3,"name":{{ post.title|tojson }},"item":"{{ site.url }}{{ post.url }}"}]}</script>
 {% endblock %}
 {% block content %}
@@ -13,9 +15,16 @@
     <a class="eyebrow" href="{{ post.category_url }}">{{ post.category }} / The journal</a>
     <h1>{{ post.title }}</h1>
     <p>{{ post.description }}</p>
-    <div class="article-byline">By {{ post.author }} &middot; Published {{ post.date_display }}{% if post.updated %} &middot; Updated {{ post.updated }}{% endif %} &middot; {{ post.minutes }} min read</div>
+    <div class="article-byline">
+      <span class="byline-author">By <a href="/about/">{{ post.author }}</a></span>
+      <span class="byline-sep" aria-hidden="true">&middot;</span>
+      <time datetime="{{ post.date.isoformat() }}">{{ post.date_display }}</time>
+      {% if post.updated_display and post.updated_display != post.date_display %}<span class="byline-sep" aria-hidden="true">&middot;</span><span class="byline-updated">Updated {{ post.updated_display }}</span>{% endif %}
+      <span class="byline-sep" aria-hidden="true">&middot;</span>
+      <span>{{ post.minutes }} min read</span>
+    </div>
   </header>
-  {% if post.image %}<img class="article-cover" src="{{ post.image }}" alt="{{ post.image_alt }}" width="{{ post.image_w }}" height="{{ post.image_h }}" fetchpriority="high">{% endif %}
+  {% if post.image and post.meta.image_size != 'none' %}<img class="article-cover{% if post.meta.image_size %} cover-{{ post.meta.image_size }}{% endif %}" src="{{ post.image }}" alt="{{ post.image_alt }}" width="{{ post.image_w }}" height="{{ post.image_h }}" fetchpriority="high">{% if post.meta.image_credit %}<p class="caption cover-caption">{{ post.image_credit_html|safe }}</p>{% endif %}{% endif %}
   <div class="article-body">
     {% if post.affiliate %}<p class="disclosure">{{ site.site_name }} is reader-supported. If you buy through a link on this page we may earn a small commission, at no extra cost to you. <a href="/affiliate-disclosure/">How we make money</a>.</p>{% endif %}
     {% if post.toc %}
@@ -24,8 +33,8 @@
     {{ post.body|safe }}
     <aside class="notice"><strong>Our approach:</strong> plain-English guidance, not medical advice. When we have not used a product ourselves, we say so. Some links are affiliate links; <a href="/affiliate-disclosure/">here is how that works</a>.</aside>
     <div class="author-box">
-      <img src="/assets/icon-180.png" alt="" width="52" height="52">
-      <div><strong>{{ post.author }}</strong><p>{{ site.author_blurb }}</p></div>
+      <img src="{{ site.author_photo or '/assets/icon-180.png' }}" alt="" width="52" height="52">
+      <div><strong>{{ post.author }}</strong><p>{{ site.author_blurb }}</p><p class="author-dates">First published {{ post.date_display }}{% if post.updated_display and post.updated_display != post.date_display %}, last updated {{ post.updated_display }}{% endif %}.</p></div>
     </div>
     <div class="admin-actions">
       <a class="button primary" href="{{ site.cta_href }}">{{ site.cta_label }}</a>

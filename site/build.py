@@ -177,7 +177,11 @@ def load_posts():
             category=cat, category_slug=catcfg["slug"], category_url="/category/%s/" % catcfg["slug"],
             image=img, image_alt=str(meta.get("image_alt") or meta["title"]), image_w=w, image_h=h,
             body=html_body, toc=toc, minutes=minutes, words=words, affiliate=truthy(meta.get("affiliate", False)),
-            author=str(meta.get("author") or CFG["author"]), updated=str(meta.get("updated") or "")))
+            author=str(meta.get("author") or CFG["author"]), updated=(as_date(meta["updated"]).isoformat() if meta.get("updated") else ""),
+            updated_display=(display_date(as_date(meta["updated"])) if meta.get("updated") else "")))
+    for p in posts:
+        credit = str(p["meta"].get("image_credit") or "").strip()
+        p["image_credit_html"] = re.sub(r"^<p>|</p>$", "", markdown.markdown(credit).strip()) if credit else ""
     posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
     return posts
 
@@ -228,8 +232,8 @@ def build():
         cats.append(dict(name=name, slug=c["slug"], url="/category/%s/" % c["slug"], blurb=c["blurb"], kicker=c.get("kicker", ""), label=c.get("label", ""), posts=[p for p in posts if p["category"] == name]))
     ctx = dict(posts=posts, pages=pages, cats=cats)
 
-    featured = next((p for p in posts if p["slug"] == CFG.get("featured_slug")), posts[0] if posts else None)
-    write("index.html", env.get_template("home.html").render(featured=featured, latest=posts[:6], page_url="/", **ctx))
+    featured = posts[0] if posts else None   # the newest post leads the home page (Lewis 10/21: the blog is the main thing)
+    write("index.html", env.get_template("home.html").render(featured=featured, latest=posts[:7], page_url="/", **ctx))
     for p in posts:
         related = [q for q in posts if q["slug"] != p["slug"] and q["category"] == p["category"]][:3] or [q for q in posts if q["slug"] != p["slug"]][:3]
         write(p["url"] + "index.html", env.get_template("post.html").render(post=p, related=related, page_url=p["url"], **ctx))
@@ -261,6 +265,21 @@ def build():
                     % (html.escape(p["title"]), base, p["url"], base, p["url"], p["date"].strftime("%a, %d %b %Y 08:00:00 GMT"), html.escape(p["description"])) for p in posts)
     write("feed.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>%s</title><link>%s/</link><description>%s</description>\n%s</channel></rss>\n'
           % (html.escape(CFG["site_name"]), base, html.escape(CFG["description"]), items))
+    # photo library for the writing desk: every picture under content/images/photos (+ credits from credits.json)
+    photos_dir = os.path.join(CONTENT, "images", "photos")
+    credits = {}
+    cpath = os.path.join(photos_dir, "credits.json")
+    if os.path.exists(cpath):
+        credits = json.load(open(cpath, encoding="utf-8"))
+    library = []
+    for root, dirs, names in os.walk(photos_dir):
+        for fn in sorted(names):
+            if fn.lower().endswith((".jpg", ".jpeg", ".png", ".webp")) and not fn.startswith(("logo", "LOGO", "cropped")):
+                rel = os.path.relpath(os.path.join(root, fn), CONTENT).replace("\\", "/")
+                info = credits.get(rel.split("images/photos/", 1)[-1], {})
+                w, h = image_size(os.path.join(root, fn))
+                library.append({"url": "/" + rel, "title": info.get("title") or fn.rsplit(".", 1)[0].replace("-", " ").replace("_", " "), "credit": info.get("credit", ""), "alt": info.get("alt", ""), "width": w, "height": h})
+    write("photos.json", json.dumps(library, ensure_ascii=False))
     host = CFG["url"].split("//", 1)[1].strip("/")
     write("CNAME", host + "\n")
     write(".nojekyll", "")

@@ -15,6 +15,10 @@ We started it because most pickleball buying advice is written for tournament pl
 - **Gear reviews.** Paddles, court shoes, balls and bags compared on what matters: comfort, control, durability and price. We say who each product is for, and who should skip it.
 - **Health and recovery.** Staying on the court: warm-ups that take two minutes, protecting knees and elbows, and playing well into your sixties and seventies.
 
+## Who writes this
+
+SmartSelect Labs is written by **Judy**, a recreational player who picked up pickleball at the park and never put the paddle down, with help from her son, Lewis, who looks after the website. Judy writes about what she actually uses and plays with: the paddle that was kind to her elbow, the shoes that stopped her ankles rolling, the sunscreen that survives a two-hour morning session. When a recommendation comes from research rather than her own hands, the post says so.
+
 ## How we work
 
 When we recommend something, we explain who it is for and why. When we have used a product ourselves, we say so. When a recommendation is based on research and other players' experience rather than hands-on use, we say that too.

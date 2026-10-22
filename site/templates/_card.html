@@ -1,6 +1,6 @@
 <a class="article-card" href="{{ p.url }}">
   <div class="article-image"><img src="{{ p.image }}" alt="{{ p.image_alt }}" width="{{ p.image_w }}" height="{{ p.image_h }}" loading="lazy"><span>{{ p.category }}</span><div class="article-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div></div>
-  <div class="article-meta">The SmartSelect journal <span>{{ p.minutes }} min read</span></div>
+  <div class="article-meta"><time datetime="{{ p.date.isoformat() }}">{{ p.date_display }}</time><span>{{ p.minutes }} min read</span></div>
   <h3>{{ p.title }}</h3>
   <p>{{ p.description }}</p>
 </a>
