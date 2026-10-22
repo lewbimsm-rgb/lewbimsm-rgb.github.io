@@ -7,6 +7,7 @@
   <h1>{{ page.title }}</h1>
   {% if page.description %}<p>{{ page.description }}</p>{% endif %}
 </div>
+<div class="page-layout has-side">
 <div class="reading-layout">
   {{ page.body|safe }}
   {% if page.slug == "contact" %}
@@ -23,5 +24,12 @@
     {% endif %}
   </div>
   {% endif %}
+</div>
+  <aside class="article-side">
+    <div class="side-card who"><img src="{{ site.author_photo or '/assets/avatar-lotus.png' }}" alt="" width="48" height="48"><div><strong>{{ site.author }}</strong><p>Recreational player, writing the guides I wish I'd had. <a href="/about/">About me</a></p></div></div>
+    {% if false %}<nav class="side-card toc" aria-label="In this article"><span class="side-kicker">In this article</span>{% for t in post.toc %}<a href="#{{ t.id }}">{{ "%02d"|format(loop.index) }} &middot; {{ t.name }}</a>{% endfor %}</nav>{% endif %}
+    <div class="side-card lime"><span class="side-kicker">New here?</span><p>Start with the <a href="/pickleball-for-beginners-guide/">beginner's guide</a>, then the <a href="/pickleball-rules-for-beginners/">rules in plain words</a> and <a href="/what-to-pack-in-your-pickleball-bag/">what to pack</a>.</p></div>
+    {% set side_posts = (related if related else posts[:2]) %}{% if side_posts %}<div class="side-card more"><span class="side-kicker">More like this</span>{% for p in side_posts[:2] %}<a class="side-mini" href="{{ p.url }}"><img src="{{ p.image }}" alt="" loading="lazy"><span>{{ p.title }}</span></a>{% endfor %}</div>{% endif %}
+  </aside>
 </div>
 {% endblock %}

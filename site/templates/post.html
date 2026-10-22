@@ -10,7 +10,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":{{ post.category|tojson }},"item":"{{ site.url }}{{ post.category_url }}"},{"@type":"ListItem","position":3,"name":{{ post.title|tojson }},"item":"{{ site.url }}{{ post.url }}"}]}</script>
 {% endblock %}
 {% block content %}
-<article class="post">
+<article class="post has-side">
   <header class="article-header">
     <a class="eyebrow" href="{{ post.category_url }}">{{ post.category }} / The journal</a>
     <h1>{{ post.title }}</h1>
@@ -40,6 +40,12 @@
       <a class="text-link" href="/category/gear-reviews/">Explore gear guides <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
     </div>
   </div>
+  <aside class="article-side">
+    <div class="side-card who"><img src="{{ site.author_photo or '/assets/avatar-lotus.png' }}" alt="" width="48" height="48"><div><strong>{{ post.author if post else site.author }}</strong><p>Recreational player, writing the guides I wish I'd had. <a href="/about/">About me</a></p></div></div>
+    {% if post and post.toc %}<nav class="side-card toc" aria-label="In this article"><span class="side-kicker">In this article</span>{% for t in post.toc %}<a href="#{{ t.id }}">{{ "%02d"|format(loop.index) }} &middot; {{ t.name }}</a>{% endfor %}</nav>{% endif %}
+    <div class="side-card lime"><span class="side-kicker">New here?</span><p>Start with the <a href="/pickleball-for-beginners-guide/">beginner's guide</a>, then the <a href="/pickleball-rules-for-beginners/">rules in plain words</a> and <a href="/what-to-pack-in-your-pickleball-bag/">what to pack</a>.</p></div>
+    {% set side_posts = (related if related else posts[:2]) %}{% if side_posts %}<div class="side-card more"><span class="side-kicker">More like this</span>{% for p in side_posts[:2] %}<a class="side-mini" href="{{ p.url }}"><img src="{{ p.image }}" alt="" loading="lazy"><span>{{ p.title }}</span></a>{% endfor %}</div>{% endif %}
+  </aside>
 </article>
 {% if related %}
 <section class="page-content">
