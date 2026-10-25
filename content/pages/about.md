@@ -5,8 +5,6 @@ description: A small, family-run pickleball blog for people who play at the park
 kicker: "About SmartSelect Labs"
 ---
 
-SmartSelect Labs is a small, family-run blog about getting into pickleball and choosing gear without the hype.
-
 We started it because most pickleball buying advice is written for tournament players, or is really just an advertisement. We write for the rest of us: people who play at the park, the rec center or the community court, who want to pick a paddle that suits them, protect their knees, and have more fun.
 
 ## What you'll find here

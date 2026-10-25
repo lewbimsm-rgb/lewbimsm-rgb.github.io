@@ -369,3 +369,8 @@ blockquote p{margin:0}
 @media(max-width:1000px){.post,.page-layout{grid-template-columns:1fr}.article-body,.article-side,.page-layout>.reading-layout{grid-column:1}.article-side{position:static;padding-top:0}.has-side .article-body .article-toc{display:block}.article-side .side-card.toc{display:none}.post>.article-cover{height:300px}}
 @media(max-width:600px){.post>.article-cover{height:230px}.article-header{padding:30px 0 16px}.article-header h1{font-size:34px;letter-spacing:-1px}}
 .article-body,.article-side,.page-layout>.reading-layout{min-width:0}
+
+/* ---- 2026-10-24: journal and category cards match the home page: section colours on the chip, no brown ---- */
+.article-image>span{background:var(--lime);color:var(--ink);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:6px 11px}
+.article-card[data-cat="Gear Reviews"] .article-image>span{background:var(--blue-soft)}
+.article-card[data-cat="Health & Recovery"] .article-image>span{background:var(--coral)}
