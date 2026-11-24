@@ -113,7 +113,8 @@
     const emptyMsg = { drafts: "No drafts yet. Press “Write a new post” to start one.", live: "Nothing published yet.", old: "No old posts left to rewrite.", trash: "The trash is empty." }[state.tab];
     $app.innerHTML = bar() + '<main class="wrap">' +
       '<div class="home-head"><div><h1>My posts</h1><p>Everything you have written, saved automatically. Pick up any draft where you left off.</p></div>' +
-      '<button class="btn lime big" data-act="new">＋ Write a new post</button></div>' +
+      '<div class="new-wrap"><button class="btn lime big" data-act="' + (state.templates.some((t) => t.key === "simple") ? "newsimple" : "new") + '">＋ Write a new post</button>' +
+      '<a class="link-btn" href="#/new">or start from an outline</a></div></div>' +
       '<div class="tabs">' + TABS.map(([k, label]) => '<button class="tab' + (state.tab === k ? " on" : "") + '" data-tab="' + k + '">' + esc(label) + '<span class="n">' + counts[k] + "</span></button>").join("") + "</div>" +
       '<div class="search"><input class="input" id="q" type="search" placeholder="Find a post by its title" value="' + esc(state.q) + '"></div>' +
       (list.length ? '<div class="grid">' + cards + "</div>" : '<div class="empty">' + esc(emptyMsg) + "</div>") + "</main>";
@@ -128,7 +129,7 @@
   }
   function viewNew() {
     $app.innerHTML = bar() + '<main class="wrap"><a class="link-btn" href="#/">← My posts</a>' +
-      '<div class="home-head" style="margin-top:10px"><div><h1>What kind of post?</h1><p>Pick a template. Each one opens with an outline and grey hints in every box, so you only fill in your words.</p></div><a class="btn" href="#/templates">Edit the templates</a></div>' +
+      '<div class="home-head" style="margin-top:10px"><div><h1>What kind of post?</h1><p>“Simple post” is just your words and your pictures. The others open with an outline and grey hints, for when you want a table or store buttons.</p></div><a class="btn" href="#/templates">Edit the templates</a></div>' +
       '<div class="tgrid">' + state.templates.map((t) => tplCard(t)).join("") + "</div></main>";
   }
   async function createFromTemplate(key) {
@@ -146,7 +147,7 @@
     ["verdict", "Verdict", "Your final word (with stars)"], ["quick", "Short answer", "The quick takeaway box"], ["tip", "Tip box", "A highlighted tip"],
     ["specs", "Measurements", "What you measured yourself"],
   ];
-  const SIZES = [["full", "Full width"], ["medium", "Medium (centered)"], ["small", "Small (centered)"], ["left", "Small, text wraps on the right"], ["right", "Small, text wraps on the left"]];
+  const SIZES = [["full", "Large (fills the column)"], ["medium", "Medium (centered)"], ["small", "Small (centered)"], ["left", "On the left, words beside it"], ["right", "On the right, words beside it"]];
   function newBlock(type) {
     return {
       text: { type, heading: "", level: 2, text: "", hint: "" }, quick: { type, text: "", hint: "" },
@@ -167,8 +168,10 @@
     let body = "";
     switch (b.type) {
       case "text":
-        body = '<div class="h-row"><input class="h-input" ' + B + ' data-k="heading" value="' + esc(b.heading) + '" placeholder="Section heading (optional)">' +
-          sel(B + ' data-k="level"', [["2", "Big heading"], ["3", "Smaller heading"]], b.level || 2) + "</div>" + hint +
+        body = (isSimple()
+          ? (b.heading || b.withHeading ? '<div class="h-row"><input class="h-input" ' + B + ' data-k="heading" value="' + esc(b.heading) + '" placeholder="Type the heading here"></div>' : "")
+          : '<div class="h-row"><input class="h-input" ' + B + ' data-k="heading" value="' + esc(b.heading) + '" placeholder="Section heading (optional)">' +
+            sel(B + ' data-k="level"', [["2", "Big heading"], ["3", "Smaller heading"]], b.level || 2) + "</div>") + hint +
           '<div class="mini-tools"><button type="button" data-fmt="bold" ' + B + "><b>B</b> Bold</button><button type=\"button\" data-fmt=\"link\" " + B + '>🔗 Link</button><button type="button" data-fmt="list" ' + B + ">• List</button></div>" +
           area(B + ' data-k="text"', b.text, "Write here. Leave a blank line between paragraphs.");
         break;
@@ -220,17 +223,21 @@
         body = hint + '<div class="photo"><div class="photo-box' + (b.size && b.size !== "full" ? " is-" + esc(b.size) : "") + '" data-drop="' + i + '" title="You can also drop a photo file here">' + (b.url ? '<img src="' + esc(imgSrc(b.url)) + '" alt="">' : "No picture yet") + "</div>" +
           '<div class="photo-side"><div class="photo-btns"><button type="button" class="btn small primary" data-lib-block="' + i + '">Choose a photo</button><label class="btn small">' + (b.url ? "Upload a different one" : "Upload from this device") + '<input type="file" accept="image/*" class="hidden" data-upload-block="' + i + '"></label>' +
           (b.url ? '<button type="button" class="btn small" data-edit-img="' + i + '">✂ Crop / adjust</button><button type="button" class="btn small ghost" data-rm-img="' + i + '">Remove</button>' : "") + "</div>" +
-          '<label class="lbl">Size on the page</label>' + sel(B + ' data-k="size"', SIZES, b.size || "full") +
+          '<label class="lbl">Size on the page</label>' + sel(B + ' data-k="size"', SIZES, b.size || "full") + (isSimple() ? "" : '<p class="hint size-hint">The box on the left shows the whole photo and about how big it will be. Tall phone photos are kept to a sensible height for you.</p>') +
           '<label class="lbl">Caption (optional)</label>' + inp(B + ' data-k="caption"', b.caption, "A line under the picture") +
-          '<label class="lbl">What is in the picture?</label>' + inp(B + ' data-k="alt"', b.alt, "A few words, for people who cannot see it") + "</div></div>";
+          (isSimple() ? "" : '<label class="lbl">What is in the picture?</label>' + inp(B + ' data-k="alt"', b.alt, "A few words, for people who cannot see it")) + "</div></div>";
         break;
       default:
         body = '<p class="hint">A special box from an earlier post. You can leave it as it is.</p>' + area(B + ' data-k="' + (b.type === "product" ? "line" : "text") + '"', b.type === "product" ? b.line : b.text, "");
     }
-    return '<section class="blk k-' + esc(b.type) + '"><div class="blk-head"><span class="blk-name">' + esc(BLOCK_NAMES[b.type] || "Box") + "</span>" +
+    return '<section class="blk k-' + esc(b.type) + '"><div class="blk-head"><span class="blk-name">' + esc((isSimple() && { text: "Your words", image: "A picture" }[b.type]) || BLOCK_NAMES[b.type] || "Box") + "</span>" +
       '<button class="icon-btn" data-up="' + i + '" title="Move up">↑</button><button class="icon-btn" data-down="' + i + '" title="Move down">↓</button><button class="icon-btn" data-del="' + i + '" title="Remove this box">✕</button></div>' + body + "</section>";
   }
-  const addMenuHtml = () => '<div class="panel"><h3>Add a box</h3><div class="add-menu">' + ADD_MENU.map(([k, l, d]) => '<button data-addblock="' + k + '">' + esc(l) + "<small>" + esc(d) + "</small></button>").join("") + "</div></div>";
+  const addMenuFull = () => '<div class="add-menu">' + ADD_MENU.map(([k, l, d]) => '<button data-addblock="' + k + '">' + esc(l) + "<small>" + esc(d) + "</small></button>").join("") + "</div>";
+  const addMenuHtml = () => isSimple()
+    ? '<div class="simple-add"><button class="btn big" data-addblock="text">＋ Add more words</button><button class="btn big" data-addblock="image">＋ Add a picture</button></div><p class="hint" style="margin:0">Want a heading between parts? <button type="button" class="link-btn" data-addblock="heading" style="padding:0">Add a heading</button></p>' +
+      '<details class="more-opts"><summary>Other kinds of boxes (tables, store buttons, questions)</summary>' + addMenuFull() + "</details>"
+    : '<div class="panel"><h3>Add a box</h3>' + addMenuFull() + "</div>";
 
   function wordCount(p) {
     const parts = [p.title, p.summary];
@@ -239,6 +246,8 @@
   }
   // the object whose blocks the open screen edits (a post, or a template)
   const doc = () => state.tpl || state.post;
+  // a simple post = words and pictures only; the editor hides everything else behind "More options"
+  const isSimple = () => !state.tpl && !!state.post && state.post.template === "simple";
 
   // ------------------------------------------------------------ editor: view
   async function viewEditor(id) {
@@ -258,6 +267,7 @@
     const p = state.post, t = tplOf(p.template);
     const cats = ["Beginner Guides", "Gear Reviews", "Health & Recovery"];
     const coverSize = (p.extra && p.extra.image_size) || "full";
+    const simple = isSimple();
     $app.innerHTML = bar() +
       '<div class="ed-bar"><div class="ed-bar-in"><a class="link-btn" href="#/">← My posts</a><span id="pill">' + statusPill(p) + '</span><span class="saved" id="saved"></span><button class="btn small" data-act="savenow" id="savenow">Save now</button><div style="flex:1"></div>' +
       '<button class="btn" data-act="preview">Preview</button><span id="pubwrap">' + publishLabel(p) + "</span>" +
@@ -266,20 +276,21 @@
       '<button data-act="astemplate">Save as a template…</button>' +
       (p.status === "trash" ? '<button data-act="restore">Restore from the trash</button>' : '<button data-act="trash">Move to the trash</button>') + "</div></div></div></div>" +
       '<main class="ed"><p class="hint" style="margin:0 0 6px"><span class="chip">' + esc(t.emoji + " " + t.label) + '</span> &nbsp;<span class="words" id="words"></span></p>' +
-      '<input class="title-input" data-f="title" value="' + esc(p.title) + '" placeholder="Your headline, e.g. Best Pickleball Shoes for Women">' +
-      '<section class="panel"><h3>Main picture</h3><p class="hint">Shows at the top of the post and on the home page. Your own photo is best, wider than tall.</p><div class="photo"><div class="photo-box" id="cover" data-drop="cover" title="You can also drop a photo file here">' +
+      '<input class="title-input" data-f="title" value="' + esc(p.title) + '" placeholder="' + (simple ? "Give it a title" : "Your headline, e.g. Best Pickleball Shoes for Women") + '">' +
+      '<section class="panel"><h3>Main picture</h3><p class="hint">' + (simple ? "The photo people see first. Any photo of yours works. If you skip it, the site uses a court photo." : "Shows at the top of the post and on the home page. Your own photo is best, wider than tall.") + "</p>" + '<div class="photo"><div class="photo-box" id="cover" data-drop="cover" title="You can also drop a photo file here">' +
       (p.cover_url ? '<img src="' + esc(imgSrc(p.cover_url)) + '" alt="">' : "No picture yet.<br>If you skip it, the site uses a court photo.") + "</div>" +
       '<div class="photo-side"><div class="photo-btns"><button type="button" class="btn small primary" data-act="libcover">Choose a photo</button><label class="btn small">' + (p.cover_url ? "Upload a different one" : "Upload from this device") + '<input type="file" accept="image/*" class="hidden" id="coverfile"></label>' +
       (p.cover_url ? '<button type="button" class="btn small" data-act="editcover">✂ Crop / adjust</button><button class="btn small ghost" data-act="rmcover">Remove</button>' : "") + "</div>" +
-      '<label class="lbl">Size at the top of the post</label>' + sel('data-x="image_size"', [["full", "Big banner (default)"], ["smaller", "Smaller banner"], ["none", "Do not show it on the post (cards only)"]], coverSize) +
-      '<label class="lbl">What is in the picture?</label>' + inp('data-f="cover_alt"', p.cover_alt, "Describe the picture in a few words") +
+      (simple ? "" : '<label class="lbl">Size at the top of the post</label>' + sel('data-x="image_size"', [["full", "Big banner (default)"], ["smaller", "Smaller banner"], ["none", "Do not show it on the post (cards only)"]], coverSize) +
+      '<label class="lbl">What is in the picture?</label>' + inp('data-f="cover_alt"', p.cover_alt, "Describe the picture in a few words")) +
       (p.extra && p.extra.image_credit ? '<p class="hint">Credit line (shown under the picture): ' + esc(p.extra.image_credit) + "</p>" : "") + "</div></div></section>" +
-      '<section class="panel"><h3>Short summary <span class="hint">(optional)</span></h3><p class="hint">One or two sentences. Shows under the title and in Google. If you skip it, the site uses your first paragraph.</p>' +
+      (simple ? '<details class="panel more-opts"><summary>More options (date, section of the site, summary)</summary><p class="hint" style="margin-top:10px">You can skip all of these. The date is today unless you change it; pick a later date and the post waits until that day.</p>' : "") +
+      '<section class="' + (simple ? "" : "panel") + '"><h3>Short summary <span class="hint">(optional)</span></h3><p class="hint">One or two sentences. Shows under the title and in Google. If you skip it, the site uses your first paragraph.</p>' +
       area('data-f="summary"', p.summary, "e.g. Court shoes that protect your ankles and knees, from Nike, ASICS and New Balance.") +
       '<div class="row3" style="margin-top:12px"><div><span class="lbl">Section of the site</span><select class="select" data-f="category">' + cats.map((c) => '<option' + (p.category === c ? " selected" : "") + ">" + c + "</option>").join("") + "</select></div>" +
       '<div><span class="lbl">Post date</span><input class="input" type="date" data-f="post_date" value="' + esc((p.post_date || "").slice(0, 10)) + '"></div>' +
-      '<div style="display:flex;align-items:flex-end"><label class="check"><input type="checkbox" data-f="affiliate"' + (p.affiliate ? " checked" : "") + "> This post has shopping links</label></div></div></section>" +
-      '<div class="blocks-title"><h2>Your post</h2><span class="hint">Fill in the boxes. Empty boxes are left out when you publish.</span></div>' +
+      '<div style="display:flex;align-items:flex-end"><label class="check"><input type="checkbox" data-f="affiliate"' + (p.affiliate ? " checked" : "") + "> This post has shopping links</label></div></div></section>" + (simple ? "</details>" : "") +
+      '<div class="blocks-title"><h2>Your post</h2><span class="hint">' + (simple ? "Write a little, add a photo, write a little more. Nothing here is required: any box you leave empty is simply skipped." : "Fill in the boxes. Empty boxes are left out when you publish.") + "</span></div>" +
       '<div id="blocks">' + (p.blocks || []).map((b, i) => blockForm(b, i, false)).join("") + "</div>" + addMenuHtml() +
       '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px"><button class="btn" data-act="preview">Preview</button>' + publishLabel(p) + "</div></main>";
     document.querySelectorAll(".textarea").forEach(autosize);
@@ -536,7 +547,7 @@
       case "faq": { const it = (b.items || []).filter((i) => S(i.q) && S(i.a)); return it.length ? '<section class="ss-faq"><h2>Frequently asked questions</h2>' + it.map((i) => '<details class="ss-faq-item" open><summary>' + esc(i.q) + "</summary><p>" + esc(i.a) + "</p></details>").join("") + "</section>" : ""; }
       case "verdict": { if (!S(b.text)) return ""; const r = parseFloat(b.rating); const stars = isNaN(r) ? "" : '<span class="ss-stars">' + "★".repeat(Math.floor(r)) + (r % 1 >= 0.5 ? "½" : "") + "☆".repeat(5 - Math.floor(r) - (r % 1 >= 0.5 ? 1 : 0)) + " <b>" + r + "/5</b></span>"; return '<aside class="ss-verdict"><div class="ss-verdict-head"><span class="ss-kicker">' + esc(b.heading || "Our verdict") + "</span>" + stars + "</div>" + md(b.text) + "</aside>"; }
       case "tip": return S(b.text) ? '<blockquote class="tip"><p><strong>' + esc(b.label || "SmartSelect Tip") + ":</strong> " + esc(b.text) + "</p></blockquote>" : "";
-      case "image": return S(b.url) ? '<img class="' + (b.size && b.size !== "full" ? "img-" + esc(b.size) : "") + '" src="' + esc(imgSrc(b.url)) + '" alt="' + esc(b.alt) + '">' + (S(b.caption) ? '<p class="caption">' + md(b.caption).replace(/^<p>|<\/p>\s*$/g, "") + "</p>" : "") : "";
+      case "image": return S(b.url) ? '<figure class="pic pic-' + esc(b.size || "full") + '"><img class="' + (b.size && b.size !== "full" ? "img-" + esc(b.size) : "") + '" src="' + esc(imgSrc(b.url)) + '" alt="' + esc(b.alt) + '">' + (S(b.caption) ? "<figcaption>" + md(b.caption).replace(/^<p>|<\/p>\s*$/g, "") + "</figcaption>" : "") + "</figure>" : "";
       case "product": return '<p style="padding:12px;border:1px dashed #ccc;border-radius:8px;color:#5c6b80">Product box: ' + esc(String(b.line || "").replace(/^::product\s*/, "").split("|")[0]) + "</p>";
       default: return "";
     }
@@ -687,7 +698,7 @@
     if (d.tab) { state.tab = d.tab; viewHome(); return; }
     if (d.tpl && route() === "/new") { e.preventDefault(); createFromTemplate(d.tpl); return; }
     if (d.tpl) { return; }
-    if (d.addblock) { p.blocks.push(newBlock(d.addblock)); markDirty(true); rerender(); setTimeout(() => { const all = document.querySelectorAll(".blk"); all[all.length - 1].scrollIntoView({ behavior: "smooth", block: "center" }); }, 50); return; }
+    if (d.addblock) { if (d.addblock === "heading") { const nb = newBlock("text"); nb.withHeading = true; p.blocks.push(nb); } else p.blocks.push(newBlock(d.addblock)); markDirty(true); rerender(); setTimeout(() => { const all = document.querySelectorAll(".blk"); all[all.length - 1].scrollIntoView({ behavior: "smooth", block: "center" }); }, 50); return; }
     if (d.up !== undefined) { const i = +d.up; if (i > 0) { [p.blocks[i - 1], p.blocks[i]] = [p.blocks[i], p.blocks[i - 1]]; markDirty(true); rerender(); } return; }
     if (d.down !== undefined) { const i = +d.down; if (i < p.blocks.length - 1) { [p.blocks[i + 1], p.blocks[i]] = [p.blocks[i], p.blocks[i + 1]]; markDirty(true); rerender(); } return; }
     if (d.del !== undefined) { if (confirm("Remove this box and what's in it?")) { p.blocks.splice(+d.del, 1); markDirty(true); rerender(); } return; }
@@ -711,6 +722,7 @@
     }
     switch (d.act) {
       case "new": location.hash = "#/new"; break;
+      case "newsimple": createFromTemplate("simple"); break;
       case "newtpl": state.tpl = blankTemplate("My template", [newBlock("text"), newBlock("text"), newBlock("faq")]); state.tpl.description = "My own outline."; await saveTemplate(); break;
       case "savetpl": await saveTemplate(); break;
       case "savenow": clearTimeout(state.saveTimer); state.dirty = true; await save(); toast("Saved ✓"); break;

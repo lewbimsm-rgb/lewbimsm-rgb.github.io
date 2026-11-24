@@ -108,11 +108,21 @@ def product_group(m):
     return '\n<div class="product-grid cols-%d">%s</div>\n' % (min(len(cards), 3), "".join(cards))
 
 
+def picture_figure(m):
+    """a picture on its own line (+ the caption under it) -> <figure class="pic pic-SIZE">, so size, text-wrap and caption travel together"""
+    img, cap = m.group(1), m.group(2)
+    size = (re.search(r'class="[^"]*img-([a-z]+)', img) or [None, "full"])[1]
+    if "loading=" not in img:
+        img = img.replace("<img", '<img loading="lazy"', 1)
+    return '<figure class="pic pic-%s">%s%s</figure>' % (size, img, ("<figcaption>%s</figcaption>" % cap) if cap else "")
+
+
 def render_markdown(body):
     body = re.sub(r"(?:^::product .+$\n?)(?:\n*^::product .+$\n?)*", product_group, body, flags=re.M)
     MD.reset()
     out = MD.convert(body)
     out = components.render(out)
+    out = re.sub(r'<p>(<img[^>]*>)</p>(?:\s*<p class="caption">(.*?)</p>)?', picture_figure, out, flags=re.S)
     # tip boxes: blockquotes whose first bold text ends with "Tip:" or similar
     out = re.sub(r'<blockquote>\s*<p><strong>([^<]*?(Tip|Checklist|Note)[^<]*?)</strong>', r'<blockquote class="tip"><p><strong>\1</strong>', out)
     # external links open in a new tab

@@ -402,3 +402,20 @@ blockquote p{margin:0}
 .side-card.who p{font-size:15px;color:#33435c}
 .side-card.who .who-more{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;color:var(--headline);text-decoration:underline;text-underline-offset:3px}
 .side-card.who .who-more:hover{color:var(--ink)}
+
+/* pictures inside a post or page (2026-11-24): picture + caption are one unit; tall phone photos are capped so they never fill the screen */
+:is(.article-body,.reading-layout) figure.pic{margin:1.8rem auto;max-width:100%;text-align:center}
+:is(.article-body,.reading-layout) figure.pic img{display:block;float:none;margin:0 auto;width:auto;height:auto;max-width:100%;max-height:540px;border-radius:9px}
+:is(.article-body,.reading-layout) figure.pic figcaption{font-size:13px;line-height:1.5;color:var(--quiet);margin:8px auto 0;max-width:46ch;text-align:center}
+:is(.article-body,.reading-layout) figure.pic-medium{max-width:70%}
+:is(.article-body,.reading-layout) figure.pic-medium img{max-height:440px}
+:is(.article-body,.reading-layout) figure.pic-small{max-width:45%}
+:is(.article-body,.reading-layout) figure.pic-small img{max-height:340px}
+:is(.article-body,.reading-layout) figure.pic-left{float:left;width:42%;max-width:300px;margin:.4rem 1.7rem 1rem 0}
+:is(.article-body,.reading-layout) figure.pic-right{float:right;width:42%;max-width:300px;margin:.4rem 0 1rem 1.7rem}
+:is(.article-body,.reading-layout) :is(figure.pic-left,figure.pic-right) img{width:100%;max-height:400px;object-fit:cover}
+:is(.article-body,.reading-layout) :is(h2,h3,.ss-quick,.ss-picks,.ss-table-wrap,.ss-faq,.ss-cta,.product-grid,blockquote,.author-box){clear:both}
+@media(max-width:760px){
+  :is(.article-body,.reading-layout) figure.pic{float:none!important;width:auto!important;max-width:100%!important;margin:1.5rem auto!important}
+  :is(.article-body,.reading-layout) figure.pic img{width:auto!important;max-height:72vh;object-fit:contain!important}
+}

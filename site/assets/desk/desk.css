@@ -208,3 +208,28 @@ canvas.frame:active{cursor:grabbing}
 .photo-box.over{border-color:var(--accent);border-style:solid;background:#e4f5f1}
 .lib-search .input{min-width:0}
 @media(max-width:760px){.edit-wrap{grid-template-columns:1fr}.dialog.edit{padding:14px}}
+
+/* picture box in the editor (2026-11-24): show the WHOLE photo (never a cropped slice) at about the size it will be on the page */
+.photo-box{width:260px;height:200px;padding:6px}
+.photo-box img{width:100%;height:100%;object-fit:contain;border-radius:6px}
+.photo-box.is-medium{width:190px;height:150px}
+.photo-box.is-small,.photo-box.is-left,.photo-box.is-right{width:130px;height:110px}
+.photo-box.is-left{justify-self:start}.photo-box.is-right{margin-left:130px}
+.size-hint{margin:-4px 0 0}
+@media(max-width:700px){.photo-box,.photo-box.is-medium,.photo-box.is-small,.photo-box.is-left,.photo-box.is-right{width:100%;height:200px;margin-left:0}}
+
+/* simple post mode (2026-11-24): words + pictures, everything else tucked away */
+.new-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.simple-add{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 10px}
+.simple-add .btn{flex:1;min-width:220px}
+details.more-opts{margin:14px 0}
+details.more-opts>summary{cursor:pointer;font-weight:700;font-size:15px;color:var(--headline);padding:6px 0}
+details.panel.more-opts{padding:14px 18px}
+details.more-opts[open]>summary{margin-bottom:6px}
+@media(max-width:700px){.new-wrap{align-items:stretch;width:100%}}
+@media(max-width:700px){
+  .bar-in{flex-wrap:wrap;row-gap:2px}.bar .spacer{flex-basis:0}
+  .ed-bar-in{flex-wrap:wrap}
+  .blocks-title{flex-direction:column;align-items:flex-start;gap:4px}
+  .simple-add .btn{min-width:0;flex-basis:100%}
+}
