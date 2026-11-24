@@ -45,7 +45,7 @@
   {% set big = six[start] %}{% set minis = six[start+1:start+3] %}
   <div class="mag{% if start %} flip{% endif %}">
     <a class="mag-big" href="{{ big.url }}" data-cat="{{ big.category }}">
-      <div class="mag-big-image"><img src="{{ big.image }}" alt="{{ big.image_alt }}"{% if big.image_focus %} style="object-position:{{ big.image_focus }}"{% endif %} width="{{ big.image_w }}" height="{{ big.image_h }}"{% if start == 0 %} fetchpriority="high"{% else %} loading="lazy"{% endif %}><span class="mag-chip">{% if start == 0 %}New this week{% else %}{{ big.category }}{% endif %}</span></div>
+      <div class="mag-big-image{% if big.image_h and big.image_w and (big.image_h|int) > (big.image_w|int) %} tall{% endif %}"><img src="{{ big.image }}" alt="{{ big.image_alt }}"{% if big.image_focus %} style="object-position:{{ big.image_focus }}"{% endif %} width="{{ big.image_w }}" height="{{ big.image_h }}"{% if start == 0 %} fetchpriority="high"{% else %} loading="lazy"{% endif %}><span class="mag-chip">{% if start == 0 %}New this week{% else %}{{ big.category }}{% endif %}</span></div>
       <h3>{{ big.title }}</h3>
       <p>{{ big.description }}</p>
       <div class="mag-by">{{ big.author }} · <time datetime="{{ big.date.isoformat() }}">{{ big.date_display }}</time></div>

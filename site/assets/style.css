@@ -419,3 +419,29 @@ blockquote p{margin:0}
   :is(.article-body,.reading-layout) figure.pic{float:none!important;width:auto!important;max-width:100%!important;margin:1.5rem auto!important}
   :is(.article-body,.reading-layout) figure.pic img{width:auto!important;max-height:72vh;object-fit:contain!important}
 }
+
+/* phone (2026-11-24): a table becomes a stack of cards, one per row, so nothing hides off the side of the screen */
+@media(max-width:640px){
+  :is(.article-body,.reading-layout) .ss-table-wrap{overflow:visible;border:0;background:none;border-radius:0;margin:1.6rem 0}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table){display:block;min-width:0;width:100%;font-size:1rem}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody{display:block}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody tr{display:block;background:#fff;border:1px solid var(--edge);border-radius:12px;padding:14px 16px;margin:0 0 12px}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody :is(td,th){display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr);gap:12px;align-items:baseline;padding:8px 0;border:0;border-top:1px dashed var(--edge);font-size:15px;line-height:1.5;white-space:normal;text-align:left}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody :is(td,th)::before{content:attr(data-label);font:700 11px/1.5 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--quiet)}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody tr>:first-child{display:block;border-top:0;padding:0 0 8px;font-family:var(--display);font-size:18px;font-weight:600;line-height:1.3;color:var(--ink)}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody tr>:first-child::before{content:none}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody td.ss-cell-action{display:block;padding:12px 0 0}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody td.ss-cell-action::before{content:none}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody td.ss-cell-action .ss-btn{display:block;text-align:center}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody :is(td,th):empty{display:none}
+}
+/* phone: a tall photo used as a cover gets a taller frame, so heads and feet are not cut off */
+@media(max-width:760px){
+  .article-image.tall,.mag-big-image.tall{height:auto;aspect-ratio:4/5}
+  .article-image.tall img,.mag-big-image.tall img{object-position:center 20%}
+}
+@media(max-width:640px){
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody tr{background:#fff!important}
+  :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody tr>*{background:none!important}
+}

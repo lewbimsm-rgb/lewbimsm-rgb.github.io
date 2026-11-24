@@ -7,7 +7,7 @@ updated: 2026-11-24
 category: Beginner Guides
 image: "/images/photos/judy/judy-walking-with-bag.jpg"
 image_alt: "Judy walking to the courts with her bag on her shoulder and a paddle in her hand"
-image_focus: "50% 30%"
+image_focus: "50% 8%"
 keyphrase: pack in your pickleball bag
 affiliate: true
 draft: false

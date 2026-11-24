@@ -108,6 +108,29 @@ def product_group(m):
     return '\n<div class="product-grid cols-%d">%s</div>\n' % (min(len(cards), 3), "".join(cards))
 
 
+def label_table_cells(m):
+    """each body cell gets data-label="<its column heading>", so a phone can show a table as stacked cards"""
+    table = m.group(0)
+    head = re.search(r"<thead>(.*?)</thead>", table, flags=re.S)
+    if not head:
+        return table
+    names = [html.escape(html.unescape(re.sub(r"<[^>]+>", "", h)).strip(), True) for h in re.findall(r"<th[^>]*>(.*?)</th>", head.group(1), flags=re.S)]
+
+    def row(rm):
+        i = [-1]
+
+        def cell(cm):
+            i[0] += 1
+            name = names[i[0]] if i[0] < len(names) else ""
+            return "<%s%s data-label=\"%s\">" % (cm.group(1), cm.group(2), name)
+        return "<tr>" + re.sub(r"<(td|th)([^>]*)>", cell, rm.group(1)) + "</tr>"
+
+    body = re.search(r"<tbody>(.*?)</tbody>", table, flags=re.S)
+    if not body:
+        return table
+    return table.replace(body.group(1), re.sub(r"<tr>(.*?)</tr>", row, body.group(1), flags=re.S))
+
+
 def picture_figure(m):
     """a picture on its own line (+ the caption under it) -> <figure class="pic pic-SIZE">, so size, text-wrap and caption travel together"""
     img, cap = m.group(1), m.group(2)
@@ -122,6 +145,7 @@ def render_markdown(body):
     MD.reset()
     out = MD.convert(body)
     out = components.render(out)
+    out = re.sub(r'<table class="ss-(?:compare|table)">.*?</table>', label_table_cells, out, flags=re.S)
     out = re.sub(r'<p>(<img[^>]*>)</p>(?:\s*<p class="caption">(.*?)</p>)?', picture_figure, out, flags=re.S)
     # tip boxes: blockquotes whose first bold text ends with "Tip:" or similar
     out = re.sub(r'<blockquote>\s*<p><strong>([^<]*?(Tip|Checklist|Note)[^<]*?)</strong>', r'<blockquote class="tip"><p><strong>\1</strong>', out)
