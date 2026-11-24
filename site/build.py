@@ -33,7 +33,7 @@ OUT = os.path.join(HERE, "docs")
 CFG = json.load(open(os.path.join(HERE, "config.json"), encoding="utf-8"))
 
 env = Environment(loader=FileSystemLoader(os.path.join(HERE, "templates")), autoescape=select_autoescape(["html"]))
-env.globals.update(site=CFG, now=datetime.datetime.now(), asset_v=datetime.datetime.now().strftime('%Y%m%d%H%M'))
+env.globals.update(deco_n=lambda url: 1 + (sum(ord(ch) for ch in str(url)) % 4), site=CFG, now=datetime.datetime.now(), asset_v=datetime.datetime.now().strftime('%Y%m%d%H%M'))
 
 MD = markdown.Markdown(extensions=["extra", "toc", "smarty", "sane_lists", "attr_list"], extension_configs={"toc": {"toc_depth": "2-3"}})
 

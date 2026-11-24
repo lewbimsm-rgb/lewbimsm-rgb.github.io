@@ -42,7 +42,7 @@
 }catch(e){}})();
 </script>{% endif %}
 </head>
-<body>
+<body{% if site.page_background %} class="deco" style="--deco:url('/assets/deco/{{ site.page_background }}-{{ deco_n(page_url) }}.svg');--deco-m:url('/assets/deco/{{ site.page_background }}-{{ deco_n(page_url) }}-m.svg')"{% endif %}>
 <a class="skip" href="#main">Skip to content</a>
 <div class="announcement">{{ site.announcement }} <span>{{ site.announcement_accent }}</span></div>
 <header class="site-header">

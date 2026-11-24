@@ -445,3 +445,8 @@ blockquote p{margin:0}
   :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody tr{background:#fff!important}
   :is(.article-body,.reading-layout) :is(.ss-compare,.ss-table) tbody tr>*{background:none!important}
 }
+
+/* signature background (2026-11-24): soft gray shapes behind every page; the file is chosen per page in base.html */
+body.deco{background-image:var(--deco);background-repeat:repeat-y;background-position:center 140px;background-size:max(1600px,100vw) auto}
+@media(max-width:760px){body.deco{background-image:var(--deco-m);background-size:100vw auto;background-position:center 90px}}
+@media print{body.deco{background-image:none}}

@@ -78,10 +78,10 @@
   "hero_link_href": "/pickleball-for-beginners-guide/",
   "hero_note": "GOOD DAYS START<br>ON THE COURT.",
   "feature_line1": "Your paddle.",
-  "feature_line2": "Your fit.",
-  "feature_line3": "Your glow.",
-  "feature_text": "Cut through the noise. Paddle comparisons, court-ready clothing, water bottles and simple skincare for your sunny-day lineup.",
-  "feature_cta": "Meet your next smart pick",
+  "feature_line2": "Your shoes.",
+  "feature_line3": "Your sunscreen.",
+  "feature_text": "These are the things I get asked about most at the courts: which paddle to buy, which shoes, what to wear, and how not to come home sunburned.",
+  "feature_cta": "See what I’d pick",
   "feature_cta_href": "/category/gear-reviews/",
   "feature_image": "/images/photos/hostinger/gear.jpg",
   "feature_image_alt": "Blue and coral paddles, yellow pickleballs, court shoes, a sports top, and sunscreen",
@@ -120,5 +120,6 @@
   "editor_url": "https://app.pagescms.org/lewbimsm-rgb/lewbimsm-rgb.github.io/main",
   "default_post_image": "/images/photos/hostinger/court.jpg",
   "desk_url": "https://qjoowhfonktziuktmcjb.supabase.co",
-  "desk_key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqb293aGZvbmt0eml1a3RtY2piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3NzA4OTksImV4cCI6MjEwNzM0Njg5OX0.7NDXr0lP8ArShg9Gdwq5cTqRPZ6BTdgYhEstoCwocJM"
+  "desk_key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqb293aGZvbmt0eml1a3RtY2piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3NzA4OTksImV4cCI6MjEwNzM0Njg5OX0.7NDXr0lP8ArShg9Gdwq5cTqRPZ6BTdgYhEstoCwocJM",
+  "page_background": ""
 }
