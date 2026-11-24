@@ -63,7 +63,7 @@ A 16 mm control paddle with a 4.25" grip is plenty for the first year, because i
 
 ### Sun protection counts as gear
 
-The [American Academy of Dermatology](https://www.aad.org/public/everyday-care/sun-protection/sunscreen-patient/sunscreen-faqs) says SPF 30 or higher, broad spectrum and water resistant, reapplied every two hours, and a two-hour open play session is exactly one reapply. Skin at our age is thinner and carries more sun history, so add a hat with a brim, sunglasses and sun sleeves. I have forgotten mine more than once, and my nose reminded me for a week. The [skincare guide](/pickleball-skincare/) covers mineral versus chemical sunscreen.
+The [American Academy of Dermatology](https://www.aad.org/public/everyday-care/sun-protection/shade-clothing-sunscreen/how-to-select-sunscreen) says SPF 30 or higher, broad spectrum and water resistant, reapplied every two hours, and a two-hour open play session is exactly one reapply. Skin at our age is thinner and carries more sun history, so add a hat with a brim, sunglasses and sun sleeves. I have forgotten mine more than once, and my nose reminded me for a week. The [skincare guide](/pickleball-skincare/) covers mineral versus chemical sunscreen.
 
 ### The right balls
 

@@ -18,13 +18,6 @@ The best pickleball shoes for women are court shoes, not running shoes, and for 
 **The short answer:** buy a court shoe (tennis or pickleball), never a running shoe. For most women that means the **ASICS Gel-Resolution** line. If your knees ache, look at the **New Balance FuelCell 996**. If you need a wide fit, the **New Balance 796** comes in a D width. Try them on late in the day, in your court socks.
 ```
 
-```picks
-Best overall | ASICS Gel-Resolution (women's) | Firm side wall, GEL under the heel, an outsole that lasts outdoors | https://www.asics.com/us/en-us/ | ASICS
-Best cushion for bad knees | New Balance FuelCell 996 (women's) | Soft FuelCell foam on a real court sole, offered in wide | https://www.newbalance.com/ | New Balance
-Best wide fit | New Balance 796 (women's) | Standard and wide widths at a fair price | https://www.newbalance.com/ | New Balance
-Best value | ASICS Gel-Rocket (women's) | A true court sole for under about $80, best on indoor courts | https://www.asics.com/us/en-us/ | ASICS
-```
-
 ## Why a running shoe is the wrong shoe
 
 Pickleball is a shuffle to the side, a lunge, and a hard stop, over and over for two hours. A running shoe is built for one direction, forward, with a tall soft sole that rolls when you push sideways, which is exactly how ankles get hurt. The [American Academy of Orthopaedic Surgeons](https://www.orthoinfo.org/staying-healthy/athletic-shoes/) says it plainly: court shoes give stability in all directions, and running shoes do not. Tennis and volleyball shoes count as court shoes, so you have more choices than the word "pickleball" on the box.

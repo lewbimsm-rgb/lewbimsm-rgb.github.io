@@ -387,3 +387,11 @@ blockquote p{margin:0}
 /* Judy's photo beside "Who writes this" on the About page */
 .reading-layout img.img-right{float:right;width:min(300px,42%);margin:6px 0 16px 26px;border-radius:12px}
 @media(max-width:600px){.reading-layout img.img-right{float:none;width:100%;margin:0 0 18px}}
+
+/* home page: a real person near the top (2026-11-24) */
+.meet-judy{max-width:var(--max);margin:0 auto;padding:8px 5% 6px}
+.meet-judy-card{display:grid;grid-template-columns:132px minmax(0,1fr);gap:28px;align-items:center;background:#fff;border:1px solid var(--edge);border-radius:16px;padding:22px 28px;max-width:860px;margin:0 auto}
+.meet-judy-card img{width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:60% 16%}
+.meet-judy-card h2{font-size:28px;letter-spacing:-.8px;margin:6px 0 8px;color:var(--headline)}
+.meet-judy-card p{font-size:16px;line-height:1.65;color:#33435c;margin:0 0 10px;max-width:620px}
+@media(max-width:600px){.meet-judy-card{grid-template-columns:1fr;text-align:left;gap:14px;padding:20px}.meet-judy-card img{width:96px;height:96px}}
