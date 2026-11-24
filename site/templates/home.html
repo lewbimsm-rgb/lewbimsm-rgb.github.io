@@ -31,7 +31,7 @@
   {% set big = six[start] %}{% set minis = six[start+1:start+3] %}
   <div class="mag{% if start %} flip{% endif %}">
     <a class="mag-big" href="{{ big.url }}" data-cat="{{ big.category }}">
-      <div class="mag-big-image"><img src="{{ big.image }}" alt="{{ big.image_alt }}" width="{{ big.image_w }}" height="{{ big.image_h }}"{% if start == 0 %} fetchpriority="high"{% else %} loading="lazy"{% endif %}><span class="mag-chip">{% if start == 0 %}New this week{% else %}{{ big.category }}{% endif %}</span></div>
+      <div class="mag-big-image"><img src="{{ big.image }}" alt="{{ big.image_alt }}"{% if big.image_focus %} style="object-position:{{ big.image_focus }}"{% endif %} width="{{ big.image_w }}" height="{{ big.image_h }}"{% if start == 0 %} fetchpriority="high"{% else %} loading="lazy"{% endif %}><span class="mag-chip">{% if start == 0 %}New this week{% else %}{{ big.category }}{% endif %}</span></div>
       <h3>{{ big.title }}</h3>
       <p>{{ big.description }}</p>
       <div class="mag-by">{{ big.author }} · <time datetime="{{ big.date.isoformat() }}">{{ big.date_display }}</time></div>
@@ -39,7 +39,7 @@
     <div class="mag-stack">
       {% for p in minis %}
       <a class="mag-mini" href="{{ p.url }}" data-cat="{{ p.category }}">
-        <div class="mag-mini-image"><img src="{{ p.image }}" alt="{{ p.image_alt }}" width="{{ p.image_w }}" height="{{ p.image_h }}" loading="lazy"></div>
+        <div class="mag-mini-image"><img src="{{ p.image }}" alt="{{ p.image_alt }}"{% if p.image_focus %} style="object-position:{{ p.image_focus }}"{% endif %} width="{{ p.image_w }}" height="{{ p.image_h }}" loading="lazy"></div>
         <div><span class="mag-kicker">{{ p.category }}</span><h3>{{ p.title }}</h3><div class="mag-by">{{ p.author }} · <time datetime="{{ p.date.isoformat() }}">{{ p.date_display }}</time></div></div>
       </a>
       {% endfor %}

@@ -148,8 +148,21 @@ def display_date(d):
 
 
 # ----------------------------------------------------------------------------------------------------------
+def pacific_today():
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.datetime.now(ZoneInfo("America/Los_Angeles")).date()
+    except Exception:
+        return (datetime.datetime.utcnow() - datetime.timedelta(hours=8)).date()
+
+
+TODAY = pacific_today()
+SCHEDULED = []
+
+
 def load_posts():
     posts = []
+    del SCHEDULED[:]
     pdir = os.path.join(CONTENT, "posts")
     files = []  # posts live in content/posts and in one level of sub-folders (one per posting template: guides, reviews, checklists, stories, imported)
     for root, dirs, names in os.walk(pdir):
@@ -171,11 +184,14 @@ def load_posts():
         img = str(meta.get("image") or "") or CFG.get("default_post_image", "")   # Mom may skip the picture
         w, h = image_size(os.path.join(CONTENT, img.lstrip("/"))) if img else (None, None)
         date = as_date(meta.get("date"))
+        if date > TODAY:          # scheduled: goes live on its date (the site rebuilds itself every morning)
+            SCHEDULED.append(dict(title=str(meta["title"]), slug=slug, date=date.isoformat(), date_display=display_date(date)))
+            continue
         posts.append(dict(
             meta=meta, slug=slug, url="/%s/" % slug, title=str(meta["title"]), seo_title=str(meta.get("seo_title") or meta["title"]),
             description=str(meta.get("description") or "") or auto_summary(html_body), date=date, date_display=display_date(date),
             category=cat, category_slug=catcfg["slug"], category_url="/category/%s/" % catcfg["slug"],
-            image=img, image_alt=str(meta.get("image_alt") or meta["title"]), image_w=w, image_h=h,
+            image=img, image_alt=str(meta.get("image_alt") or meta["title"]), image_w=w, image_h=h, image_focus=str(meta.get("image_focus") or ""),
             body=html_body, toc=toc, minutes=minutes, words=words, affiliate=truthy(meta.get("affiliate", False)),
             author=str(meta.get("author") or CFG["author"]), updated=(as_date(meta["updated"]).isoformat() if meta.get("updated") else ""),
             updated_display=(display_date(as_date(meta["updated"])) if meta.get("updated") else "")))
@@ -239,6 +255,7 @@ def build():
         write(p["url"] + "index.html", env.get_template("post.html").render(post=p, related=related, page_url=p["url"], **ctx))
     write("/blog/index.html", env.get_template("journal.html").render(page_url="/blog/", **ctx))
     write("/admin/index.html", env.get_template("admin.html").render(page_url="/admin/", **ctx))   # Mom's sign-in page
+    write("/admin/hub/index.html", env.get_template("hub.html").render(page_url="/admin/hub/", **ctx))   # "My blog": visits, schedule, ads checklist
     for c in cats:
         write(c["url"] + "index.html", env.get_template("category.html").render(cat=c, page_url=c["url"], **ctx))
     for pg in pages:
@@ -254,10 +271,25 @@ def build():
 
     # machine files
     base = CFG["url"].rstrip("/")
-    urls = ["/", "/blog/"] + [p["url"] for p in posts] + [c["url"] for c in cats] + [pg["url"] for pg in pages]
-    today = datetime.date.today().isoformat()
+    # sitemap: each page carries the date it really last changed (Google ignores a sitemap where every date is "today")
+    def last_change(p):
+        return p["updated"] or p["date"].isoformat()
+    newest = max([last_change(p) for p in posts] or [TODAY.isoformat()])
+    entries = [("/", newest), ("/blog/", newest)] + [(p["url"], last_change(p)) for p in posts]
+    entries += [(c["url"], max([last_change(p) for p in c["posts"]] or [newest])) for c in cats]
+    for pg in pages:
+        entries.append((pg["url"], str(pg["meta"].get("updated") or newest)[:10]))
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-          "".join("  <url><loc>%s%s</loc><lastmod>%s</lastmod></url>\n" % (base, u, today) for u in urls) + "</urlset>\n")
+          "".join("  <url><loc>%s%s</loc><lastmod>%s</lastmod></url>\n" % (base, u, d) for u, d in entries) + "</urlset>\n")
+    # numbers for the "My blog" page in the writing desk (what is live, what is scheduled, which posts carry Judy's own photos)
+    own = lambda p: "/photos/judy/" in p["image"] or "/photos/judy/" in p["body"]
+    write("hub-data.json", json.dumps({
+        "built": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
+        "today": TODAY.isoformat(),
+        "posts": [{"title": p["title"], "url": p["url"], "date": p["date"].isoformat(), "updated": p["updated"], "image": p["image"], "own_photo": own(p), "words": p["words"]} for p in posts],
+        "scheduled": sorted(SCHEDULED, key=lambda s: s["date"]),
+        "about_photo": bool(CFG.get("author_photo")), "contact_form": bool(CFG.get("contact_form")),
+    }, ensure_ascii=False))
     write("robots.txt", "User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % base)
     if CFG.get("adsense_client"):
         write("ads.txt", "google.com, %s, DIRECT, f08c47fec0942fa0\n" % CFG["adsense_client"].replace("ca-", ""))

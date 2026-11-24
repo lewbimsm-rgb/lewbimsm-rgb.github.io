@@ -4,12 +4,12 @@ seo_title: "Pickleball Rules for Beginners: Serve, Score and the Kitchen"
 description: "Pickleball rules for beginners in plain words: the serve, the two-bounce rule, the kitchen, how to call a doubles score, and the faults that end a rally."
 date: 2026-10-04
 category: "Beginner Guides"
-image: "/images/posts/pickleball-rules-for-beginners/1791984968371-images7.jpg"
-image_alt: "A player dinking at the kitchen line"
+image: "/images/photos/hostinger/dink.jpg"
+image_alt: "A paddle reaching for a soft shot at the kitchen line"
 keyphrase: "pickleball rules for beginners"
 affiliate: true
 draft: false
-updated: 2026-10-22
+updated: 2026-11-24
 ---
 The pickleball rules for beginners come down to five things: serve underhand and diagonally, let the ball bounce once on each side before anyone volleys, never volley from the kitchen, play to 11 and win by 2, and call the score out loud before you serve. Know those and you can join a rec game tomorrow; the detail is below.
 
@@ -21,7 +21,7 @@ A pickleball court is 20 feet wide and 44 feet long, the same size for singles a
 
 The serve is underhand: your arm swings upward and you hit the ball below your waist, at your navel, with the paddle head below your wrist. A drop serve, where you drop the ball and hit it after the bounce, is just as legal. Every serve goes diagonally into the opposite service box and must clear the kitchen; a serve that lands in the kitchen or on the kitchen line is a fault. Your feet stay behind the baseline when you hit it. You get one attempt, and if the ball clips the net and still lands in the correct box you play on; older rules replayed those "lets," and the current rules do not.
 
-A serve that lands in beats a hard one that sails out, because only the serving side can score. Every rule's exact wording is in the [USA Pickleball official rulebook](https://usapickleball.org/what-is-pickleball/official-rules/).
+A serve that lands in beats a hard one that sails out, because only the serving side can score. Every rule's exact wording is in the [USA Pickleball official rulebook](https://usapickleball.org/rules/).
 
 ## The two-bounce rule, which everyone forgets
 

@@ -3,6 +3,7 @@ title: About SmartSelect Labs
 slug: about
 description: A small, family-run pickleball blog for people who play at the park, the rec center or the community court.
 kicker: "About SmartSelect Labs"
+updated: 2026-11-24
 ---
 
 We started it because most pickleball buying advice is written for tournament players, or is really just an advertisement. We write for the rest of us: people who play at the park, the rec center or the community court, who want to pick a paddle that suits them, protect their knees, and have more fun.
@@ -14,6 +15,8 @@ We started it because most pickleball buying advice is written for tournament pl
 - **Health and recovery.** Staying on the court: warm-ups that take two minutes, protecting knees and elbows, and playing well into your sixties and seventies.
 
 ## Who writes this
+
+![Judy at the courts with her paddle, between games](/images/photos/judy/judy-portrait-with-paddle.jpg){: .img-right }
 
 Hi, I’m Judy. I picked up pickleball at the park and never put the paddle down. I started SmartSelect Labs with my son Lewis, who looks after the website, so I could share what I actually use and play with, what was worth the money, and the small habits that keep me on the court. I would rather tell you honestly who something is for, and who should skip it, than talk you into anything. Thanks for reading, and I hope to see you out there.
 

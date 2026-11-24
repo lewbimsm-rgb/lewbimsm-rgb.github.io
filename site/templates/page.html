@@ -12,7 +12,40 @@
   {{ page.body|safe }}
   {% if page.slug == "contact" %}
   <div class="contact-block">
-    {% if site.contact_form_endpoint %}
+    {% if site.contact_form and site.desk_url %}
+    <form class="contact-form" id="contact-form" novalidate>
+      <label>Your name <input type="text" name="name" autocomplete="name" maxlength="100" required></label>
+      <label>Your email <input type="email" name="email" autocomplete="email" maxlength="200" required></label>
+      <label>Your message <textarea name="message" rows="6" maxlength="4000" required></textarea></label>
+      <label class="contact-trap" aria-hidden="true">Leave this box empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      <button class="button primary" type="submit">Send message</button>
+      <p class="contact-status" id="contact-status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="contact-email">Prefer email? Write to <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+    <script>
+    (function(){
+      var f=document.getElementById("contact-form"),s=document.getElementById("contact-status");
+      var say=function(t,ok){s.textContent=t;s.className="contact-status "+(ok?"ok":"bad");};
+      f.addEventListener("submit",function(e){
+        e.preventDefault();
+        var d=new FormData(f),btn=f.querySelector("button");
+        if(!String(d.get("name")).trim()||!String(d.get("email")).trim()||String(d.get("message")).trim().length<5){say("Please fill in your name, your email and a short message.");return;}
+        btn.disabled=true;say("Sending…",true);
+        fetch({{ (site.desk_url ~ "/rest/v1/rpc/send_message")|tojson }},{method:"POST",headers:{"Content-Type":"application/json","apikey":{{ site.desk_key|tojson }},"Authorization":"Bearer "+{{ site.desk_key|tojson }}},
+          body:JSON.stringify({p_name:d.get("name"),p_email:d.get("email"),p_message:d.get("message"),p_trap:d.get("website")||""})})
+        .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
+        .then(function(r){
+          btn.disabled=false;
+          if(r.ok&&r.j==="ok"){f.reset();say("Thank you. Your message is on its way to Judy, and she replies to real questions.",true);}
+          else if(r.j==="email"){say("That email address does not look right. Could you check it?");}
+          else if(r.j==="name"){say("Please add your name.");}
+          else if(r.j==="message"){say("Please write a few words in the message box.");}
+          else{say("Something went wrong on our side. You can email {{ site.email }} instead.");}
+        }).catch(function(){btn.disabled=false;say("We could not send it. Check your connection, or email {{ site.email }} instead.");});
+      });
+    })();
+    </script>
+    {% elif site.contact_form_endpoint %}
     <form class="contact-form" action="{{ site.contact_form_endpoint }}" method="POST">
       <label>Name <input type="text" name="name" required></label>
       <label>Email <input type="email" name="email" required></label>
@@ -29,7 +62,7 @@
     <div class="side-card who"><img src="{{ site.author_photo or '/assets/avatar-lotus.png' }}" alt="" width="48" height="48"><div><strong>{{ site.author }}</strong><p>Recreational player, writing the guides I wish I'd had. <a href="/about/">About me</a></p></div></div>
     {% if false %}<nav class="side-card toc" aria-label="In this article"><span class="side-kicker">In this article</span>{% for t in post.toc %}<a href="#{{ t.id }}">{{ "%02d"|format(loop.index) }} &middot; {{ t.name }}</a>{% endfor %}</nav>{% endif %}
     <div class="side-card lime"><span class="side-kicker">New here?</span><p>Start with the <a href="/pickleball-for-beginners-guide/">beginner's guide</a>, then the <a href="/pickleball-rules-for-beginners/">rules in plain words</a> and <a href="/what-to-pack-in-your-pickleball-bag/">what to pack</a>.</p></div>
-    {% set side_posts = (related if related else posts[:2]) %}{% if side_posts %}<div class="side-card more"><span class="side-kicker">More like this</span>{% for p in side_posts[:2] %}<a class="side-mini" href="{{ p.url }}"><img src="{{ p.image }}" alt="" loading="lazy"><span>{{ p.title }}</span></a>{% endfor %}</div>{% endif %}
+    {% set side_posts = (related if related else posts[:2]) %}{% if side_posts %}<div class="side-card more"><span class="side-kicker">More like this</span>{% for p in side_posts[:2] %}<a class="side-mini" href="{{ p.url }}"><img src="{{ p.image }}" alt=""{% if p.image_focus %} style="object-position:{{ p.image_focus }}"{% endif %} loading="lazy"><span>{{ p.title }}</span></a>{% endfor %}</div>{% endif %}
   </aside>
 </div>
 {% endblock %}

@@ -3,10 +3,11 @@ title: "What to Pack in Your Pickleball Bag: My 15, Learned the Hard Way"
 seo_title: "What to Pack in Your Pickleball Bag: My 15"
 description: "What to pack in your pickleball bag, from someone who has forgotten all of it at least once: five must-haves, six comforts, four small things worth bringing."
 date: 2026-10-09
-updated: 2026-10-22
+updated: 2026-11-24
 category: Beginner Guides
-image: "/images/photos/hostinger/gear.jpg"
-image_alt: "Pickleball gear laid out ready to pack"
+image: "/images/photos/judy/judy-walking-with-bag.jpg"
+image_alt: "Judy walking to the courts with her bag on her shoulder and a paddle in her hand"
+image_focus: "50% 30%"
 keyphrase: pack in your pickleball bag
 affiliate: true
 draft: false

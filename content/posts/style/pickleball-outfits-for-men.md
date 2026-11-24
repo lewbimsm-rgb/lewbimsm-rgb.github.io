@@ -3,10 +3,10 @@ title: "Best Performance Pickleball Outfits for Men"
 seo_title: "Best Performance Pickleball Outfits for Men"
 description: "Pickleball outfits for men, from a woman who watched her courts sweat through cotton: lined 7-inch shorts, a wicking tee, crew socks and a cap."
 date: 2026-10-09
-updated: 2026-10-22
+updated: 2026-11-24
 category: "Gear Reviews"
-image: "/images/photos/hostinger/clothing.jpg"
-image_alt: "Court-ready clothing laid out beside a paddle"
+image: "/images/photos/hostinger/tournament.jpg"
+image_alt: "A man in shorts and a tee reaching for a low ball on an outdoor court"
 keyphrase: "pickleball outfits for men"
 affiliate: true
 draft: false

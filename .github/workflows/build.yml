@@ -6,6 +6,8 @@ name: Build and deploy smartselectlabs.com
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "20 13 * * *"   # every morning (5:20 AM Pacific): rebuild so posts dated today go live by themselves
   workflow_dispatch:
 
 permissions:

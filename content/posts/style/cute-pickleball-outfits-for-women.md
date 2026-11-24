@@ -3,10 +3,11 @@ title: "Cute Pickleball Outfits for Women: From the Court to Coffee"
 seo_title: "Cute Pickleball Outfits for Women: From the Court to Coffee"
 description: "Cute pickleball outfits the way a friend would explain them: five formulas that work at the park, what to read on the tag, and three pieces I would buy first."
 date: 2026-10-09
-updated: 2026-10-22
+updated: 2026-11-24
 category: "Gear Reviews"
-image: "/images/posts/cute-pickleball-outfits-for-women/1791984507594-pic15.jpg"
-image_alt: "Court-ready clothing laid out beside a paddle"
+image: "/images/photos/judy/judy-holding-bottle.jpg"
+image_alt: "Judy in a navy quarter-zip after a game, water bottle in hand"
+image_focus: "49% 18%"
 keyphrase: "cute pickleball outfits"
 affiliate: true
 draft: false

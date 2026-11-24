@@ -374,3 +374,16 @@ blockquote p{margin:0}
 .article-image>span{background:var(--lime);color:var(--ink);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:6px 11px}
 .article-card[data-cat="Gear Reviews"] .article-image>span{background:var(--blue-soft)}
 .article-card[data-cat="Health & Recovery"] .article-image>span{background:var(--coral)}
+
+/* contact form (2026-11-24): sends to our own inbox; the hidden box catches robots */
+.contact-trap{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.contact-form input,.contact-form textarea{font:inherit;font-size:16px;color:var(--ink);border-radius:8px}
+.contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--headline);outline-offset:1px}
+.contact-form label{font-size:14px}
+.contact-form button[disabled]{opacity:.6;cursor:wait}
+.contact-status{min-height:1.5em;font-size:15px;font-weight:600;margin:0}
+.contact-status.ok{color:#0b6356}.contact-status.bad{color:#a6442c}
+.contact-email{margin-top:18px}
+/* Judy's photo beside "Who writes this" on the About page */
+.reading-layout img.img-right{float:right;width:min(300px,42%);margin:6px 0 16px 26px;border-radius:12px}
+@media(max-width:600px){.reading-layout img.img-right{float:none;width:100%;margin:0 0 18px}}

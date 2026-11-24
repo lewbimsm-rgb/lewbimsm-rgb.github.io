@@ -23,7 +23,7 @@ If you are new to pickleball, this is the serve I wish someone had shown me on d
 
 **The drop serve** is the forgiving one. You let the ball drop from your hand (no tossing it up or pushing it down), let it bounce, and hit it however you like. If the volley serve feels awkward, start here. Nobody will think less of you, and plenty of good players use it.
 
-Both have to land in the service box diagonally across from you, past the kitchen line. The [rules post](/pickleball-rules-for-beginners/) has the full list in plain words, and the [official rulebook](https://usapickleball.org/what-is-pickleball/official-rules/) has the fine print.
+Both have to land in the service box diagonally across from you, past the kitchen line. The [rules post](/pickleball-rules-for-beginners/) has the full list in plain words, and the [official rulebook](https://usapickleball.org/rules/) has the fine print.
 
 ## How to serve in pickleball, in three steps
 

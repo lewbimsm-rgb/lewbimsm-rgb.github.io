@@ -29,6 +29,18 @@
 {% if site.ga4_id %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id }}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.ga4_id }}');</script>{% endif %}
 {% if site.adsense_client %}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client }}" crossorigin="anonymous"></script>{% endif %}
+{% if site.own_stats and site.desk_url %}<script>
+/* Our own visit counter: one anonymous line per page opened. No cookies, no name, no IP kept. Editors and robots are skipped. */
+(function(){try{
+  if(navigator.webdriver||/bot|crawl|spider|slurp|headless|lighthouse|preview|monitor/i.test(navigator.userAgent))return;
+  try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf("sb-")===0&&k.indexOf("auth-token")>0)return;}}catch(e){}
+  var sid="";try{sid=sessionStorage.getItem("ssl_v")||"";if(!sid){sid=Math.random().toString(36).slice(2)+Date.now().toString(36);sessionStorage.setItem("ssl_v",sid);}}catch(e){}
+  var ref="";try{if(document.referrer){var h=new URL(document.referrer).hostname.replace(/^www\./,"");if(h&&h!==location.hostname.replace(/^www\./,""))ref=h;}}catch(e){}
+  var w=Math.min(screen.width||0,window.innerWidth||0)||window.innerWidth,dev=w<700?"phone":(w<1100?"tablet":"computer");
+  var send=function(){fetch({{ (site.desk_url ~ "/rest/v1/rpc/log_view")|tojson }},{method:"POST",keepalive:true,headers:{"Content-Type":"application/json","apikey":{{ site.desk_key|tojson }},"Authorization":"Bearer "+{{ site.desk_key|tojson }}},body:JSON.stringify({p_path:location.pathname,p_ref:ref,p_sid:sid,p_device:dev})}).catch(function(){});};
+  if(document.visibilityState==="visible")setTimeout(send,1200);else document.addEventListener("visibilitychange",function f(){if(document.visibilityState==="visible"){document.removeEventListener("visibilitychange",f);setTimeout(send,1200);}});
+}catch(e){}})();
+</script>{% endif %}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>

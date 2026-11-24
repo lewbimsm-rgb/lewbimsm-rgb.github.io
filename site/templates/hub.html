@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My blog | {{ site.site_name }}</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta name="theme-color" content="#172d50">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/desk/desk.css?v={{ asset_v }}">
+<link rel="stylesheet" href="/assets/desk/hub.css?v={{ asset_v }}">
+<script>
+  window.DESK_CONFIG = {
+    url: {{ site.desk_url|tojson }},
+    key: {{ site.desk_key|tojson }},
+    site: {{ site.url|tojson }},
+    logo: {{ site.logo|tojson }}
+  };
+</script>
+</head>
+<body>
+<div id="app"><main style="padding:60px 20px;text-align:center;font-family:Manrope,sans-serif;color:#5c6b80">Opening your blog numbers…</main></div>
+<noscript><p style="padding:20px">This page needs JavaScript switched on.</p></noscript>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/assets/desk/hub.js?v={{ asset_v }}"></script>
+</body>
+</html>

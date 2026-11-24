@@ -52,7 +52,7 @@
   function bar() {
     return '<header class="bar"><div class="bar-in">' +
       '<a class="brand" href="#/"><img src="' + esc(CFG.logo) + '" alt="SmartSelect Labs"><span>Writing desk</span></a><div class="spacer"></div>' +
-      (state.user ? '<span class="who">Hi, ' + esc(state.name || state.user.email) + '</span><a class="link-btn" href="#/templates">Templates</a><a class="link-btn" href="' + esc(SITE + "/") + '" target="_blank" rel="noopener">View site ↗</a><button class="link-btn" data-act="help">Help</button><button class="link-btn" data-act="signout">Sign out</button>' : "") +
+      (state.user ? '<span class="who">Hi, ' + esc(state.name || state.user.email) + '</span><a class="link-btn" href="/admin/hub/">My blog</a><a class="link-btn" href="#/templates">Templates</a><a class="link-btn" href="' + esc(SITE + "/") + '" target="_blank" rel="noopener">View site ↗</a><button class="link-btn" data-act="help">Help</button><button class="link-btn" data-act="signout">Sign out</button>' : "") +
       "</div></header>";
   }
 
@@ -284,7 +284,7 @@
       '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px"><button class="btn" data-act="preview">Preview</button>' + publishLabel(p) + "</div></main>";
     document.querySelectorAll(".textarea").forEach(autosize);
     updateSaved(); updateWords();
-    document.getElementById("coverfile").addEventListener("change", (e) => uploadPicture(e.target.files[0], (url) => { state.post.cover_url = url; delete state.post.extra.image_credit; markDirty(true); renderEditor();
+    document.getElementById("coverfile").addEventListener("change", (e) => uploadPicture(e.target.files[0], (url) => { state.post.cover_url = url; delete state.post.extra.image_credit; delete state.post.extra.image_focus; markDirty(true); renderEditor();
       openPictureEditor(url, { shape: "banner", title: "Crop the main picture", skip: true, name: "cover" }, (u) => { if (u) { state.post.cover_url = u; markDirty(true); renderEditor(); } }); }));
     bindBlockUploads();
   }
@@ -499,7 +499,7 @@
   // a picture file dropped or pasted into a slot: "cover" or a block index
   function dropInto(slot, file) {
     uploadPicture(file, (url) => {
-      if (slot === "cover") { state.post.cover_url = url; delete state.post.extra.image_credit; } else { doc().blocks[+slot].url = url; }
+      if (slot === "cover") { state.post.cover_url = url; delete state.post.extra.image_credit; delete state.post.extra.image_focus; } else { doc().blocks[+slot].url = url; }
       markDirty(true); rerender();
     });
   }

@@ -1,8 +1,9 @@
 ---
 title: Contact
 slug: contact
-description: Questions about pickleball, gear, or a product review? Send us a note.
+description: A short form that comes straight to Judy.
 kicker: "Say hello"
+updated: 2026-11-24
 ---
 
-Questions about pickleball, wellness, or a product review? Found a mistake? Want us to look at a paddle or a pair of shoes? Send us a note. We read everything, and we reply to real questions.
+Questions about pickleball, wellness, or a product review? Found a mistake? Want us to look at a paddle or a pair of shoes? Use the form below and it comes straight to me. I read every note, and I reply to real questions.

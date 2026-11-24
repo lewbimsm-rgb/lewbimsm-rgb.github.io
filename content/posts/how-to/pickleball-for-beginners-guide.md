@@ -43,7 +43,7 @@ The kitchen is the seven feet closest to the net on each side. You cannot hit th
 
 The serve is underhand, hit diagonally into the box across from you. Your only goal at first is to get it in, every time, and nothing else. On the return, a deep, controlled ball buys you time to get into position, so resist the urge to crush it.
 
-Games go to 11, win by two, and only the serving side can score, which confuses everyone for about a week. Scoring conventions vary a little from group to group, so at a new court just ask, "What scoring are we using?" Nobody minds. For the full rules in plain words, including the two-bounce rule and how to call the score, read the [rules for beginners](/pickleball-rules-for-beginners/). The official rulebook lives at [USA Pickleball](https://usapickleball.org/what-is-pickleball/official-rules/).
+Games go to 11, win by two, and only the serving side can score, which confuses everyone for about a week. Scoring conventions vary a little from group to group, so at a new court just ask, "What scoring are we using?" Nobody minds. For the full rules in plain words, including the two-bounce rule and how to call the score, read the [rules for beginners](/pickleball-rules-for-beginners/). The official rulebook lives at [USA Pickleball](https://usapickleball.org/rules/).
 
 ## The four habits that win more than any shot
 

@@ -4,12 +4,13 @@ seo_title: "Pickleball Skincare: Sunscreen & a Simple Routine"
 description: "Pickleball skincare, learned the hard way: SPF 30+ before you leave, a second coat at the two-hour mark, a hat and sleeves, then a plain routine after play."
 date: 2026-10-09
 category: "Health & Recovery"
-image: "/images/photos/hostinger/skincare.jpg"
-image_alt: "Sunscreen beside a paddle and balls on a green court"
+image: "/images/photos/judy/judy-cap-sunglasses.jpg"
+image_alt: "Judy at the courts in a navy cap and sunglasses on a bright morning"
+image_focus: "54% 52%"
 keyphrase: "pickleball skincare"
 affiliate: true
 draft: false
-updated: 2026-10-22
+updated: 2026-11-24
 ---
 
 Two Septembers ago I skipped sunscreen on a cool, cloudy morning and came home with ears the color of boiled shrimp. The next morning one of the women I play with handed me a tube from her bag without a word, which is how pickleball skincare really gets taught at a public court. Here is the routine I landed on, with the reasons, because I do better when I know why.

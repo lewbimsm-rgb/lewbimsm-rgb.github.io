@@ -3,15 +3,17 @@ title: Privacy Policy
 slug: privacy-policy
 description: What information smartselectlabs.com collects, why, and the choices you have.
 kicker: "The small print"
+updated: 2026-11-24
 ---
 
-**Effective date: October 5, 2026. Updated October 21, 2026.**
+**Effective date: October 5, 2026. Updated November 24, 2026.**
 
 SmartSelect Labs ("we", "us") runs the website smartselectlabs.com. This page explains, in plain English, what information the site collects, why, and the choices you have. If anything here is unclear, email us at [hello@smartselectlabs.com](mailto:hello@smartselectlabs.com).
 
 ## What we collect
 
-- **Contact messages.** If you write to us, we receive the name, email address and message you send. We use them only to reply to you.
+- **Contact messages.** If you use the form on the Contact page or email us, we receive the name, email address and message you send. They are stored with our database provider, Supabase, and we use them only to reply to you.
+- **Our own visit counter.** Each time a page is opened, the site records which page it was, the website you came from (for example google.com), whether you are on a phone, tablet or computer, and a random number that lasts only until you close the tab. It uses no cookies and does not store your name or your IP address. We use it to see which posts people actually read.
 - **Usage statistics.** We use Google Analytics 4 to see which pages are read, roughly where visitors come from (country and region, not street address) and what devices they use. Google Analytics sets cookies that start with `_ga`. The reports we see are aggregated and do not identify you by name. You can block it with Google's [opt-out browser add-on](https://tools.google.com/dlpage/gaoptout).
 - **Fonts.** The site's typefaces are loaded from Google Fonts, so your browser requests the font files from Google's servers, which see your IP address. Google describes this at [developers.google.com/fonts/faq/privacy](https://developers.google.com/fonts/faq/privacy).
 - **Editor accounts.** Only the people who write for the site have accounts (name, email, a password), kept with our database provider, Supabase, to let them sign in. Readers never create accounts.

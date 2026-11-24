@@ -3,10 +3,10 @@ title: "Beginner Pickleball Tips: 5 Habits That Fix Most Mistakes"
 seo_title: "Beginner Pickleball Tips: 5 Habits That Fix Most Mistakes"
 description: "Five beginner pickleball tips from someone who spent a month hitting the ball over the fence: softer shots, the kitchen line, the middle, your eyes and feet."
 date: 2026-10-05
-updated: 2026-10-22
+updated: 2026-11-24
 category: "Beginner Guides"
-image: "/images/posts/beginner-pickleball-tips/1791983422792-images5.jpg"
-image_alt: "Players mid-rally on an outdoor court"
+image: "/images/photos/hostinger/court.jpg"
+image_alt: "Two players mid-rally on an outdoor pickleball court"
 keyphrase: "beginner pickleball tips"
 affiliate: true
 draft: false
@@ -14,7 +14,7 @@ draft: false
 
 For my first month of pickleball I had one idea, and it was to hit the ball as hard as I could. It felt wonderful for about a second, and then the ball would sail over the fence or come straight back at my face while I was still admiring my swing. Someone I was paired with one morning finally suggested I try hitting it a little less. That turned out to be the first of five beginner pickleball tips that fixed most of what I was doing wrong. None of them take talent, just a fix you can try in your next game.
 
-![Beginner pickleball tips summary card: control before power, get to the kitchen line, aim for the middle, watch the ball, move your feet](/images/posts/beginner-pickleball-tips/1791983462448-paddle-up.jpg)
+![Beginner pickleball tips summary card: control before power, get to the kitchen line, aim for the middle, watch the ball, move your feet](/images/five-beginner-tips.png)
 
 ## Hit it softer than feels right
 
@@ -26,7 +26,7 @@ After the serve and return, the goal is to get up to the non-volley zone line, t
 
 ## Aim for the middle
 
-When in doubt, hit between your opponents. A ball down the middle creates a "yours or mine?" moment, and it crosses the net at its lowest point, 34 inches in the center against 36 at the sidelines, per the [official rules](https://usapickleball.org/what-is-pickleball/official-rules/). Two inches does not sound like much until you have clipped the tape a few times. Going for the sideline is how a good rally becomes an unforced error. Put a towel in the middle of the far court and aim for it.
+When in doubt, hit between your opponents. A ball down the middle creates a "yours or mine?" moment, and it crosses the net at its lowest point, 34 inches in the center against 36 at the sidelines, per the [official rules](https://usapickleball.org/rules/). Two inches does not sound like much until you have clipped the tape a few times. Going for the sideline is how a good rally becomes an unforced error. Put a towel in the middle of the far court and aim for it.
 
 ## Watch the ball to the paddle
 

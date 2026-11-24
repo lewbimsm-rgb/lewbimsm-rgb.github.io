@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/desk/desk.css">
+<link rel="stylesheet" href="/assets/desk/desk.css?v={{ asset_v }}">
 <script>
   window.DESK_CONFIG = {
     url: {{ site.desk_url|tojson }},
@@ -27,6 +27,6 @@
 <noscript><p style="padding:20px">The writing desk needs JavaScript switched on.</p></noscript>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
-<script src="/assets/desk/desk.js"></script>
+<script src="/assets/desk/desk.js?v={{ asset_v }}"></script>
 </body>
 </html>
