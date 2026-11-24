@@ -14,7 +14,7 @@ We started it because most pickleball buying advice is written for tournament pl
 - **Gear reviews.** Paddles, court shoes, balls and bags compared on what matters: comfort, control, durability and price. We say who each product is for, and who should skip it.
 - **Health and recovery.** Staying on the court: warm-ups that take two minutes, protecting knees and elbows, and playing well into your sixties and seventies.
 
-## Who writes this
+## A little about me
 
 ![Judy at the courts with her paddle, between games](/images/photos/judy/judy-portrait-with-paddle.jpg){: .img-right }
 
