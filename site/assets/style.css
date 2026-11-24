@@ -395,3 +395,10 @@ blockquote p{margin:0}
 .meet-judy-card h2{font-size:28px;letter-spacing:-.8px;margin:6px 0 8px;color:var(--headline)}
 .meet-judy-card p{font-size:16px;line-height:1.65;color:#33435c;margin:0 0 10px;max-width:620px}
 @media(max-width:600px){.meet-judy-card{grid-template-columns:1fr;text-align:left;gap:14px;padding:20px}.meet-judy-card img{width:96px;height:96px}}
+
+/* sidebar hello card (2026-11-24): a real link that looks like one */
+.side-card.who{align-items:center}
+.side-card.who img{width:64px;height:64px}
+.side-card.who p{font-size:15px;color:#33435c}
+.side-card.who .who-more{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;color:var(--headline);text-decoration:underline;text-underline-offset:3px}
+.side-card.who .who-more:hover{color:var(--ink)}
