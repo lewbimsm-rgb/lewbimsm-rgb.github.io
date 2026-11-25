@@ -137,7 +137,10 @@ def picture_figure(m):
     size = (re.search(r'class="[^"]*img-([a-z]+)', img) or [None, "full"])[1]
     if "loading=" not in img:
         img = img.replace("<img", '<img loading="lazy"', 1)
-    return '<figure class="pic pic-%s">%s%s</figure>' % (size, img, ("<figcaption>%s</figcaption>" % cap) if cap else "")
+    src = re.search(r'src="(/[^"]+)"', img)
+    w, h = image_size(os.path.join(CONTENT, src.group(1).lstrip("/"))) if src else (None, None)
+    wide = " is-wide" if (w and h and w >= h * 1.25) else ""     # a wide picture set to Large fills the column
+    return '<figure class="pic pic-%s%s">%s%s</figure>' % (size, wide, img, ("<figcaption>%s</figcaption>" % cap) if cap else "")
 
 
 def render_markdown(body):
@@ -215,7 +218,11 @@ def load_posts():
         slug = slugify(meta.get("slug") or fn[:-3])
         cat = str(meta.get("category") or "Beginner Guides")
         catcfg = CFG["categories"].get(cat, {"slug": slugify(cat), "blurb": ""})
-        img = str(meta.get("image") or "") or CFG.get("default_post_image", "")   # Mom may skip the picture
+        img = str(meta.get("image") or "")
+        auto_img = not img       # Mom may skip the main picture: then no big photo on top, and cards use her first picture (or the court photo)
+        if auto_img:
+            first = re.search(r'<img[^>]+src="(/[^"]+)"', html_body)
+            img = (first.group(1) if first else "") or CFG.get("default_post_image", "")
         w, h = image_size(os.path.join(CONTENT, img.lstrip("/"))) if img else (None, None)
         date = as_date(meta.get("date"))
         if date > TODAY:          # scheduled: goes live on its date (the site rebuilds itself every morning)
@@ -225,7 +232,7 @@ def load_posts():
             meta=meta, slug=slug, url="/%s/" % slug, title=str(meta["title"]), seo_title=str(meta.get("seo_title") or meta["title"]),
             description=str(meta.get("description") or "") or auto_summary(html_body), date=date, date_display=display_date(date),
             category=cat, category_slug=catcfg["slug"], category_url="/category/%s/" % catcfg["slug"],
-            image=img, image_alt=str(meta.get("image_alt") or meta["title"]), image_w=w, image_h=h, image_focus=str(meta.get("image_focus") or ""),
+            image=img, image_auto=auto_img, image_alt=str(meta.get("image_alt") or meta["title"]), image_w=w, image_h=h, image_focus=str(meta.get("image_focus") or ""),
             body=html_body, toc=toc, minutes=minutes, words=words, affiliate=truthy(meta.get("affiliate", False)),
             author=str(meta.get("author") or CFG["author"]), updated=(as_date(meta["updated"]).isoformat() if meta.get("updated") else ""),
             updated_display=(display_date(as_date(meta["updated"])) if meta.get("updated") else "")))

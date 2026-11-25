@@ -575,3 +575,6 @@ body.deco-sides{background:#f6f8fb url('/assets/deco/damask-leaf.svg') center 0/
   .pd-ribbon{background-size:190px auto}
   body.deco-sides{background-size:280px auto}
 }
+
+/* a wide picture set to "Large" fills the column, so pictures one after another line up (2026-11-24) */
+:is(.article-body,.reading-layout) figure.pic-full.is-wide img{width:100%}

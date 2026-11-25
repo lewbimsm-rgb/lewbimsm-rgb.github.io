@@ -52,7 +52,7 @@
   function bar() {
     return '<header class="bar"><div class="bar-in">' +
       '<a class="brand" href="#/"><img src="' + esc(CFG.logo) + '" alt="SmartSelect Labs"><span>Writing desk</span></a><div class="spacer"></div>' +
-      (state.user ? '<span class="who">Hi, ' + esc(state.name || state.user.email) + '</span><a class="link-btn" href="/admin/hub/">My blog</a><a class="link-btn" href="#/templates">Templates</a><a class="link-btn" href="' + esc(SITE + "/") + '" target="_blank" rel="noopener">View site ↗</a><button class="link-btn" data-act="help">Help</button><button class="link-btn" data-act="signout">Sign out</button>' : "") +
+      (state.user ? '<span class="who">Hi, ' + esc(state.name || state.user.email) + '</span><a class="link-btn" href="/admin/hub/">My blog</a><a class="link-btn" href="' + esc(SITE + "/") + '" target="_blank" rel="noopener">View site ↗</a><button class="link-btn" data-act="help">Help</button><button class="link-btn" data-act="signout">Sign out</button>' : "") +
       "</div></header>";
   }
 
@@ -114,7 +114,7 @@
     $app.innerHTML = bar() + '<main class="wrap">' +
       '<div class="home-head"><div><h1>My posts</h1><p>Everything you have written, saved automatically. Pick up any draft where you left off.</p></div>' +
       '<div class="new-wrap"><button class="btn lime big" data-act="' + (state.templates.some((t) => t.key === "simple") ? "newsimple" : "new") + '">＋ Write a new post</button>' +
-      '<a class="link-btn" href="#/new">or start from an outline</a></div></div>' +
+      '<a class="link-btn" href="#/new">or start from a template (an outline)</a></div></div>' +
       '<div class="tabs">' + TABS.map(([k, label]) => '<button class="tab' + (state.tab === k ? " on" : "") + '" data-tab="' + k + '">' + esc(label) + '<span class="n">' + counts[k] + "</span></button>").join("") + "</div>" +
       '<div class="search"><input class="input" id="q" type="search" placeholder="Find a post by its title" value="' + esc(state.q) + '"></div>' +
       (list.length ? '<div class="grid">' + cards + "</div>" : '<div class="empty">' + esc(emptyMsg) + "</div>") + "</main>";
@@ -124,12 +124,13 @@
 
   // ------------------------------------------------------------ new post: template gallery
   function tplCard(t, extraHtml) {
-    return '<button class="tcard c-' + esc(t.color) + '" data-tpl="' + esc(t.key) + '"><span class="emoji">' + esc(t.emoji) + "</span><h3>" + esc(t.label) + (t.custom ? ' <span class="chip">yours</span>' : "") + "</h3><p>" + esc(t.description) + "</p>" +
-      (extraHtml || (t.example_url ? '<a class="ex" href="' + esc(SITE + t.example_url) + '" target="_blank" rel="noopener" data-stop>See a finished example ↗</a>' : '<span class="ex">&nbsp;</span>')) + "</button>";
+    const tag = extraHtml ? "div" : "button";   // a card that holds its own buttons cannot itself be a button
+    return '<' + tag + ' class="tcard c-' + esc(t.color) + '" data-tpl="' + esc(t.key) + '"><span class="emoji">' + esc(t.emoji) + "</span><h3>" + esc(t.label) + (t.custom ? ' <span class="chip">yours</span>' : "") + "</h3><p>" + esc(t.description) + "</p>" +
+      (extraHtml || (t.example_url ? '<a class="ex" href="' + esc(SITE + t.example_url) + '" target="_blank" rel="noopener" data-stop>See a finished example ↗</a>' : '<span class="ex">&nbsp;</span>')) + "</" + tag + ">";
   }
   function viewNew() {
     $app.innerHTML = bar() + '<main class="wrap"><a class="link-btn" href="#/">← My posts</a>' +
-      '<div class="home-head" style="margin-top:10px"><div><h1>What kind of post?</h1><p>“Simple post” is just your words and your pictures. The others open with an outline and grey hints, for when you want a table or store buttons.</p></div><a class="btn" href="#/templates">Edit the templates</a></div>' +
+      '<div class="home-head" style="margin-top:10px"><div><h1>What kind of post?</h1><p>“Simple post” is just your words and your pictures. The others open with an outline and grey hints, for when you want a table or store buttons.</p></div><a class="link-btn" href="#/templates">Change what the templates start with</a></div>' +
       '<div class="tgrid">' + state.templates.map((t) => tplCard(t)).join("") + "</div></main>";
   }
   async function createFromTemplate(key) {
@@ -277,8 +278,8 @@
       (p.status === "trash" ? '<button data-act="restore">Restore from the trash</button>' : '<button data-act="trash">Move to the trash</button>') + "</div></div></div></div>" +
       '<main class="ed"><p class="hint" style="margin:0 0 6px"><span class="chip">' + esc(t.emoji + " " + t.label) + '</span> &nbsp;<span class="words" id="words"></span></p>' +
       '<input class="title-input" data-f="title" value="' + esc(p.title) + '" placeholder="' + (simple ? "Give it a title" : "Your headline, e.g. Best Pickleball Shoes for Women") + '">' +
-      '<section class="panel"><h3>Main picture</h3><p class="hint">' + (simple ? "The photo people see first. Any photo of yours works. If you skip it, the site uses a court photo." : "Shows at the top of the post and on the home page. Your own photo is best, wider than tall.") + "</p>" + '<div class="photo"><div class="photo-box" id="cover" data-drop="cover" title="You can also drop a photo file here">' +
-      (p.cover_url ? '<img src="' + esc(imgSrc(p.cover_url)) + '" alt="">' : "No picture yet.<br>If you skip it, the site uses a court photo.") + "</div>" +
+      '<section class="panel"><h3>Main picture</h3><p class="hint">' + (simple ? "Optional. A big photo above your words. If you skip it, the post starts with your title and your words, and the home page shows the first picture from your post." : "Optional. Shows at the top of the post and on the home page. Your own photo is best, wider than tall. If you skip it, the post has no big photo on top.") + "</p>" + '<div class="photo"><div class="photo-box" id="cover" data-drop="cover" title="You can also drop a photo file here">' +
+      (p.cover_url ? '<img src="' + esc(imgSrc(p.cover_url)) + '" alt="">' : "No picture yet.<br>That is fine: it is optional.") + "</div>" +
       '<div class="photo-side"><div class="photo-btns"><button type="button" class="btn small primary" data-act="libcover">Choose a photo</button><label class="btn small">' + (p.cover_url ? "Upload a different one" : "Upload from this device") + '<input type="file" accept="image/*" class="hidden" id="coverfile"></label>' +
       (p.cover_url ? '<button type="button" class="btn small" data-act="editcover">✂ Crop / adjust</button><button class="btn small ghost" data-act="rmcover">Remove</button>' : "") + "</div>" +
       (simple ? "" : '<label class="lbl">Size at the top of the post</label>' + sel('data-x="image_size"', [["full", "Big banner (default)"], ["smaller", "Smaller banner"], ["none", "Do not show it on the post (cards only)"]], coverSize) +
@@ -557,10 +558,11 @@
     const p = state.post || Object.assign({ title: state.tpl.label + " (template)", summary: state.tpl.description, category: state.tpl.category, blocks: state.tpl.blocks, extra: {} });
     const body = (p.blocks || []).map(previewBlock).join("\n");
     const size = (p.extra && p.extra.image_size) || "full";
-    const cover = size === "none" ? "" : '<img class="article-cover' + (size !== "full" ? " cover-" + esc(size) : "") + '" src="' + esc(imgSrc(p.cover_url || CFG.defaultImage)) + '" alt="">' + (p.extra && p.extra.image_credit ? '<p class="caption cover-caption">' + md(p.extra.image_credit).replace(/^<p>|<\/p>\s*$/g, "") + "</p>" : "");
+    const cover = size === "none" || !p.cover_url ? "" : '<img class="article-cover' + (size !== "full" ? " cover-" + esc(size) : "") + '" src="' + esc(imgSrc(p.cover_url)) + '" alt="">' + (p.extra && p.extra.image_credit ? '<p class="caption cover-caption">' + md(p.extra.image_credit).replace(/^<p>|<\/p>\s*$/g, "") + "</p>" : "");
     const doc = '<!doctype html><html><head><meta charset="utf-8"><base href="' + esc(SITE + "/") + '"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/style.css"><link rel="stylesheet" href="/assets/components.css"></head><body>' +
       '<article class="post"><header class="article-header"><span class="eyebrow">' + esc(p.category) + ' / The journal</span><h1>' + esc(p.title || "Untitled draft") + "</h1><p>" + esc(p.summary) + '</p><div class="article-byline"><span>By ' + esc(state.name || "Judy") + "</span><span>·</span><time>" + esc(niceDate((p.post_date || new Date().toISOString()).slice(0, 10))) + '</time><span>·</span><span>Preview · not published yet</span></div></header>' +
-      cover + '<div class="article-body">' + body + "</div></article></body></html>";
+      cover + '<div class="article-body">' + body + "</div></article>" +
+      '<script>document.querySelectorAll("figure.pic img").forEach(function(im){function f(){if(im.naturalWidth>=im.naturalHeight*1.25)im.closest("figure").classList.add("is-wide")}if(im.complete&&im.naturalWidth)f();else im.addEventListener("load",f)})<\/script></body></html>';
     const v = document.createElement("div"); v.className = "preview-veil";
     v.innerHTML = '<div class="pbar"><strong>Preview</strong><span class="hint" style="margin:0">This is how your post will look. Links are switched off here.</span><div style="flex:1"></div><button class="btn primary">Back to writing</button></div><iframe title="Preview"></iframe>';
     document.body.appendChild(v);
@@ -581,7 +583,7 @@
   }
   function askPublish() {
     const p = state.post, again = p.status === "published";
-    const checks = [[!!p.title.trim(), "A title"], [!!p.cover_url, "A main picture (optional: a court photo is used if you skip it)"], [!!p.summary.trim(), "A short summary (optional: your first paragraph is used)"], [wordCount(p) >= 250, "At least about 250 words (" + wordCount(p) + " now)"]];
+    const checks = [[!!p.title.trim(), "A title"], [!!p.cover_url, "A main picture (optional)"], [!!p.summary.trim(), "A short summary (optional: your first paragraph is used)"], [wordCount(p) >= 250, "At least about 250 words (" + wordCount(p) + " now)"]];
     const v = dialog("<h2>" + (again ? "Update the live post?" : "Put this post on the website?") + "</h2>" +
       "<p>" + (again ? "Your new edits will replace what readers see now, and the post will show today as its “Updated” date." : "It will appear on smartselectlabs.com about two minutes after you press Publish.") + "</p>" +
       "<ul>" + checks.map(([ok, l]) => "<li>" + (ok ? "✅ " : "⚪ ") + esc(l) + "</li>").join("") + "</ul>" +
@@ -613,14 +615,20 @@
   const COLORS = [["lime", "Lime"], ["blue", "Blue"], ["coral", "Coral"], ["white", "White"]];
   function viewTemplates() {
     $app.innerHTML = bar() + '<main class="wrap"><a class="link-btn" href="#/">← My posts</a>' +
-      '<div class="home-head" style="margin-top:10px"><div><h1>Templates</h1><p>The outlines a new post starts from. Change the boxes, the headings and the grey hints; your posts already written are not affected.</p></div>' +
+      '<div class="home-head" style="margin-top:10px"><div><h1>Templates</h1><p>These are outlines, not posts. To write, press “Write a post” on any of them. “Change the outline” is only for changing the boxes and grey hints every new post starts with.</p></div>' +
       '<button class="btn lime big" data-act="newtpl">＋ New blank template</button></div>' +
-      '<div class="tgrid">' + state.templates.map((t) => tplCard(t, '<span class="tcard-acts"><a class="btn small primary" href="#/template/' + esc(t.key) + '" data-stop>Edit</a><button type="button" class="btn small" data-dup="' + esc(t.key) + '" data-stop>Duplicate</button>' + (t.custom ? '<button type="button" class="btn small ghost" data-deltpl="' + esc(t.key) + '" data-stop>Delete</button>' : "") + "</span>")).join("") + "</div></main>";
+      '<div class="tgrid">' + state.templates.map((t) => tplCard(t, '<span class="tcard-acts"><button type="button" class="btn small primary" data-newfrom="' + esc(t.key) + '" data-stop>Write a post</button>' + (t.key === "simple" ? "" : '<a class="btn small" href="#/template/' + esc(t.key) + '" data-stop>Change the outline</a><button type="button" class="btn small" data-dup="' + esc(t.key) + '" data-stop>Duplicate</button>') + (t.custom ? '<button type="button" class="btn small ghost" data-deltpl="' + esc(t.key) + '" data-stop>Delete</button>' : "") + "</span>")).join("") + "</div></main>";
   }
   async function viewTemplateEditor(key) {
     await loadTemplates();
     const t = state.templates.find((x) => x.key === key);
     if (!t) { $app.innerHTML = bar() + '<main class="wrap"><div class="empty">That template was not found. <a href="#/templates">Back to templates</a></div></main>'; return; }
+    if (key === "simple") {
+      state.tpl = null;
+      $app.innerHTML = bar() + '<main class="wrap"><div class="empty"><h2 style="margin-top:0">This is not where posts are written</h2><p>The Simple post is just a blank page for your words and pictures, so there is nothing to set up here.</p>' +
+        '<p style="margin-top:18px"><button class="btn lime big" data-act="newsimple">＋ Write a new post</button></p><p><a href="#/">Back to My posts</a></p></div></main>';
+      return;
+    }
     state.tpl = JSON.parse(JSON.stringify(t)); state.post = null; state.tplDirty = false;
     renderTemplateEditor();
   }
@@ -630,8 +638,9 @@
     $app.innerHTML = bar() +
       '<div class="ed-bar"><div class="ed-bar-in"><a class="link-btn" href="#/templates">← Templates</a><span class="chip">' + (t.custom ? "Your template" : "Built-in template") + '</span><span class="saved" id="saved">' + (state.tplDirty ? "Not saved yet" : "Saved ✓") + '</span><div style="flex:1"></div>' +
       '<button class="btn" data-act="preview">Preview</button><button class="btn go" data-act="savetpl">Save template</button></div></div>' +
-      '<main class="ed"><section class="panel"><h3>About this template</h3><div class="row2">' +
-      '<div><span class="lbl">Name</span>' + inp('data-t="label"', t.label, "e.g. Best ___ for ___") + "</div>" +
+      '<main class="ed"><div class="tpl-warn"><div><b>This is an outline, not a post.</b> Whatever you type here shows up in every new post that starts from it. Writing a post? Use the button.</div><button type="button" class="btn primary" data-newfrom="' + esc(t.key) + '">Write a post from this outline</button></div>' +
+      '<section class="panel"><h3>About this template</h3><div class="row2">' +
+      '<div><span class="lbl">Name of the outline (not a post title)</span>' + inp('data-t="label"', t.label, "e.g. Best ___ for ___") + "</div>" +
       '<div><span class="lbl">Emoji</span>' + inp('data-t="emoji"', t.emoji, "🏆") + "</div></div>" +
       '<div style="margin-top:10px"><span class="lbl">One-line description (shown on the template card)</span>' + inp('data-t="description"', t.description, "") + "</div>" +
       '<div class="row3" style="margin-top:10px"><div><span class="lbl">Card colour</span>' + sel('data-t="color"', COLORS, t.color) + "</div>" +
@@ -688,10 +697,11 @@
 
   // ------------------------------------------------------------ events
   document.addEventListener("click", async (e) => {
-    const t = e.target.closest("[data-stop]"); if (t && !t.closest("[data-dup],[data-deltpl]")) { e.stopPropagation(); if (t.tagName !== "A") return; }
-    const a = e.target.closest("[data-act],[data-open],[data-tab],[data-tpl],[data-addblock],[data-up],[data-down],[data-del],[data-add-item],[data-rm-item],[data-add-row],[data-rm-row],[data-add-col],[data-rm-col],[data-fmt],[data-lib-block],[data-rm-img],[data-edit-img],[data-dup],[data-deltpl]");
+    const t = e.target.closest("[data-stop]"); if (t && !t.closest("[data-dup],[data-deltpl],[data-newfrom]")) { e.stopPropagation(); if (t.tagName !== "A") return; }
+    const a = e.target.closest("[data-act],[data-open],[data-tab],[data-tpl],[data-addblock],[data-up],[data-down],[data-del],[data-add-item],[data-rm-item],[data-add-row],[data-rm-row],[data-add-col],[data-rm-col],[data-fmt],[data-lib-block],[data-rm-img],[data-edit-img],[data-dup],[data-deltpl],[data-newfrom]");
     if (!a) { const m = document.getElementById("more"); if (m && !e.target.closest(".rel")) m.classList.add("hidden"); return; }
     const d = a.dataset, p = doc();
+    if (d.newfrom !== undefined) { e.preventDefault(); e.stopPropagation(); createFromTemplate(d.newfrom); return; }
     if (d.dup !== undefined) { e.preventDefault(); e.stopPropagation(); const src = tplOf(d.dup); state.tpl = blankTemplate(src.label + " (copy)", JSON.parse(JSON.stringify(src.blocks || [])), src); state.tpl.description = src.description; await saveTemplate(); return; }
     if (d.deltpl !== undefined) { e.preventDefault(); e.stopPropagation(); if (!confirm("Delete this template? Posts already written from it are not affected.")) return; const { error } = await sb.from("templates").delete().eq("key", d.deltpl); if (error) { toast("Couldn't delete it: " + error.message); return; } await loadTemplates(); viewTemplates(); return; }
     if (d.open) { location.hash = "#/post/" + d.open; return; }
@@ -728,7 +738,7 @@
       case "savenow": clearTimeout(state.saveTimer); state.dirty = true; await save(); toast("Saved ✓"); break;
       case "signout": await flush(); await sb.auth.signOut(); state.user = null; viewSignIn(); break;
       case "help":
-        dialog("<h2>How the writing desk works</h2><ul><li>1. <b>Write a new post</b> → pick a template.</li><li>2. Fill in the boxes. The grey text is just a hint.</li><li>3. Everything <b>saves by itself</b> (top bar says “All changes saved ✓”). “Save now” forces it.</li><li>4. Pictures: <b>Choose a photo</b> opens your photos, the site’s photos, a search for free licensed photos, and a place to paste a link. You can also drop a photo file onto any picture box, or paste a screenshot. <b>✂ Crop / adjust</b> frames, rotates and brightens it. Pick a size and add a caption.</li><li>5. Come back any time: <b>My posts</b> → your draft → Continue writing.</li><li>6. <b>Preview</b> shows how it will look. <b>Publish</b> puts it on the site in about two minutes.</li><li>7. Changed a live post? Press <b>Update the live post</b>.</li><li>8. <b>Templates</b> (top bar) lets you change the outlines, or save any post as your own template.</li></ul><p class=\"hint\">Your own or licensed photos only, never saved from Google Images or Amazon. No exact Amazon prices (“about $90” is fine). Stuck? Message Lewis; nothing here can break the website.</p><div class=\"acts\"><button class=\"btn primary\" data-close>Got it</button></div>");
+        dialog("<h2>How the writing desk works</h2><ul><li>1. <b>Write a new post</b> opens a blank page: a title, your words, your pictures.</li><li>2. Nothing is required. Any box you leave empty is skipped.</li><li>3. Everything <b>saves by itself</b> (top bar says “All changes saved ✓”). “Save now” forces it.</li><li>4. Pictures: <b>Choose a photo</b> opens your photos, the site’s photos, a search for free licensed photos, and a place to paste a link. You can also drop a photo file onto any picture box, or paste a screenshot. <b>✂ Crop / adjust</b> frames, rotates and brightens it. Pick a size and add a caption.</li><li>5. Come back any time: <b>My posts</b> → your draft → Continue writing.</li><li>6. <b>Preview</b> shows how it will look. <b>Publish</b> puts it on the site in about two minutes.</li><li>7. Changed a live post? Press <b>Update the live post</b>.</li><li>8. Templates are only starting outlines (tables, store buttons). You never need to open them to write a post.</li></ul><p class=\"hint\">Your own or licensed photos only, never saved from Google Images or Amazon. No exact Amazon prices (“about $90” is fine). Stuck? Message Lewis; nothing here can break the website.</p><div class=\"acts\"><button class=\"btn primary\" data-close>Got it</button></div>");
         break;
       case "preview": showPreview(); break;
       case "publish": askPublish(); break;

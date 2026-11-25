@@ -233,3 +233,9 @@ details.more-opts[open]>summary{margin-bottom:6px}
   .blocks-title{flex-direction:column;align-items:flex-start;gap:4px}
   .simple-add .btn{min-width:0;flex-basis:100%}
 }
+
+/* template editor: say loudly that this is an outline, not a post (2026-11-24) */
+.tpl-warn{background:#fff4e2;border:1px solid #efc47f;border-radius:var(--r);padding:14px 16px;margin:0 0 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;font-size:15px;line-height:1.5;color:#3a2c12}
+.tpl-warn>div{flex:1 1 320px;min-width:0}
+div.tcard{cursor:default}
+div.tcard:hover{transform:none}
