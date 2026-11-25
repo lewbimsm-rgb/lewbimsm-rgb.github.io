@@ -450,3 +450,128 @@ blockquote p{margin:0}
 body.deco{background-image:var(--deco);background-repeat:repeat-y;background-position:center 140px;background-size:max(1600px,100vw) auto}
 @media(max-width:760px){body.deco{background-image:var(--deco-m);background-size:100vw auto;background-position:center 90px}}
 @media print{body.deco{background-image:none}}
+
+/* signature background, round two (2026-11-24): Judy's own language. A patterned blue block that runs off the edge,
+   stepped gray blocks, and oversized gray letters behind the words. Variants v1..v4 are chosen per page. */
+body.deco2{position:relative}
+body.deco2>*:not(.page-deco):not(.skip){position:relative;z-index:1}
+.page-deco{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.page-deco i{position:absolute;display:block}
+.pd-panel{background:#d9e6f5 url('/assets/deco/lotus-damask.svg') 0 0/150px auto}
+.pd-panel.p1{left:0;top:104px;width:min(30vw,430px);height:470px}
+.pd-panel.p2{right:0;top:1500px;width:min(22vw,300px);height:620px}
+.page-deco.v2 .pd-panel.p1{left:auto;right:0;width:min(26vw,380px);height:560px}
+.page-deco.v2 .pd-panel.p2{right:auto;left:0;top:1300px}
+.page-deco.v3 .pd-panel.p1{height:360px;width:min(36vw,520px)}
+.page-deco.v3 .pd-panel.p2{top:1150px;height:480px}
+.page-deco.v4 .pd-panel.p1{left:auto;right:0;top:160px;height:420px}
+.page-deco.v4 .pd-panel.p2{right:auto;left:0;top:1700px;width:min(18vw,240px)}
+.pd-steps{width:320px;height:380px;background:rgba(23,45,80,.07);clip-path:polygon(100% 0,100% 100%,0 100%,0 75%,25% 75%,25% 50%,50% 50%,50% 25%,75% 25%,75% 0)}
+.pd-steps.s1{right:0;top:640px}
+.pd-steps.s2{left:0;top:2100px;transform:scaleX(-1);width:260px;height:320px}
+.page-deco.v2 .pd-steps.s1{right:auto;left:0;transform:scaleX(-1);top:760px}
+.page-deco.v2 .pd-steps.s2{left:auto;right:0;transform:none;top:1900px}
+.page-deco.v3 .pd-steps.s1{top:900px;width:260px;height:300px}
+.page-deco.v4 .pd-steps.s1{right:auto;left:0;transform:scaleX(-1);top:560px}
+.page-deco.v4 .pd-steps.s2{left:auto;right:0;transform:none;top:2300px}
+.pd-word{position:absolute;right:1.2vw;top:150px;display:flex;flex-direction:column;align-items:flex-end;font-family:var(--display);font-weight:500;line-height:.82;color:rgba(23,45,80,.085);text-transform:lowercase}
+.pd-word span{display:block}
+.pd-word span:nth-child(1){font-size:300px;text-transform:uppercase;margin-right:150px}
+.pd-word span:nth-child(2){font-size:120px;margin-right:60px;margin-top:-70px}
+.pd-word span:nth-child(3){font-size:170px;margin-right:0;margin-top:-10px}
+.pd-word span:nth-child(4){font-size:210px;margin-right:30px}
+.pd-word span:nth-child(5){font-size:110px;margin-right:120px}
+.page-deco.v2 .pd-word,.page-deco.v4 .pd-word{right:auto;left:1.2vw;align-items:flex-start}
+.page-deco.v2 .pd-word span,.page-deco.v4 .pd-word span{margin-right:0}
+.page-deco.v2 .pd-word span:nth-child(1),.page-deco.v4 .pd-word span:nth-child(1){margin-left:20px}
+.page-deco.v2 .pd-word span:nth-child(2),.page-deco.v4 .pd-word span:nth-child(2){margin-left:170px}
+.page-deco.v2 .pd-word span:nth-child(3),.page-deco.v4 .pd-word span:nth-child(3){margin-left:230px}
+.page-deco.v2 .pd-word span:nth-child(4),.page-deco.v4 .pd-word span:nth-child(4){margin-left:120px}
+.page-deco.v3 .pd-word{top:260px}
+@media(max-width:760px){
+  .pd-panel{background-size:96px auto}
+  .pd-panel.p1,.page-deco .pd-panel.p1{width:44vw;height:230px;top:70px}
+  .pd-panel.p2,.page-deco .pd-panel.p2{width:26vw;height:300px}
+  .pd-steps,.page-deco .pd-steps.s1,.page-deco .pd-steps.s2{width:150px;height:180px}
+  .pd-word{top:110px;color:rgba(23,45,80,.06)}
+  .pd-word span:nth-child(1){font-size:150px;margin-right:60px}
+  .pd-word span:nth-child(2){font-size:64px;margin-right:20px;margin-top:-34px}
+  .pd-word span:nth-child(3){font-size:88px}
+  .pd-word span:nth-child(4){font-size:104px;margin-right:10px}
+  .pd-word span:nth-child(5){font-size:60px;margin-right:50px}
+}
+@media print{.page-deco{display:none}}
+
+/* signature background "blocks" (from Judy's ZOOM card): two flat colour fields and the lotus in a small box */
+.pd-block.b1{left:0;top:104px;width:min(44vw,620px);height:400px;background:#f7d179}
+.pd-block.b2{right:0;top:1350px;width:min(28vw,400px);height:560px;background:#d8dde4}
+.pd-stamp{left:calc(min(44vw,620px) - 39px);top:465px;width:78px;height:78px;border:2.5px solid var(--ink);border-radius:16px;background:#f4f7f7 url('/assets/icon-180.png?v=2') center/100% no-repeat}
+.page-deco.v2 .pd-block.b1,.page-deco.v4 .pd-block.b1{left:auto;right:0;width:min(34vw,480px);height:460px}
+.page-deco.v2 .pd-block.b2,.page-deco.v4 .pd-block.b2{right:auto;left:0;top:1250px}
+.page-deco.v2 .pd-stamp,.page-deco.v4 .pd-stamp{left:auto;right:calc(min(34vw,480px) - 39px);top:525px}
+.page-deco.v3 .pd-block.b1{height:320px;width:min(52vw,720px)}
+.page-deco.v3 .pd-stamp{left:calc(min(52vw,720px) - 39px);top:385px}
+.page-deco.v4 .pd-block.b1{background:#d8dde4}.page-deco.v4 .pd-block.b2{background:#f7d179}
+@media(max-width:760px){
+  .page-deco .pd-block.b1{width:58vw;height:210px;top:70px}
+  .page-deco .pd-block.b2{width:30vw;height:320px}
+  .page-deco .pd-stamp{width:52px;height:52px;border-radius:12px;border-width:2px;top:254px;left:calc(58vw - 26px);right:auto}
+  .page-deco.v2 .pd-stamp,.page-deco.v4 .pd-stamp{left:auto;right:calc(58vw - 26px)}
+}
+/* the boxed lotus sits inside the first block, at its outer top corner, where nothing covers it */
+.page-deco.is-blocks .pd-stamp{left:28px;right:auto;top:132px}
+.page-deco.is-blocks.v2 .pd-stamp,.page-deco.is-blocks.v4 .pd-stamp{left:auto;right:28px;top:132px}
+@media(max-width:760px){
+  .page-deco.is-blocks .pd-stamp{left:auto;right:14px;top:84px}
+  .page-deco.is-blocks .pd-block.b1{left:auto;right:0}
+}
+
+/* Judy's own damask, lifted from her JHC Mode card (2026-11-24) */
+.page-deco.is-damask .pd-panel{background:url('/assets/deco/judy-damask.svg') 0 0/430px auto}
+.page-deco.is-damask .pd-panel.p1{width:min(32vw,460px);height:520px}
+.page-deco.is-damask.v2 .pd-panel.p1,.page-deco.is-damask.v4 .pd-panel.p1{width:min(28vw,400px);height:600px;background-position:right top}
+body.deco-wall{background-image:url('/assets/deco/judy-damask-pale.svg');background-size:560px auto;background-position:center 0}
+.pd-ribbon{left:0;top:0;bottom:0;width:clamp(16px,4.4vw,92px);background:url('/assets/deco/judy-damask.svg') 0 0/300px auto}
+.page-deco.v2 .pd-ribbon,.page-deco.v4 .pd-ribbon{left:auto;right:0;background-position:right 180px}
+.page-deco.v3 .pd-ribbon{background-position:0 320px}
+@media(max-width:760px){
+  .page-deco.is-damask .pd-panel{background-size:260px auto}
+  body.deco-wall{background-size:340px auto}
+  .pd-ribbon{background-size:170px auto}
+}
+@media print{body.deco-wall{background-image:none}}
+/* the damask blocks stay on the right, where the reading column is not, so words never sit on the pattern */
+.page-deco.is-damask .pd-panel.p1,.page-deco.is-damask.v2 .pd-panel.p1,.page-deco.is-damask.v3 .pd-panel.p1,.page-deco.is-damask.v4 .pd-panel.p1{left:auto;right:0;top:104px}
+.page-deco.is-damask .pd-panel.p2,.page-deco.is-damask.v2 .pd-panel.p2,.page-deco.is-damask.v3 .pd-panel.p2,.page-deco.is-damask.v4 .pd-panel.p2{left:auto;right:0;width:min(20vw,280px);height:700px;top:1900px}
+.page-deco.is-damask.v2 .pd-panel.p2{top:1600px;height:540px}
+.page-deco.is-damask.v3 .pd-panel.p1{width:min(38vw,540px);height:400px}
+.page-deco.is-damask.v4 .pd-panel.p2{top:2300px;width:min(24vw,340px)}
+@media(max-width:760px){
+  .page-deco.is-damask .pd-panel.p1{width:40vw;height:220px;top:70px}
+  .page-deco.is-damask .pd-panel.p2{display:none}
+}
+
+/* "damask-sides" (2026-11-24): Judy's damask fills both sides of every page; the content sits on a paper column in the middle.
+   A band of the pattern also shows under the menu and above the footer, so phones (which have no sides) still carry it. */
+body.deco-sides{background:#f1f5fa url('/assets/deco/judy-damask.svg') center 0/440px auto}
+body.deco-sides .site-header,body.deco-sides main{background:var(--bg);max-width:1280px;margin-left:auto;margin-right:auto}
+body.deco-sides .site-header{padding-left:max(5%,28px);padding-right:max(5%,28px)}
+body.deco-sides main{margin-top:26px;margin-bottom:34px;box-shadow:0 0 0 1px rgba(23,45,80,.06)}
+@media(max-width:760px){body.deco-sides{background-size:250px auto}body.deco-sides main{margin-top:16px;margin-bottom:22px}}
+@media print{body.deco-sides{background:none}}
+body.deco-sides .main-nav{gap:clamp(12px,1.6vw,26px)}
+body.deco-sides .main-nav a{white-space:nowrap}
+body.deco-sides .site-header{gap:18px}
+
+/* the damask itself (2026-11-24, later): a real 1875-1900 English wallpaper, public domain (Cooper Hewitt 18798345,
+   via Wikimedia Commons), traced to two colours and recoloured in the blue of Judy's card. Replaces the rough tracing. */
+.page-deco.is-damask .pd-panel{background-image:url('/assets/deco/damask-leaf.svg');background-size:400px auto;background-position:center top}
+body.deco-wall{background-image:url('/assets/deco/damask-leaf-pale.svg');background-size:520px auto}
+.pd-ribbon{background-image:url('/assets/deco/damask-leaf.svg');background-size:340px auto}
+body.deco-sides{background:#f6f8fb url('/assets/deco/damask-leaf.svg') center 0/520px auto}
+@media(max-width:760px){
+  .page-deco.is-damask .pd-panel{background-size:230px auto}
+  body.deco-wall{background-size:330px auto}
+  .pd-ribbon{background-size:190px auto}
+  body.deco-sides{background-size:280px auto}
+}

@@ -42,7 +42,8 @@
 }catch(e){}})();
 </script>{% endif %}
 </head>
-<body{% if site.page_background %} class="deco" style="--deco:url('/assets/deco/{{ site.page_background }}-{{ deco_n(page_url) }}.svg');--deco-m:url('/assets/deco/{{ site.page_background }}-{{ deco_n(page_url) }}-m.svg')"{% endif %}>
+{% set bg = site.page_background %}{% set dn = deco_n(page_url) %}{% set layered = ['pattern','letters','both','blocks','damask','damask-ribbon'] %}<body{% if bg in ['courts','balls','shapes'] %} class="deco" style="--deco:url('/assets/deco/{{ bg }}-{{ dn }}.svg');--deco-m:url('/assets/deco/{{ bg }}-{{ dn }}-m.svg')"{% elif bg == 'damask-sides' %} class="deco-sides"{% elif bg == 'damask-wall' %} class="deco-wall"{% elif bg in layered %} class="deco2"{% endif %}>
+{% if bg in layered %}<div class="page-deco v{{ dn }}{% if bg == 'blocks' %} is-blocks{% endif %}{% if bg == 'damask' %} is-damask{% endif %}" aria-hidden="true">{% if bg == 'blocks' %}<i class="pd-block b1"></i><i class="pd-block b2"></i><i class="pd-stamp"></i>{% endif %}{% if bg in ['pattern','both','damask'] %}<i class="pd-panel p1"></i><i class="pd-panel p2"></i>{% endif %}{% if bg in ['letters','both'] %}<i class="pd-steps s1"></i><i class="pd-steps s2"></i><div class="pd-word">{% for ch in ['play','dink','rally','serve'][dn - 1] %}<span>{{ ch }}</span>{% endfor %}</div>{% endif %}{% if bg == 'damask-ribbon' %}<i class="pd-ribbon"></i>{% endif %}</div>{% endif %}
 <a class="skip" href="#main">Skip to content</a>
 <div class="announcement">{{ site.announcement }} <span>{{ site.announcement_accent }}</span></div>
 <header class="site-header">
