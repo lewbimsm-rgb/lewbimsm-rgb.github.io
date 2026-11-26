@@ -12,7 +12,7 @@ affiliate: false
 draft: false
 ---
 
-The first time I walked up to open play, there was a row of paddles leaning against the fence and eight people who all seemed to know what it meant. I did not. I put my paddle on the bench, sat down beside it, and waited a long while for a turn that was never coming, because the bench is not the line. A woman in a visor finally took pity on me and moved my paddle to the end of the row. Most pickleball open play etiquette is like that: small, friendly, and written down nowhere.
+Walk up to open play for the first time and you will see a row of paddles leaning against the fence and eight people who all seem to know what it means. Nobody explains it. Put your paddle on the bench instead and you can wait a long while for a turn that is never coming, because the bench is not the line. Most pickleball open play etiquette is like that: small, friendly, and written down nowhere.
 
 ```quick
 **The short version:** put your paddle in the line and ask how the rotation works at that court. Call the score out loud before you serve. Call the lines on your own side, and give the other team the close ones. Stop the moment a ball rolls onto a court. The rest is being pleasant.
